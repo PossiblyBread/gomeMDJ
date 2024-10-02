@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Nav with Footer, Main Content, and Login Modal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="top-nav">
+            <h1>Logo & Name</h1>
+            <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+            <div class="top-nav-btn">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="store.html">Store</a>
+                <a href="support.html">Support</a>
+                <div class="profile-icon" id="profile-icon">
+                    <!-- SVG Profile Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.31 0-10 1.67-10 5v2h20v-2c0-3.33-6.69-5-10-5z"/>
+                    </svg>
+                </div>
+            </div>
+            
+        </div>
+    </header>
+    
+    <aside class="side-nav" id="side-nav">
+        <!-- Profile Icon at the Top -->
+        <div class="profile-icon" id="sidebar-profile-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="white">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.31 0-10 1.67-10 5v2h20v-2c0-3.33-6.69-5-10-5z"/>
+            </svg>
+        </div>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="store.html">Store</a>
+        <a href="support.html">Support</a>
+    </aside>
+    
+    <div id="overlay"></div>
+
+    <!-- Main Content Section -->
+    <main>
+        <section class="hero">
+            <h2>Welcome to Our Website!</h2>
+            <p>Explore amazing products and services. Our store offers the best deals, and our support team is always here to help you.</p>
+            <button class="learn-more-btn">Learn More</button>
+        </section>
+
+        <section class="features">
+            <div class="feature-item">
+                <h3>Feature One</h3>
+                <p>This feature offers you amazing benefits and top-notch services.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Feature Two</h3>
+                <p>Our second feature provides excellent support and solutions to your problems.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Feature Three</h3>
+                <p>Feature three is designed for convenience, making everything easy and accessible.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <h2>Login</h2>
+            <form id="login-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#">FAQs</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <p>Email: contact@example.com</p>
+                <p>Phone: +123 456 7890</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Your Company. All rights reserved.</p>
+            <a href="#" class="back-to-top">Back to Top</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
