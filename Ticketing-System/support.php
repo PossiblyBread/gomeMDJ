@@ -110,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h3>Submit a Support Request</h3>
                 <form id="ticket-form">
                     <!-- Hidden field for Web3Forms access key -->
-                    <input type="hidden" name="access_key" value="5bfb0bbd-0f6f-4e30-89c6-86e8cdfe0c6f">
+                    <input type="hidden" name="access_key" value="">
 
                     <label for="first_name">First Name</label>
                     <input type="text" id="first_name" name="first_name" required>
