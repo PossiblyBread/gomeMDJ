@@ -69,17 +69,24 @@ window.addEventListener('click', function(event) {
         loginModal.style.display = "none"; // Close modal when clicking on overlay or modal itself
     }
 });
-// Toggle the visibility of the long description when "Show More" button is clicked
-function toggleDetails(button) {
-    const card = button.parentElement;
-    const longDescription = card.querySelector('.long-description');
-    
-    if (longDescription.style.display === 'block') {
-        longDescription.style.display = 'none';
-        button.textContent = 'Show More';
+const chatButton = document.getElementById('chat-button');
+const chatBox = document.getElementById('chat-box');
+const closeChatButton = document.getElementById('close-chat');
+let isChatOpen = false;
+
+// Toggle chat box when chat button is clicked
+chatButton.addEventListener('click', () => {
+    if (isChatOpen) {
+        chatBox.style.bottom = '-400px'; // Hide chat box
     } else {
-        longDescription.style.display = 'block';
-        button.textContent = 'Show Less';
+        chatBox.style.bottom = '20px'; // Show chat box (above the chat button)
     }
-}
+    isChatOpen = !isChatOpen;
+});
+
+// Close chat box when close button is clicked
+closeChatButton.addEventListener('click', () => {
+    chatBox.style.bottom = '-400px'; // Hide chat box
+    isChatOpen = false; // Reset chat open state
+});
 

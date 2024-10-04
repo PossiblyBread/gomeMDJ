@@ -71,6 +71,27 @@ include "config/home_config.php"
         </section>
         
     </main>
+    <!-- Chat Button -->
+    <div class="chat-icon" id="chat-button">
+        <svg fill="#000000" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 12v4l-5-4H0V0h16v12zm-2-2V2H2v8h12zm-2.5 0l2.5 2v-2h-2.5zM4 4h8v2H4V4z" fill-rule="evenodd"></path>
+        </svg>
+    </div>
+    <!-- chat box -->
+    <div class="chat-box" id="chat-box">
+        <div class="chat-header">
+            Chat
+            <button class="chat-close" id="close-chat">✖</button>
+        </div>
+        <div class="chat-content">
+            <p>Welcome to the chat!</p>
+            <!-- You can add more chat functionality here -->
+        </div>
+        <div class="chat-input-container">
+            <input type="text" class="chat-input" placeholder="Type a message...">
+            <button class="send-button">Send</button>
+        </div>
+    </div>
 
     <!-- Login Modal -->
     <div class="modal" id="login-modal">

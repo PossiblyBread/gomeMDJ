@@ -65,7 +65,24 @@
             </div>
         </section>
     </main>
+    <!-- Chat Button -->
+    <div class="chat-icon" id="chat-button">
+        <svg fill="#000000" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 12v4l-5-4H0V0h16v12zm-2-2V2H2v8h12zm-2.5 0l2.5 2v-2h-2.5zM4 4h8v2H4V4z" fill-rule="evenodd"></path>
+        </svg>
+    </div>
 
+    <!-- Chat Box -->
+    <div class="chat-box" id="chat-box">
+        <div class="chat-header">
+            Chat
+            <button class="chat-close" id="close-chat">&times;</button> <!-- Styled 'X' button -->
+        </div>
+        <div class="chat-content">
+            <p>Welcome to the chat!</p>
+            <!-- You can add more chat functionality here -->
+        </div>
+    </div>
     <!-- Login Modal -->
     <div class="modal" id="login-modal">
         <div class="modal-content">
@@ -109,5 +126,106 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        const chatButton = document.getElementById('chat-button');
+        const chatBox = document.getElementById('chat-box');
+        const closeChatButton = document.getElementById('close-chat');
+        let isChatOpen = false;
+
+        // Toggle chat box when chat button is clicked
+        chatButton.addEventListener('click', () => {
+            if (isChatOpen) {
+                chatBox.style.bottom = '-400px'; // Hide chat box
+            } else {
+                chatBox.style.bottom = '20px'; // Show chat box (above the chat button)
+            }
+            isChatOpen = !isChatOpen;
+        });
+
+        // Close chat box when close button is clicked
+        closeChatButton.addEventListener('click', () => {
+            chatBox.style.bottom = '-400px'; // Hide chat box
+            isChatOpen = false; // Reset chat open state
+        });
+    </script>
 </body>
 </html>
+<style>
+    /* Chat Button */
+    .chat-icon {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        width: 60px;
+        height: 60px;
+        background-color: #7f8c8d; /* Gray */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+    }
+
+    .chat-icon svg {
+        fill: white; /* White icon */
+        width: 30px;
+        height: 30px;
+    }
+
+    .chat-icon:hover {
+        background-color: #95a5a6; /* Lighter gray on hover */
+    }
+
+    /* Chat Box */
+    .chat-box {
+        position: fixed;
+        right: 20px;
+        bottom: -400px; /* Initially hidden */
+        width: 300px;
+        height: 400px;
+        background-color: #ecf0f1; /* Very light gray */
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        transition: bottom 0.5s ease;
+    }
+
+    .chat-header {
+        background-color: #7f8c8d; /* Gray */
+        padding: 10px;
+        color: white;
+        font-size: 18px;
+        text-align: center;
+        border-radius: 10px 10px 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Close Button Styles */
+    .chat-close {
+        background-color: #95a5a6; /* Lighter gray */
+        border: none;
+        color: white;
+        font-size: 18px;
+        border-radius: 50%; /* Make it circular */
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .chat-close:hover {
+        background-color: #2c3e50; /* Darker gray on hover */
+    }
+
+    .chat-content {
+        padding: 15px;
+        height: 230px;
+        overflow-y: auto;
+        color: #2c3e50; /* Dark gray text */
+    }
+</style>
