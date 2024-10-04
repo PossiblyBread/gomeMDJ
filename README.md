@@ -61,3 +61,4 @@ Week #15 (October 1, 2024)
          (October 4, 2024)
   -Fixed a part of the php functions, Support page, Store Page
   -UI has been improved
+  -Added a chat button at the index page
