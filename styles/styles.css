@@ -362,30 +362,6 @@ footer {
     margin-bottom: 10px;
 }
 
-/* Hide long description by default */
-.product-card .long-description {
-    display: none;
-    margin-top: 10px;
-}
-
-.product-card .long-description p {
-    font-size: 14px;
-    color: #555;
-}
-
-/* Show More Button */
-.show-more-btn {
-    padding: 10px;
-    background-color: #444;
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.show-more-btn:hover {
-    background-color: #666;
-}
 /* About Page */
 /* About Section */
 .about-section {
@@ -492,20 +468,57 @@ footer {
     font-size: 16px;
     line-height: 1.6;
 }
+.support-form-section {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center align all items */
+    padding: 20px; /* Optional: padding around the form */
+    padding: 20px; /* Padding for spacing */
+    border-radius: 5px; /* Optional: rounded corners */
+}
+
+.support-form-section h3 {
+    text-align: center; /* Center the heading text */
+    margin-bottom: 20px; /* Add space below the heading */
+    width: 60%; /* Ensure the heading takes the full width */
+}
+
 
 .support-form-section form {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    width: 100%; /* Allow the form to be responsive */
+    max-width: 600px; /* Max width of the form */
+    align-items: center; /* Center all form elements */
 }
 
-.support-form-section input, 
+.support-form-section .form-group {
+    width: 100%; /* Ensure form groups take full width */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center contents of form group */
+}
+
+.support-form-section label {
+    text-align: center; /* Center the label text */
+    width: 100%; /* Ensure label takes full width for centering */
+    margin-bottom: 5px; /* Add some space below the label */
+}
+
+.support-form-section input,
+.support-form-section select,
 .support-form-section textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    width: 100%; /* Ensures inputs take the full width */
+    max-width: 600px; /* Optional: set a max-width for inputs */
+    margin: 0; /* Remove auto margin to prevent shifting */
+    padding: 10px; /* Optional: add padding for better appearance */
+}
+
+.support-form-section select {
+    max-width: 600px; /* Set a max-width for the select */
+    text-align: center; /* Center the text in the select box */
+    appearance: none; /* Remove default arrow in some browsers */
 }
 
 .support-form-section button {
@@ -516,9 +529,12 @@ footer {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 100%; /* Ensures the button takes the full width */
+    max-width: 600px; /* Optional: set a max-width for the button */
+    align-self: center; /* Center the button within the form */
+    margin-top: 15px; /* Add margin to the top for spacing */
 }
 
 .support-form-section button:hover {
     background-color: #1f2123;
 }
-

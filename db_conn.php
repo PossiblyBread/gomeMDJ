@@ -65,7 +65,6 @@ if (!$conn) {
 
     if (isset($_FILES['images'])) {
         // File upload variables
-        $serial_num = getNextSerialNum($conn);
         $p_brand = $_POST['p_brand'];
         $p_model = $_POST['p_model'];
         $p_year = $_POST['p_year'];
@@ -111,7 +110,7 @@ if (!$conn) {
         // Move the uploaded file to the target directory
         if (move_uploaded_file($tempname, $folder)) {
             // Insert file path into database
-            $sql = "INSERT INTO products_tb (id, `serial_num`, images, p_brand, p_model, p_year, p_type, p_frame_size, p_wheel_size, 
+            $sql = "INSERT INTO products_tb (id, images, p_brand, p_model, p_year, p_type, p_frame_size, p_wheel_size, 
                         p_weight, p_motor_type, p_motor_power, p_top_speed, p_pedal_assist_levels, 
                         p_throttle, p_battery_type, p_battery_capacity, p_range, p_charge_time, 
                         p_gears, p_brakes, p_suspension, p_tires, p_frame_material, p_fork, 
@@ -119,7 +118,7 @@ if (!$conn) {
                         p_kickstand, p_lock, p_accessories, p_warranty, p_torque, 
                         p_max_rider_weight, p_water_resistance, p_base_price, p_optional_features) 
                     
-                    VALUES (NULL, '$serial_num', '$folder', '$p_brand', '$p_model', '$p_year', '$p_type', '$p_frame_size', '$p_wheel_size', 
+                    VALUES (NULL, '$folder', '$p_brand', '$p_model', '$p_year', '$p_type', '$p_frame_size', '$p_wheel_size', 
                         '$p_weight', '$p_motor_type', '$p_motor_power', '$p_top_speed', '$p_pedal_assist_levels', 
                         '$p_throttle', '$p_battery_type', '$p_battery_capacity', '$p_range', '$p_charge_time', 
                         '$p_gears', '$p_brakes', '$p_suspension', '$p_tires', '$p_frame_material', '$p_fork', 

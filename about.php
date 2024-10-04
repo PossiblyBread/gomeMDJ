@@ -15,7 +15,7 @@
                 <a href="index.php">Home</a>
                 <a href="about.php">About</a>
                 <a href="store.php">Store</a>
-                <a href="support.php">Support</a>
+                <a href="Ticketing-System/support.php">Support</a>
                 <div class="profile-icon" id="profile-icon">
                     <!-- SVG Profile Icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white">
@@ -35,7 +35,7 @@
         <a href="index.php">Home</a>
         <a href="about.php">About</a>
         <a href="store.php">Store</a>
-        <a href="support.php">Support</a>
+        <a href="Ticketing-System/support.php">Support</a>
     </aside>
     
     <div id="overlay"></div>

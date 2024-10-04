@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 13, 2024 at 07:19 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Oct 03, 2024 at 06:44 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,22 +38,6 @@ CREATE TABLE `accounts` (
   `role` varchar(50) NOT NULL,
   `date_time` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `accounts`
---
-
-INSERT INTO `accounts` (`id`, `Serial_Num`, `last_name`, `first_name`, `email`, `phone_num`, `h_password`, `role`, `date_time`) VALUES
-(16, 10000001, 'bing', 'bong', 'bingbong@gmail.com', '12312312312', '$2y$10$zPXO2vZkPjqQYvVE3rnDM.FrzQ0MMio4LSsOjQ/.Yy36RxBtbQPn.', '', '2024-08-21 13:33:25'),
-(17, 10000001, 'waw', 'wew', 'wew@gmail.com', '12345678910', '$2y$10$ZfHOjTfmcz40JXl7lO/JEeg.a.hMBAn1.DPIAols73wn2elaiBeBW', '', '2024-08-21 13:33:25'),
-(21, 0, 'adona', 'adrian', 'adona@gmail.com', '09091212123', '$2y$10$lzRPBTZhncq/4XZrM31UJ.2eb5c4zjb8fSyXnZ6UK4uyP6ICK3ZGu', '', '2024-08-21 13:33:53'),
-(22, 0, 'bread', 'bnread', 'bread@gmail.comn', '09121231234', '$2y$10$reDP.yPur2bu5zWgATvHheRCDrtyCD/u.Nql9tOgxNRj3TAzV7Ud.', '', '2024-08-21 13:41:05'),
-(23, 0, 'man', 'boy', 'manboy@gmail.com', '123123', '$2y$10$pW/ql43GQH2qcEFdr0g2neCx/ZsPBH3kIBMlLPAJLonhOp7WlgEJi', 'user', '2024-08-21 13:55:29'),
-(24, 0, '', '', '', '', '', 'User', '2024-09-02 03:30:50'),
-(25, 0, '', '', '', '', '', 'IT Support', '2024-09-02 03:31:19'),
-(26, 0, '', '', '', '', '', 'IT Support', '2024-09-05 12:02:32'),
-(27, 0, 'Molinyawe', 'Kent', 'kent@gmail.com', '09098765432', '$2y$10$RkczzdyO9E7qklY37bgDVesbILrw4pxYCiURpUvBGJpTKWCxoltUW', '', '2024-09-07 12:39:01'),
-(29, 0, 'Adrian', 'Adon', 'adrian@gmail.com', '09090909090', '$2y$10$GllKsDOuuxhfvh/quZDbReNRAxcvdMfCS4eSWMstu4eSusZVJdXXO', 'user', '2024-09-10 15:55:05');
 
 -- --------------------------------------------------------
 
@@ -131,12 +115,8 @@ CREATE TABLE `products_tb` (
 --
 
 INSERT INTO `products_tb` (`id`, `images`, `p_brand`, `p_model`, `p_year`, `p_type`, `p_frame_size`, `p_wheel_size`, `p_weight`, `p_motor_type`, `p_motor_power`, `p_top_speed`, `p_pedal_assist_levels`, `p_throttle`, `p_battery_type`, `p_battery_capacity`, `p_range`, `p_charge_time`, `p_gears`, `p_brakes`, `p_suspension`, `p_tires`, `p_frame_material`, `p_fork`, `p_handlebars`, `p_display`, `p_lighting`, `p_connectivity`, `p_fenders`, `p_rack`, `p_kickstand`, `p_lock`, `p_accessories`, `p_warranty`, `p_torque`, `p_max_rider_weight`, `p_water_resistance`, `p_base_price`, `p_optional_features`) VALUES
-(13, 'products_tb/Destination branch.png', 'saa', 'dfas', 'sdfaa', 'asfd', 'adsf', 'af', 'asdffd', 'asdf', '', '23', 'adsfv ', '', 'asdf ', 'cq5y3', 'svevtsh', 'awaecrg', 'rthv', 'wacvsrth', 'ctawvsWXC', 'VSTHAWC', 'BDYJAC', 'BCA', 'CACARVSsdt', 'ACAC', 'yvas', 'tavsrvy', 'svyv', 'asdf', '24rt', 'adfs', 'zxcv', '3524', 'adsf', '243', 'asdf', '', '234'),
-(14, 'products_tb/Direction Map.png', 'saa', 'dfas', 'sdfaa', 'asfd', 'adsf', 'af', 'asdffd', 'asdf', '', '23', 'adsfv ', '', 'asdf ', 'cq5y3', 'svevtsh', 'awaecrg', 'rthv', 'wacvsrth', 'ctawvsWXC', 'VSTHAWC', 'BDYJAC', 'BCA', 'CACARVSsdt', 'ACAC', 'yvas', 'tavsrvy', 'svyv', 'asdf', '24rt', 'adfs', 'zxcv', '3524', 'adsf', '243', 'asdf', '', '234'),
-(15, 'products_tb/Direction Start.png', 'saa', 'dfas', 'sdfaa', 'asfd', 'adsf', 'af', 'asdffd', 'asdf', '', '23', 'adsfv ', '', 'asdf ', 'cq5y3', 'svevtsh', 'awaecrg', 'rthv', 'wacvsrth', 'ctawvsWXC', 'VSTHAWC', 'BDYJAC', 'BCA', 'CACARVSsdt', 'ACAC', 'yvas', 'tavsrvy', 'svyv', 'asdf', '24rt', 'adfs', 'zxcv', '3524', 'adsf', '243', 'asdf', '', '234'),
-(16, 'products_tb/Final Use Case.png', 'saa', 'dfas', 'sdfaa', 'asfd', 'adsf', 'af', 'asdffd', 'asdf', '', '23', 'adsfv ', '', 'asdf ', 'cq5y3', 'svevtsh', 'awaecrg', 'rthv', 'wacvsrth', 'ctawvsWXC', 'VSTHAWC', 'BDYJAC', 'BCA', 'CACARVSsdt', 'ACAC', 'yvas', 'tavsrvy', 'svyv', 'asdf', '24rt', 'adfs', 'zxcv', '3524', 'adsf', '243', 'asdf', '', '234'),
-(17, 'products_tb/no labels.png', 'saa', 'dfas', 'sdfaa', 'asfd', 'adsf', 'af', 'asdffd', 'asdf', '', '23', 'adsfv ', '', 'asdf ', 'cq5y3', 'svevtsh', 'awaecrg', 'rthv', 'wacvsrth', 'ctawvsWXC', 'VSTHAWC', 'BDYJAC', 'BCA', 'CACARVSsdt', 'ACAC', 'yvas', 'tavsrvy', 'svyv', 'asdf', '24rt', 'adfs', 'zxcv', '3524', 'adsf', '243', 'asdf', '', '234'),
-(18, 'products_tb/Adona, Adrian_Cover-Letter.pdf', '13', 'fssdf', '321231', 'hgfh', 'ehr', 'rdd', 'rtd', 'dtyt', 'dtf', 'dtj', 'jfyk', 'yfuf', 'dtyfu', 'dtt', 'jkgtd', 'yfutd', 'jyi', 'uyfyyf', 'ktdktd', 'jytdk', 'kuu', 'u5', 'kutid', 'yy', 'uut', 'uttx', 'tutdyr', 'yree', 'eet', 'yeye', 'yeye', 'ytl', 'kttkgc', '.kjlhjv', 'kkcg', '', 'kykgc');
+(19, 'products_tb/cat-in-box.png', 'asghc', 'g', 'fghjk', 'ghjk', 'jhkg', 'hjg', 'jghk', 'ghj', 'ghjk', 'hgj', 'hjgk', 'h', 'ghjk', 'hjhk', 'kghj', 'hkgj', 'kghj', 'ghj', 'ghjk', 'ghjk', 'kghj', '', 'ghjk', 'ghjk', 'ghjkgk', 'hjgh', 'kghjk', '', 'ghjkgh', 'g', 'hjkhjg', 'ghjk', 'ghj', 'gjkh', 'ghkj', 'hjgk', 'gjhk'),
+(20, 'products_tb/cat3.jpg', 'ujft', 'ghuk', 'vbj', 'vgj', 'ftyu', 'vhj', 'vgjh', 'tudy', 'cvghj', 'vbn m', 'jftgyh', 'vhjbm ', 'jvh', 'yftjv', 'ft', 'gjhk', 'jfgh', 'fhjg', 'fghj', 'jfgh', 'vgjh', 'vb', 'vg', 'fjgh', 'fjgfjg', 'hg', 'htyjd', 'ty', 'hj', 'bhkg', 'tukfgckujhmjg', 'fvkuyt', 'dfiukt', 'dfik7u,tfuk', ',ygfvouikly', 'iolyg', 'ol8iytg');
 
 -- --------------------------------------------------------
 
@@ -162,13 +142,9 @@ CREATE TABLE `tickets` (
 --
 
 INSERT INTO `tickets` (`id`, `first_name`, `last_name`, `phone_num`, `serial_num`, `type`, `description`, `t_status`, `escalation_stage`, `date_time`) VALUES
-(65, '33', '33', 33, '100', 'Billing', '33', 'Pending', 'P1', '2024-09-13 02:50:35'),
-(66, '44', '44', 44, '100', 'Technical', '44', 'Pending', 'P1', '2024-09-13 02:51:36'),
-(67, '44', '44', 44, '100', 'Technical', '44', 'Pending', 'P1', '2024-09-13 02:58:41'),
-(68, 'adrian', 'adona', 2147483647, '100', 'Assist_Req', 'bread', 'Pending', 'P1', '2024-09-14 00:30:55'),
-(69, 'adrian', 'adona', 2147483647, '100', 'Assist_Req', 'cheese', 'Pending', 'P1', '2024-09-14 00:35:19'),
-(70, '345', '345', 345, '100', 'Mechanical', '345', 'Pending', 'P1', '2024-09-14 01:06:46'),
-(71, 'adrian', 'adona', 2147483647, '100', 'Mechanical', 'cheese dog with a long foorlong', 'Pending', 'P1', '2024-09-14 01:16:01');
+(113, '1', '1', 1, '10000000', 'Technical', '1', 'Pending', 'P1', '2024-10-02 14:11:09'),
+(114, '2', '2', 2, '10000001', 'Technical', '2', 'Pending', 'P1', '2024-10-02 14:11:11'),
+(115, '3', '3', 3, '10000002', 'Technical', '3', 'Pending', 'P1', '2024-10-02 14:11:14');
 
 --
 -- Indexes for dumped tables
@@ -206,7 +182,7 @@ ALTER TABLE `tickets`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `ledger_tb`
@@ -218,13 +194,13 @@ ALTER TABLE `ledger_tb`
 -- AUTO_INCREMENT for table `products_tb`
 --
 ALTER TABLE `products_tb`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

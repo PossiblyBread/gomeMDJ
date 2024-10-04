@@ -35,12 +35,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support - My Website</title>
     <link rel="stylesheet" href="../styles/styles.css"> <!-- Assuming the CSS styles from the template -->
 </head>
+
 <body>
     <header>
         <div class="top-nav">
@@ -53,17 +55,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <a href="support.php">Support</a>
                 <div class="profile-icon" id="profile-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white">
-                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.31 0-10 1.67-10 5v2h20v-2c0-3.33-6.69-5-10-5z"/>
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.31 0-10 1.67-10 5v2h20v-2c0-3.33-6.69-5-10-5z" />
                     </svg>
                 </div>
             </div>
         </div>
     </header>
-    
+
     <aside class="side-nav" id="side-nav">
         <div class="profile-icon" id="sidebar-profile-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="white">
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.31 0-10 1.67-10 5v2h20v-2c0-3.33-6.69-5-10-5z"/>
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.31 0-10 1.67-10 5v2h20v-2c0-3.33-6.69-5-10-5z" />
             </svg>
         </div>
         <a href="../index.php">Home</a>
@@ -71,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <a href="../store.php">Store</a>
         <a href="support.php">Support</a>
     </aside>
-    
+
     <div id="overlay"></div>
 
     <!-- Main Content Section -->
@@ -79,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <section class="support-section">
             <h2>How Can We Help You?</h2>
             <p>If you have any questions or need assistance, please don’t hesitate to reach out to us. We're here to help!</p>
-            
+
             <!-- Contact Info -->
             <div class="contact-info">
                 <h3>Contact Information</h3>
@@ -110,27 +112,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h3>Submit a Support Request</h3>
                 <form id="ticket-form">
                     <!-- Hidden field for Web3Forms access key -->
-                    <input type="hidden" name="access_key" value="">
+                    <input type="hidden" name="access_key" value="5bfb0bbd-0f6f-4e30-89c6-86e8cdfe0c6f">
+                    <div class="form-group">
+                        <label for="first_name">First Name</label>
+                        <input type="text" id="first_name" name="first_name" required>
+                    </div>
 
-                    <label for="first_name">First Name</label>
-                    <input type="text" id="first_name" name="first_name" required>
+                    <div class="form-group">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" id="last_name" name="last_name" required>
+                    </div>
 
-                    <label for="last_name">Last Name</label>
-                    <input type="text" id="last_name" name="last_name" required>
+                    <div class="form-group">
+                        <label for="phone_num">Phone Number</label>
+                        <input type="text" id="phone_num" name="phone_num" required>
+                    </div>
 
-                    <label for="phone_num">Phone Number</label>
-                    <input type="text" id="phone_num" name="phone_num" required>
+                    <div class="form-group">
+                        <label for="type">Ticket Type</label>
+                        <select id="type" name="type" required>
+                            <option value="Technical">Technical</option>
+                            <option value="Mechanical">Mechanical</option>
+                            <option value="Billing">Billing</option>
+                            <option value="Assist_Req">Assistance Request</option>
+                        </select>
+                    </div>
 
-                    <label for="type">Ticket Type</label>
-                    <select id="type" name="type" required>
-                        <option value="Technical">Technical</option>
-                        <option value="Mechanical">Mechanical</option>
-                        <option value="Billing">Billing</option>
-                        <option value="Assist_Req">Assistance Request</option>
-                    </select>
-
-                    <label for="description">Description</label>
-                    <textarea id="description" name="description" rows="4" required></textarea>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description" rows="4" required></textarea>
+                    </div>
 
                     <button class="submit-button" type="submit">Submit Ticket</button>
                 </form>
@@ -171,7 +182,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         const result = document.getElementById('result');
 
         form.addEventListener('submit', function(e) {
-            e.preventDefault();  // Prevent the default form submission
+            e.preventDefault(); // Prevent the default form submission
             const formData = new FormData(form);
             const jsonObject = Object.fromEntries(formData);
             const json = JSON.stringify(jsonObject);
@@ -180,50 +191,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Send data to Web3Forms API
             fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: json
-            })
-            .then(async (response) => {
-                let web3Json = await response.json();
-                if (response.status === 200) {
-                    result.innerHTML = "Form submitted to Web3Forms successfully!";
-                } else {
-                    result.innerHTML = "Web3Forms: " + web3Json.message;
-                }
-            })
-            .catch(error => {
-                result.innerHTML = "Web3Forms submission failed!";
-                console.error(error);
-            });
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                })
+                .then(async (response) => {
+                    let web3Json = await response.json();
+                    if (response.status === 200) {
+                        result.innerHTML = "Form submitted to Web3Forms successfully!";
+                    } else {
+                        result.innerHTML = "Web3Forms: " + web3Json.message;
+                    }
+                })
+                .catch(error => {
+                    result.innerHTML = "Web3Forms submission failed!";
+                    console.error(error);
+                });
 
-            fetch('send-data.php', {  // Ensure this path is correct
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: json
-            })
-            .then(async (response) => {
-                const phpJson = await response.json();
-                if (phpJson.success) {
-                    result.innerHTML += "<br>Data also saved to the database successfully!";
-                } else {
-                    result.innerHTML += "<br>Database error: " + phpJson.message;
-                }
-            })
-            .catch(error => {
-                result.innerHTML += "<br>Failed to save data to the database.";
-                console.error(error);
-            });
+            fetch('send-data.php', { // Ensure this path is correct
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: json
+                })
+                .then(async (response) => {
+                    const phpJson = await response.json();
+                    if (phpJson.success) {
+                        result.innerHTML += "<br>Data also saved to the database successfully!";
+                    } else {
+                        result.innerHTML += "<br>Database error: " + phpJson.message;
+                    }
+                })
+                .catch(error => {
+                    result.innerHTML += "<br>Failed to save data to the database.";
+                    console.error(error);
+                });
 
-            form.reset(); 
+            form.reset();
         });
     </script>
 
 
 </body>
+
 </html>
