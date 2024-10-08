@@ -1,4 +1,5 @@
 <?php
+session_start(); // Start the session
 include "../db_conn.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -33,16 +34,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support - My Website</title>
     <link rel="stylesheet" href="../styles/styles.css"> <!-- Assuming the CSS styles from the template -->
 </head>
-
 <body>
     <header>
         <div class="top-nav">
@@ -108,7 +108,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <!-- Button to open the modal -->
-            <button id="open-support-modal-btn" class="open-modal-btn">Send Ticket</button>
+            <?php if (isset($_SESSION['id'])): ?>
+                <button id="open-support-modal-btn" class="open-modal-btn">Send Ticket</button>
+            <?php else: ?>
+                <p>Please log in to submit a ticket.</p>
+            <?php endif; ?>
 
             <!-- Modal Structure -->
             <div id="support-modal" class="modal">
@@ -176,97 +180,68 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <a href="#">Instagram</a>
             </div>
             <div class="footer-section">
-                <h4>Contact Info</h4>
-                <p>Email: contact@example.com</p>
+                <h4>Contact Us</h4>
+                <p>Email: support@example.com</p>
                 <p>Phone: +123 456 7890</p>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Your Company. All rights reserved.</p>
-            <a href="#" class="back-to-top">Back to Top</a>
-        </div>
+        <p>&copy; 2024 My Website. All rights reserved.</p>
     </footer>
-    <script src="../js/script.js"></script>
+
+    <script src="../scripts/modal.js"></script> <!-- Modal script -->
     <script>
-        const form = document.getElementById('ticket-form'); // Corrected ID
-        const result = document.getElementById('result');
+        // JavaScript for the modal
+        const modal = document.getElementById("support-modal");
+        const openModalBtn = document.getElementById("open-support-modal-btn");
+        const closeModalBtn = document.getElementById("close-modal-btn");
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent the default form submission
-            const formData = new FormData(form);
-            const jsonObject = Object.fromEntries(formData);
-            const json = JSON.stringify(jsonObject);
+        // Open modal function
+        openModalBtn.addEventListener("click", function () {
+            modal.style.display = "block";
+        });
 
-            result.innerHTML = "Submitting, please wait...";
+        // Close modal function
+        closeModalBtn.addEventListener("click", function () {
+            modal.style.display = "none";
+        });
 
-            // Send data to Web3Forms API
-            fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: json
-                })
-                .then(async (response) => {
-                    let web3Json = await response.json();
-                    if (response.status === 200) {
-                        result.innerHTML = "Form submitted to Web3Forms successfully!";
-                    } else {
-                        result.innerHTML = "Web3Forms: " + web3Json.message;
-                    }
-                })
-                .catch(error => {
-                    result.innerHTML = "Web3Forms submission failed!";
-                    console.error(error);
-                });
+        // Close modal when clicking outside of it
+        window.addEventListener("click", function (event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
 
-            fetch('send-data.php', { // Ensure this path is correct
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: json
-                })
-                .then(async (response) => {
-                    const phpJson = await response.json();
-                    if (phpJson.success) {
-                        result.innerHTML += "<br>Data also saved to the database successfully!";
-                    } else {
-                        result.innerHTML += "<br>Database error: " + phpJson.message;
-                    }
-                })
-                .catch(error => {
-                    result.innerHTML += "<br>Failed to save data to the database.";
-                    console.error(error);
-                });
+        // Submit form via AJAX
+        const ticketForm = document.getElementById("ticket-form");
+        const resultDisplay = document.getElementById("result");
 
-            form.reset();
+        ticketForm.addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const formData = new FormData(ticketForm);
+
+            // Send AJAX request
+            fetch("support.php", {
+                method: "POST",
+                body: JSON.stringify(Object.fromEntries(formData)),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    resultDisplay.textContent = data.message; // Show success message
+                    ticketForm.reset(); // Reset form fields
+                } else {
+                    resultDisplay.textContent = "Error: " + data.message; // Show error message
+                }
+            })
+            .catch(error => {
+                resultDisplay.textContent = "An error occurred: " + error.message;
+            });
         });
     </script>
-    <script>
-    // Get modal, button, and close elements
-    const supportModal = document.getElementById("support-modal");
-    const openSupportModalBtn = document.getElementById("open-support-modal-btn");
-    const closeModalBtn = document.getElementById("close-modal-btn");
-
-    // Open modal on button click
-    openSupportModalBtn.addEventListener("click", () => {
-        supportModal.style.display = "flex";
-    });
-
-    // Close modal when the 'X' button is clicked
-    closeModalBtn.addEventListener("click", () => {
-        supportModal.style.display = "none";
-    });
-
-    // Close modal when clicking outside of the modal content
-    window.addEventListener("click", (e) => {
-        if (e.target === supportModal) {
-            supportModal.style.display = "none";
-        }
-    });
-    </script>
 </body>
-
 </html>

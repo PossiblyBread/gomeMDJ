@@ -11,32 +11,41 @@ if (!$conn) {
     die("Connection Failed " . mysqli_connect_error()); 
 }
 
-    //for registering a new user
+    // For registering a new user
     if (isset($_POST['Submit'])) {
         $serial_num = getNextSerialNum($conn);
         $last_name = $_POST['last_name'];
         $first_name = $_POST['first_name'];
         $email = $_POST['email'];
         $phone_num = $_POST['phone_num'];
-        $a_password = $_POST['a_password']; //a_password for account password
+        $a_password = $_POST['a_password']; // a_password for account password
         $h_password = password_hash($a_password, PASSWORD_DEFAULT);
-        $role = $_POST['role'] = "user";
+        $role = "user"; // Set the role directly
 
+        // Validate email format
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             die("Invalid email format.");
         }
 
+        // Insert the new user into the database
         $sql = "INSERT INTO `accounts` (`id`, `serial_num`, `last_name`, `first_name`, `email`, `phone_num`, `h_password`, `role`) 
                 VALUES (NULL, '$serial_num','$last_name','$first_name','$email','$phone_num','$h_password','$role')";
 
         $result = mysqli_query($conn, $sql);
 
         if ($result) {
-            header("Location:index.php? msg=User Created Successfully!");
+            // Set session variables for the logged-in user
+            $_SESSION['user_logged_in'] = true; // User is now logged in
+            $_SESSION['user_email'] = $email; // Optionally store the user's email or ID
+            
+            // Redirect to the desired page after registration
+            header("Location: dashboard.php?msg=User Created Successfully!");
+            exit; // Ensure to exit after redirecting
         } else {
             echo "Failed: " . mysqli_error($conn);
         }   
     }
+
     
     // if (isset($_POST['submit-ticket'])) {
     //     $first_name = $_POST['first_name'];
