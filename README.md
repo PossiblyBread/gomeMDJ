@@ -62,6 +62,8 @@ Week #15 (October 1, 2024)
   -Fixed a part of the php functions, Support page, Store Page
   -UI has been improved
   -Added a chat button at the index page
+  
 Week #16 (October 8, 2024) [Tuesday]
   -Added the Register Button at the Login Modal
   -made the ticket form into a button
+  -added a Login Requirement to send a ticket
