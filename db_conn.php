@@ -32,7 +32,7 @@ if (!$conn) {
         $result = mysqli_query($conn, $sql);
 
         if ($result) {
-            header("Location:Register.php? msg=User Created Successfully!");
+            header("Location:index.php? msg=User Created Successfully!");
         } else {
             echo "Failed: " . mysqli_error($conn);
         }   

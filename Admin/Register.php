@@ -28,7 +28,6 @@
                 <label class="registration-label">Password:</label>
                 <input type="password" class="form-control" name="a_password" id="a_password" placeholder="Password"  required>            
             </div>
-                    
             <div>
                 <button type="submit" class="btn btn-success" name="Submit">Register</button> 
                 <button type="button" class="cancel-button" onclick="window.location.href='Dashboard.php';">Cancel</button>

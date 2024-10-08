@@ -31,7 +31,7 @@
             // Execute the query
             if (mysqli_stmt_execute($stmt)) {
                   // Redirect to the dashboard after success
-                header("Location: ../Admin/Dashboard.php");
+                header("Location: ../index.php");
                 exit(); // Always exit after redirecting
             } else {
                 echo "Failed: " . mysqli_stmt_error($stmt);
@@ -47,5 +47,4 @@
     
     $sql_select = "SELECT * FROM accounts";
     $result = mysqli_query($conn, $sql_select);
-
 ?>

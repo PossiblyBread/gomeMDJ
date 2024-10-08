@@ -95,7 +95,7 @@ include "config/home_config.php"
 
     <!-- Login Modal -->
     <div class="modal" id="login-modal">
-        <div class="modal-content">
+        <div class="login-modal-content">
             <h2>Login</h2>
             <form id="login-form" action="Login.php" method="POST">
                 <label for="username">Email:</label>
@@ -104,9 +104,46 @@ include "config/home_config.php"
                 <input type="password" id="password" name="i_password" required>
                 <button type="submit">Login</button>
             </form>
+            <div class="register-prompt">
+                <p>Don't have an account?</p>
+                <button type="button" id="register-button" onclick="showRegisterModal()">Register</button>
+            </div>
         </div>
     </div>
 
+    <!-- Registration Modal -->
+    <div id="register-modal">
+        <div class="register-modal-content">
+            <span class="register-close" onclick="document.getElementById('register-modal').style.display='none'">&times;</span>
+            <form id="register-form" method="post">
+                <h2>Register</h2>
+                <div>
+                    <label for="first_name">First Name:</label>
+                    <input type="text" name="first_name" id="first_name" placeholder="First Name" required>
+                </div>
+                <div>
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" name="last_name" id="last_name" placeholder="Last Name" required>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                </div>
+                <div>
+                    <label for="phone_num">Phone Number:</label>
+                    <input type="tel" name="phone_num" id="phone_num" placeholder="Phone Number" required>
+                </div>
+                <div>
+                    <label for="a_password">Password:</label>
+                    <input type="password" name="a_password" id="a_password" placeholder="Password" required>
+                </div>
+                <div>
+                    <button type="submit" name="Submit">Register</button>
+                    <button type="button" onclick="document.getElementById('register-modal').style.display='none';">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <!-- Footer Section -->
     <footer>
         <div class="footer-container">

@@ -6,6 +6,7 @@ const topNavBtn = document.querySelector('.top-nav-btn');
 const profileIcon = document.querySelector('.profile-icon'); // Top Nav Profile Icon
 const sidebarProfileIcon = document.getElementById('sidebar-profile-icon'); // Sidebar Profile Icon
 const loginModal = document.getElementById('login-modal');
+const registerModal = document.getElementById('register-modal'); // Add this line
 
 // Open the sidebar and move top-nav items inside the sidebar
 sideNavToggle.addEventListener('click', function() {
@@ -31,9 +32,11 @@ function moveTopNavItemsToSidebar() {
     }
 }
 
-// Overlay click event to close the sidebar
+// Overlay click event to close the sidebar and modals
 overlay.addEventListener('click', function() {
     closeSidebar();
+    loginModal.style.display = "none"; // Close login modal
+    registerModal.style.display = "none"; // Close registration modal
 });
 
 // Function to open the sidebar
@@ -50,25 +53,42 @@ function closeSidebar() {
 
 // Profile icon click event to open login modal for top nav
 profileIcon.addEventListener('click', function() {
-    openLoginModal();
+    showLoginModal(); // Call the function to show login modal
 });
 
 // Profile icon click event to open login modal for sidebar
 sidebarProfileIcon.addEventListener('click', function() {
-    openLoginModal();
+    showLoginModal(); // Call the function to show login modal
 });
 
-// Function to open the login modal
-function openLoginModal() {
-    loginModal.style.display = "block"; // Show modal
+// Function to open the login modal and close the sidebar
+function showLoginModal() {
+    // Close the sidebar if it's open
+    if (sideNav.style.width === '250px') { // Adjust width as per your sidebar's open width
+        closeSidebar(); // Close the sidebar
+    }
+    
+    // Show the login modal
+    loginModal.style.display = 'block';
 }
 
-// Close the modal when clicking outside of it
+// Function to open the register modal
+function showRegisterModal() {
+    loginModal.style.display = 'none'; // Hide login modal
+    registerModal.style.display = 'block'; // Show registration modal
+}
+
+// Close modals when clicking on them
 window.addEventListener('click', function(event) {
-    if (event.target === loginModal || event.target === overlay) {
-        loginModal.style.display = "none"; // Close modal when clicking on overlay or modal itself
+    if (event.target === loginModal) {
+        loginModal.style.display = "none"; // Close login modal
+    }
+    if (event.target === registerModal) {
+        registerModal.style.display = "none"; // Close registration modal
     }
 });
+
+// Chat box functionality
 const chatButton = document.getElementById('chat-button');
 const chatBox = document.getElementById('chat-box');
 const closeChatButton = document.getElementById('close-chat');
@@ -76,12 +96,8 @@ let isChatOpen = false;
 
 // Toggle chat box when chat button is clicked
 chatButton.addEventListener('click', () => {
-    if (isChatOpen) {
-        chatBox.style.bottom = '-400px'; // Hide chat box
-    } else {
-        chatBox.style.bottom = '20px'; // Show chat box (above the chat button)
-    }
-    isChatOpen = !isChatOpen;
+    chatBox.style.bottom = isChatOpen ? '-400px' : '20px'; // Show/hide chat box
+    isChatOpen = !isChatOpen; // Toggle state
 });
 
 // Close chat box when close button is clicked
@@ -89,4 +105,3 @@ closeChatButton.addEventListener('click', () => {
     chatBox.style.bottom = '-400px'; // Hide chat box
     isChatOpen = false; // Reset chat open state
 });
-

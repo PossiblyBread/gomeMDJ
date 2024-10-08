@@ -107,45 +107,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
 
-            <!-- Support Form -->
-            <div class="support-form-section">
-                <h3>Submit a Support Request</h3>
-                <form id="ticket-form">
-                    <!-- Hidden field for Web3Forms access key -->
-                    <input type="hidden" name="access_key" value="5bfb0bbd-0f6f-4e30-89c6-86e8cdfe0c6f">
-                    <div class="form-group">
-                        <label for="first_name">First Name</label>
-                        <input type="text" id="first_name" name="first_name" required>
-                    </div>
+            <!-- Button to open the modal -->
+            <button id="open-support-modal-btn" class="open-modal-btn">Send Ticket</button>
 
-                    <div class="form-group">
-                        <label for="last_name">Last Name</label>
-                        <input type="text" id="last_name" name="last_name" required>
-                    </div>
+            <!-- Modal Structure -->
+            <div id="support-modal" class="modal">
+                <div class="modal-content">
+                    <div class="support-form-section">
+                        <h3>Submit a Support Request</h3>
+                        <!-- Close Button (X) -->
+                        <button id="close-modal-btn" class="close-modal-btn">&times;</button>
+                        <form id="ticket-form">
+                            <!-- Hidden field for Web3Forms access key -->
+                            <input type="hidden" name="access_key" value="5bfb0bbd-0f6f-4e30-89c6-86e8cdfe0c6f">
 
-                    <div class="form-group">
-                        <label for="phone_num">Phone Number</label>
-                        <input type="text" id="phone_num" name="phone_num" required>
-                    </div>
+                            <div class="form-group">
+                                <label for="first_name">First Name</label>
+                                <input type="text" id="first_name" name="first_name" required>
+                            </div>
 
-                    <div class="form-group">
-                        <label for="type">Ticket Type</label>
-                        <select id="type" name="type" required>
-                            <option value="Technical">Technical</option>
-                            <option value="Mechanical">Mechanical</option>
-                            <option value="Billing">Billing</option>
-                            <option value="Assist_Req">Assistance Request</option>
-                        </select>
-                    </div>
+                            <div class="form-group">
+                                <label for="last_name">Last Name</label>
+                                <input type="text" id="last_name" name="last_name" required>
+                            </div>
 
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea id="description" name="description" rows="4" required></textarea>
-                    </div>
+                            <div class="form-group">
+                                <label for="phone_num">Phone Number</label>
+                                <input type="text" id="phone_num" name="phone_num" required>
+                            </div>
 
-                    <button class="submit-button" type="submit">Submit Ticket</button>
-                </form>
-                <div id="result"></div> <!-- Result display -->
+                            <div class="form-group">
+                                <label for="type">Ticket Type</label>
+                                <select id="type" name="type" required>
+                                    <option value="Technical">Technical</option>
+                                    <option value="Mechanical">Mechanical</option>
+                                    <option value="Billing">Billing</option>
+                                    <option value="Assist_Req">Assistance Request</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea id="description" name="description" rows="4" required></textarea>
+                            </div>
+
+                            <button class="submit-button" type="submit">Submit Ticket</button>
+                        </form>
+                        <div id="result"></div> <!-- Result display -->
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -234,8 +244,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             form.reset();
         });
     </script>
+    <script>
+    // Get modal, button, and close elements
+    const supportModal = document.getElementById("support-modal");
+    const openSupportModalBtn = document.getElementById("open-support-modal-btn");
+    const closeModalBtn = document.getElementById("close-modal-btn");
 
+    // Open modal on button click
+    openSupportModalBtn.addEventListener("click", () => {
+        supportModal.style.display = "flex";
+    });
 
+    // Close modal when the 'X' button is clicked
+    closeModalBtn.addEventListener("click", () => {
+        supportModal.style.display = "none";
+    });
+
+    // Close modal when clicking outside of the modal content
+    window.addEventListener("click", (e) => {
+        if (e.target === supportModal) {
+            supportModal.style.display = "none";
+        }
+    });
+    </script>
 </body>
 
 </html>
