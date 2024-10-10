@@ -6,7 +6,7 @@ const topNavBtn = document.querySelector('.top-nav-btn');
 const profileIcon = document.querySelector('.profile-icon'); // Top Nav Profile Icon
 const sidebarProfileIcon = document.getElementById('sidebar-profile-icon'); // Sidebar Profile Icon
 const loginModal = document.getElementById('login-modal');
-const registerModal = document.getElementById('register-modal'); // Add this line
+const registerModal = document.getElementById('register-modal');
 
 // Open the sidebar and move top-nav items inside the sidebar
 sideNavToggle.addEventListener('click', function() {
@@ -21,6 +21,7 @@ function moveTopNavItemsToSidebar() {
         // Move top-nav buttons
         const topNavClone = topNavBtn.cloneNode(true);
         sideNav.appendChild(topNavClone);
+        topNavBtn.remove(); // Remove original from top nav
     }
 
     // Check if the profile icon is already moved
@@ -29,6 +30,7 @@ function moveTopNavItemsToSidebar() {
         const profileClone = profileIcon.cloneNode(true);
         profileClone.id = 'sidebar-profile-icon'; // Set the id to maintain consistency
         sideNav.appendChild(profileClone);
+        profileIcon.remove(); // Remove original from top nav
     }
 }
 
@@ -57,9 +59,11 @@ profileIcon.addEventListener('click', function() {
 });
 
 // Profile icon click event to open login modal for sidebar
-sidebarProfileIcon.addEventListener('click', function() {
-    showLoginModal(); // Call the function to show login modal
-});
+if (sidebarProfileIcon) {
+    sidebarProfileIcon.addEventListener('click', function() {
+        showLoginModal(); // Call the function to show login modal
+    });
+}
 
 // Function to open the login modal and close the sidebar
 function showLoginModal() {
@@ -105,3 +109,21 @@ closeChatButton.addEventListener('click', () => {
     chatBox.style.bottom = '-400px'; // Hide chat box
     isChatOpen = false; // Reset chat open state
 });
+
+// Handle logo and username clicks to open sidebar on narrow screens
+document.getElementById("logo").addEventListener("click", handleLogoClick);
+document.getElementById("user-name").addEventListener("click", handleNameTagClick);
+
+// Function to handle logo click
+function handleLogoClick() {
+    if (window.innerWidth <= 768) { // Check if the screen is narrow
+        openSidebar();
+    }
+}
+
+// Function to handle name tag click
+function handleNameTagClick() {
+    if (window.innerWidth <= 768) { // Check if the screen is narrow
+        openSidebar();
+    }
+}

@@ -1,0 +1,63 @@
+.carousel-box {
+    position: relative;
+    max-width: 600px; /* Adjust based on your image width */
+    margin: auto;
+    text-align: center;
+    background-color: #f0f0f0; /* Light gray background for the carousel */
+    color: #555; /* Gray text color */
+    padding: 20px; /* Add some padding */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.carousel-container {
+    display: flex;
+    overflow: hidden; /* Hide overflow for smooth transition */
+    width: 100%;
+}
+
+.carousel-grid {
+    display: flex; /* Use flex layout for the sliding effect */
+    transition: transform 0.5s ease; /* Smooth transition for sliding */
+}
+
+.carousel-item {
+    min-width: 100%; /* Each item takes full width */
+    display: flex;
+    flex-direction: column; /* Align text below image */
+    align-items: center; /* Center align items */
+    justify-content: center; /* Center vertically */
+    opacity: 0; /* Initially hide items */
+    transition: opacity 0.5s ease; /* Fade in effect */
+}
+
+.carousel-item.active {
+    opacity: 1; /* Show active item */
+}
+
+.carousel-item img {
+    width: 100%; /* Make image responsive */
+    height: auto; /* Keep aspect ratio */
+}
+
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 10px;
+    border-radius: 5px;
+    color: #333; /* Button text color */
+}
+
+.carousel-prev {
+    left: 10px; /* Position of the left button */
+}
+
+.carousel-next {
+    right: 10px; /* Position of the right button */
+}

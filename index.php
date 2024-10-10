@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "config/home_config.php"
+include "db_conn.php";
 ?>
 
 <!DOCTYPE html>

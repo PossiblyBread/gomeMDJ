@@ -111,7 +111,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php if (isset($_SESSION['id'])): ?>
                 <button id="open-support-modal-btn" class="open-modal-btn">Send Ticket</button>
             <?php else: ?>
-                <p>Please log in to submit a ticket.</p>
             <?php endif; ?>
 
             <!-- Modal Structure -->

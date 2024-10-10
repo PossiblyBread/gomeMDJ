@@ -46,7 +46,8 @@ if ($result->num_rows === 1) {
     if (password_verify($i_password, $row['h_password'])) {
         // Store user data in session
         $_SESSION['username'] = 'Guest';
-        $_SESSION['first_name'] = $row['first_name'];
+        $_SESSION['first_name'] = $row['first_name']; // Store first name
+        $_SESSION['last_name'] = $row['last_name'];   // Store last name
         $_SESSION['email'] = $row['email'];
         $_SESSION['id'] = $row['id'];
 
@@ -54,7 +55,7 @@ if ($result->num_rows === 1) {
         session_regenerate_id(true);
 
         // Redirect to the support page
-        header("Location: index.php");
+        header("Location: User/Home.php");
         exit();
     } else {
         header("Location: index.php?error=Incorrect password");

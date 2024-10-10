@@ -4,6 +4,6 @@ session_start();
 session_unset();
 session_destroy();
 // Redirect to the login page or home page
-header("Location: Home.php"); // Adjust the location as needed
+header("Location: index.php"); // Adjust the location as needed
 exit();
 ?>
