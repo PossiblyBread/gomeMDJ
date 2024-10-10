@@ -67,3 +67,6 @@ Week #16 (October 8, 2024) [Tuesday]
   -Added the Register Button at the Login Modal
   -made the ticket form into a button
   -added a Login Requirement to send a ticket
+         (October 10, 2024) [Thursday]
+  -Added a carousel for the user interface
+  -fixed some of the not working jaavascript
