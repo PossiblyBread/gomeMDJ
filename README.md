@@ -1,26 +1,26 @@
-Week #1: (July 7, 2024) 0.1.0 [sunday]
+Week #1: (July 7, 2024) [sunday]
   -Database was created as well as user account register and login system made using PHP are funtioning correctly.
   
-Week #2: (July 14, 2024) 0.1.1 [sunday]
+Week #2: (July 14, 2024) [sunday]
   -Added some basic UI design and images as placeholders for the main page of the website.
 
-Week #3: (july 21, 2024) 0.1.2 [sunday]
+Week #3: (july 21, 2024) [sunday]
   -Added a side panel and made the setting functional with its own settings page.
   -Changed the Main Page design
   
 Week #4: [Device cleanup due to lag and crashes]
 
-Week #5: (August 4, 2024) 0.1.3 [sunday]
+Week #5: (August 4, 2024) [sunday]
   -Added user profile page
   -Added details button on the main page with a dropdown mechanic
   -Added a simple design for the registration form
   
-Week #6: (August 11, 2024) 0.1.4
+Week #6: (August 11, 2024)
   -Started fixing design of the website, cleaning and removing excess codes
 
 Week #7 (August 19, 2024) [monday]
   -Started working on its other half for now, will come back to this in the near future
-        (August 21, 2024) [wednesday] 0.1.5
+        (August 21, 2024) [wednesday]
   -added more files with some stuffs in it. might be a big update or something.
 
 Week #8 [Forgot to upload the files]
@@ -70,3 +70,15 @@ Week #16 (October 8, 2024) [Tuesday]
          (October 10, 2024) [Thursday]
   -Added a carousel for the user interface
   -fixed some of the not working jaavascript
+
+Week #17 (October 15) [tuesday]
+  -Sending a ticket to the database is still broken
+  -Major File Revision
+  -Admin UI revision
+  -Added a ticket view for the admin
+    -capable of sending tickets to the IT users
+  -Added a Ticket view for the IT users to view the ticket sent by the admin
+    -still no css design for it
+  -moved all header, footer, side-nav, and chat to "body" folder
+  -Updated the SQL database
+    -added ticket_recieved table
