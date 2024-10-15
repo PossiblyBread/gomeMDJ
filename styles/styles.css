@@ -1,0 +1,388 @@
+/* General styles */
+/* handles the mobile design format */
+/* handles the main content design */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+}
+
+/* Top navigation || Header*/ 
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #444;
+    color: white;
+}
+.top-nav h1 {
+    font-size: 24px;
+}
+
+.top-nav-btn {
+    display: flex;
+    gap: 15px;
+}
+
+.top-nav-btn a {
+    color: white;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+/* Main content styles */
+main {
+    padding: 40px;
+    background-color: #f5f5f5;
+}
+
+.hero {
+    text-align: center;
+    padding: 50px;
+    background-color: #777;
+    color: white;
+}
+
+.hero h2 {
+    font-size: 36px;
+}
+
+.hero p {
+    font-size: 18px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.learn-more-btn {
+    padding: 10px 20px;
+    background-color: white;
+    color: #777;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.learn-more-btn:hover {
+    background-color: #555;
+    color: white;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+    gap: 20px;
+}
+
+.feature-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item h3 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+/* Profile Icon */
+.profile-icon {
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Could be placed on a separate file ¯\_(ツ)_/¯ */
+/*Styles for Register and Login Form */
+.login-modal-content h2 {
+    margin: 10px 0; /* Add margin above and below the heading */
+    padding: 0; /* Optional: reset padding if any */
+    font-size: 24px; /* Adjust font size if needed */
+    color: #333; /* Set a color for the heading */
+    text-align: center; /* Center align the heading text */
+}
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 10; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.login-modal-content {
+    background-color: white;
+    margin: 110px auto 110px auto;/* Centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px; /* Could be more or less, depending on screen size */
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* could be placed on a separate file ¯\_(ツ)_/¯ */
+/* Login Form Styles */
+#login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#login-form label {
+    margin: 10px 0 5px;
+}
+
+#login-form input {
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+}
+
+#login-form button {
+    padding: 10px;
+    background-color: #444;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#login-form button:hover {
+    background-color: #666;
+}
+
+.register-prompt button {
+    padding: 10px;
+    background-color: #444;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.register-prompt button:hover {
+    background-color: #666;
+}
+/* register button to modal part */
+/* Heading Styles for Register Form */
+.register-modal-content h2 {
+    margin: 10px 0; /* Add margin above and below the heading */
+    padding: 0; /* Optional: reset padding if any */
+    font-size: 24px; /* Adjust font size if needed */
+    color: #333; /* Set a color for the heading */
+    text-align: center; /* Center align the heading text */
+}
+/* Register Modal Styles */
+#register-modal {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 10; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.register-modal-content {
+    background-color: white;
+    margin: 110px auto; /* Centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px; /* Could be more or less, depending on screen size */
+}
+/* Close Button for mobile */
+.register-close {
+    color: #aaa;
+    float: right;
+    font-size: 17px;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.register-close:hover,
+.register-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Register Form Styles */
+#register-form {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+}
+#register-form label {
+    margin: 10px 0 5px; /* Spacing for labels */
+    font-size: 14px; /* Font size for labels */
+    color: #333; /* Dark gray text for labels */
+}
+
+#register-form input[type="text"],
+#register-form input[type="tel"],
+#register-form input[type="email"],
+#register-form input[type="password"] {
+    padding: 8px; /* Padding for input */
+    margin-bottom: 15px; /* Spacing between input fields */
+    border: 1px solid #ccc; /* Light gray border */
+    width: 100%; /* Full width */
+}
+
+/* Button Styles */
+#register-form button {
+    padding: 10px;
+    background-color: #444; /* Dark background for button */
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px; /* Space above button */
+}
+
+#register-form button:hover {
+    background-color: #666; /* Darker gray on hover */
+}
+
+/* Link Styles */
+#register-form a {
+    color: #3b3e3f; /* Blue link color */
+    text-decoration: none;
+}
+
+#register-form a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+/* End for Register and Login Form */
+
+/* Store CSS */
+/* Store css */
+/* Filter Section */
+.filter-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ccc;
+}
+
+.filter-section h2 {
+    margin: 0;
+}
+
+.filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-bar select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Products Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 40px;
+}
+
+.product-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.product-card h3 {
+    margin: 15px 0 10px;
+    font-size: 20px;
+}
+
+.product-card .short-description {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+/* Overlay for when the sidebar is open */
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000; /* Behind the sidebar */
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .top-nav-btn {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .features {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .feature-item {
+        width: 90%;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+    }
+}
+

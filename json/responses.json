@@ -1,0 +1,120 @@
+{
+    "greetings": [
+        "Hello, how can I help you?",
+        "Hi there! How can I assist you today?"
+    ],
+    "gradeProblems": [
+        "I'm sorry to hear about the grade problem. Please provide more details so I can assist you better.",
+        "Grade issues can be frustrating. Can you describe the problem in more detail?",
+        "Let's work on resolving the grade problem together. What specific issue are you facing?"
+    ],
+    "passwordChange": [
+        "Passwords can be tricky since the field output shows encrypted characters.<br><br> Before you reset your password, please take note of the following steps:<br><br> 1. Make sure that the keys on your keyboard are perfectly working.<br> 2. Your password complies with the minimum requirements:<br><br> - Min 8 characters<br> - At least one capital letter<br> - At least one special character<br> - At least one number<br><br> Did I help you resolve your password issue? <br><br> Yes/no."
+    ],
+    "passStatus": [
+        "Sure, I'll check on that for you. Can you please provide the ticket number or any other details you have? Thanks!"
+    ],
+    "techSupport": [
+        "Thank you for reaching out to our technical support team.<br><br> To expedite assistance, please access our ticketing system by clicking here <a href='ticketing.php'>ITSM Support Team</a> and provide a detailed description of the issue you're facing.<br><br> Our dedicated team will review your query promptly and work diligently to resolve your technical concern. We appreciate your patience and cooperation or contact our IT department at it@school.com or call 123-456-7890."
+    ],
+    "missingAssignment": [
+        "Missing assignments can affect your grades. I suggest speaking with your teacher to address this.",
+        "To manage missing assignments, consider discussing this matter with your teacher or academic advisor.",
+        "Let's figure out a plan to manage your missing assignments. Have you spoken to your teacher about this?"
+    ],
+    "scheduleQuery": [
+        "Your schedule can be viewed on the school portal or app. Have you checked there?",
+        "Your schedule information is available on the school's website or app. Take a look there.",
+        "For schedule-related queries, it's best to refer to the school's official portal or app for accurate information."
+    ],
+    "generalHelp": [
+        "If you have any other questions or need further assistance, feel free to ask!",
+        "Is there anything else I can help you with?",
+        "Don't hesitate to ask if there's anything else on your mind."
+    ],
+    "libraryAccess": [
+        "Access to the school library is available during regular school hours. Have you checked the library schedule?",
+        "You can access the school library during its operating hours. Information about library hours can be found on the school website.",
+        "For library access, make sure to check the school's website or library notice board for hours and any restrictions."
+    ],
+    "extracurricularActivities": [
+        "Participation in extracurricular activities can enrich your school experience. Have you explored the available options?",
+        "There are various extracurricular activities offered at our school. Have you considered joining any?",
+        "Engaging in extracurricular activities can broaden your horizons. Explore the school's clubs and activities for more information."
+    ],
+    "collegeApplications": [
+        "Preparing for college applications requires planning and research. Have you started preparing?",
+        "College applications are an important step. Consider speaking with your school's guidance counselor for guidance.",
+        "There are many resources available to help with college applications. Reach out to your school's college counselor for assistance."
+    ],
+    "homeworkHelp": [
+        "Struggling with homework? Consider forming study groups with your classmates for better understanding.",
+        "Sometimes discussing homework problems with friends or teachers can offer new perspectives. Have you tried that?",
+        "For challenging homework, don't hesitate to ask your teacher for extra clarification or resources."
+    ],
+    "studyTips": [
+        "Effective studying involves good time management. Are you following a study schedule?",
+        "Taking breaks while studying can improve focus. How often do you take breaks?",
+        "Creating study notes or flashcards can help in retaining information. Have you tried this method?"
+    ],
+    "testPreparation": [
+        "Preparation is key for tests. Have you been practicing with past papers or quizzes?",
+        "Are you using any specific study materials or guides to prepare for your tests?",
+        "Consider setting up a study plan and allocating enough time for each subject before the test."
+    ],
+    "bullyingConcerns": [
+        "Bullying issues should be addressed immediately. Have you spoken to a teacher or school counselor?",
+        "If you're experiencing bullying, please know that you're not alone. Seek help from a trusted adult.",
+        "Bullying is unacceptable. Don't hesitate to report any bullying incidents to school authorities."
+    ],
+    "careerAdvice": [
+        "Thinking about your future career? It might be helpful to speak with a career counselor for guidance.",
+        "Exploring different career paths can be exciting. Have you considered what interests you?",
+        "Researching various career options and internships can give you insights into potential career paths."
+    ],
+    "schoolEvents": [
+        "Stay updated on school events by checking the school bulletin or announcements.",
+        "School events can be informative and enjoyable. Have you attended any recent school events?",
+        "School events offer opportunities for networking and learning. Consider attending to get involved in the school community."
+    ],
+    "schoolRules": [
+        "Familiarizing yourself with school rules is important for a conducive learning environment.",
+        "School rules ensure safety and fairness. Make sure to abide by them for a better school experience.",
+        "If you're unsure about any school rules, don't hesitate to ask a teacher or school administrator."
+    ],
+    "parentInvolvement": [
+        "Parental involvement in education is beneficial. Have you discussed school matters with your parents?",
+        "Parents play a crucial role in education. Consider involving them in your academic journey.",
+        "Informing your parents about school activities and progress can foster a supportive environment."
+    ],
+    "mentalHealthSupport": [
+        "Mental health is important. Remember, there are professionals available for support and guidance.",
+        "If you're feeling overwhelmed, talking to a school counselor or trusted adult can be helpful.",
+        "Taking care of your mental health is essential for overall well-being. Seek help if you're struggling."
+    ],
+    "peerConflictResolution": [
+        "Conflicts with peers can be challenging. Have you considered a peaceful discussion to resolve issues?",
+        "Resolving conflicts calmly and respectfully is important. How do you usually approach conflicts?",
+        "Consider finding common ground and understanding perspectives to resolve conflicts peacefully."
+    ],
+    "teacherMeeting": [
+        "Scheduling a meeting with your teacher can be helpful. Have you reached out to schedule one?",
+        "Discussing concerns with your teacher directly can often lead to better understanding and solutions.",
+        "Consider sending an email or speaking with your teacher to set up a meeting at a convenient time."
+    ],
+    "graduationRequirements": [
+        "Understanding graduation requirements is essential for planning. Have you reviewed the graduation criteria?",
+        "To ensure you're on track for graduation, regularly review the school's graduation requirements.",
+        "If you're uncertain about graduation requirements, speaking with a school counselor can provide clarity."
+    ],
+    "yes": [
+        "Excellent! I'm glad that i was able to address your concern today. Is there anything else I can help you with?\n\n  Yes/No",
+        "I'll be glad to help you with your concerns. Please select one of the options below. \n\n Provide the clickable options (tech support, ticket status, etc.)"
+    ],
+    "noResponse": [
+        "To send a ticket <a href='ticketing.php'>click here</a>.<br><br>Fill out the necessary details. Our team will assist you shortly!<br><br> Thank you for using the virtual agent helpdesk."
+    ],
+    "ticketNumber": [
+        "Your ticket is already handled by our IT support. <br><br> 1st Ticket - on progress.<br> 2nd Ticket - pending review.<br> 3rd Ticket - resolved.<br><br> Thank you for using Virtual Agent Help Desk. If you have some question please don't hesitate to ask!<br><br> Thank you!"
+    ]
+}
