@@ -1,3 +1,4 @@
+<!-- redo the database -->
 <?php
 include "../db_conn.php";
 session_start();
@@ -99,21 +100,23 @@ session_start();
     </style>
 </head>
 <body>
-    <?php include '../body/admin/side-nav.php'; ?>
+    <?php include '../body/IT/side-nav.php'; ?>
 
     <form action="../db_conn.php" method="post" class="up-prod-product-form" id="productForm" enctype="multipart/form-data">
         <div class="tab-container">
             <div class="tab-buttons">
-                <button type="button" class="tab-button" onclick="showTab('tab1')">Upload Image</button>    
+                <button type="button" class="tab-button" onclick="showTab('tab1')">Upload Image</button>
                 <button type="button" class="tab-button" onclick="showTab('tab2')">Basic Info</button>
                 <button type="button" class="tab-button" onclick="showTab('tab3')">Dimensions and Weight</button>
                 <button type="button" class="tab-button" onclick="showTab('tab4')">Motor and Performance</button>
                 <button type="button" class="tab-button" onclick="showTab('tab5')">Battery</button>
-                <button type="button" class="tab-button" onclick="showTab('tab6')">Frame</button>
-                <button type="button" class="tab-button" onclick="showTab('tab7')">Electronics</button>
-                <button type="button" class="tab-button" onclick="showTab('tab8')">Accessories</button>
-                <button type="button" class="tab-button" onclick="showTab('tab9')">Technical Specs</button>
-                <button type="button" class="tab-button" onclick="showTab('tab10')">Price</button>
+                <button type="button" class="tab-button" onclick="showTab('tab6')">Drivetrain</button>
+                <button type="button" class="tab-button" onclick="showTab('tab7')">Frame</button>
+                <button type="button" class="tab-button" onclick="showTab('tab8')">Electronics</button>
+                <button type="button" class="tab-button" onclick="showTab('tab9')">Safety Features</button>
+                <button type="button" class="tab-button" onclick="showTab('tab10')">Accessories</button>
+                <button type="button" class="tab-button" onclick="showTab('tab11')">Technical Specs</button>
+                <button type="button" class="tab-button" onclick="showTab('tab12')">Price</button>
             </div>
 
             <div class="tab active" id="tab1">
@@ -150,14 +153,29 @@ session_start();
             <div class="tab" id="tab3">
                 <h4>Dimensions and Weight</h4>
                 <div class="up-prod-form-group">
+                    <label class="prodct-desc-label">Frame Size:</label>
+                    <input type="text" class="up-prod-form-control" name="p_frame_size" id="p_frame_size" placeholder="Frame Size">
+                    <small class="hint">Suitable rider height or frame measurements (e.g., small, medium, large).</small>
+                </div>
+                <div class="up-prod-form-group">
                     <label class="prodct-desc-label">Wheel Size:</label>
                     <input type="text" class="up-prod-form-control" name="p_wheel_size" id="p_wheel_size" placeholder="Wheel Size">
                     <small class="hint">Diameter of the wheels (e.g., 26", 27.5", 29").</small>
+                </div>
+                <div class="up-prod-form-group">
+                    <label class="prodct-desc-label">Weight:</label>
+                    <input type="text" class="up-prod-form-control" name="p_weight" id="p_weight" placeholder="Weight">
+                    <small class="hint">Total weight of the e-bike including battery.</small>
                 </div>
             </div>
 
             <div class="tab" id="tab4">
                 <h4>Motor and Performance</h4>
+                <div class="up-prod-form-group">
+                    <label class="prodct-desc-label">Motor Type:</label>
+                    <input type="text" class="up-prod-form-control" name="p_motor_type" id="p_motor_type" placeholder="Motor Type">
+                    <small class="hint">Hub motor, mid-drive motor.</small>
+                </div>
                 <div class="up-prod-form-group">
                     <label class="prodct-desc-label">Motor Power:</label>
                     <input type="text" class="up-prod-form-control" name="p_motor_power" id="p_motor_power" placeholder="Motor Power">
@@ -169,14 +187,24 @@ session_start();
                     <small class="hint">Maximum assisted speed (e.g., 20 mph, 28 mph).</small>
                 </div>
                 <div class="up-prod-form-group">
-                    <label class="prodct-desc-label">Max Load Capacity:</label>
-                    <input type="text" class="up-prod-form-control" name="p_top_speed" id="p_top_speed" placeholder="Top Speed">
-                    <small class="hint">Maximum load the bike can handle (e.g., 200 kg, 150 kg).</small>
+                    <label class="prodct-desc-label">Pedal Assist Levels:</label>
+                    <input type="text" class="up-prod-form-control" name="p_pedal_assist_levels" id="p_pedal_assist_levels" placeholder="Pedal Assist Levels">
+                    <small class="hint">Number of levels of pedal assistance.</small>
+                </div>
+                <div class="up-prod-form-group">
+                    <label class="prodct-desc-label">Throttle:</label>
+                    <input type="text" class="up-prod-form-control" name="p_throttle" id="p_throttle" placeholder="Throttle">
+                    <small class="hint">Type of throttle (e.g., twist, thumb). If no throttle, specify 'none'.</small>
                 </div>
             </div>
 
             <div class="tab" id="tab5">
                 <h4>Battery</h4>
+                <div class="up-prod-form-group">
+                    <label class="prodct-desc-label">Battery Type:</label>
+                    <input type="text" class="up-prod-form-control" name="p_battery_type" id="p_battery_type" placeholder="Battery Type">
+                    <small class="hint">Type of battery (e.g., lithium-ion, lithium-polymer).</small>
+                </div>
                 <div class="up-prod-form-group">
                     <label class="prodct-desc-label">Battery Capacity:</label>
                     <input type="text" class="up-prod-form-control" name="p_battery_capacity" id="p_battery_capacity" placeholder="Battery Capacity">
@@ -193,6 +221,7 @@ session_start();
                     <small class="hint">Distance the bike can travel on a full charge.</small>
                 </div>
             </div>
+
             <div class="tab" id="tab7">
                 <h4>Frame</h4>
                 <div class="up-prod-form-group">
@@ -220,6 +249,7 @@ session_start();
                     <small class="hint">Features like Bluetooth connectivity, GPS tracking, etc.</small>
                 </div>
             </div>
+
             <div class="tab" id="tab10">
                 <h4>Accessories</h4>
                 <div class="up-prod-form-group">

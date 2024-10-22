@@ -156,7 +156,7 @@ $show_table_class = (!empty($_SESSION['search_results']) && $show_table) ? '' : 
     </style>
 </head>
 <body>
-    <?php include '../body/admin/side-nav.php'; ?>
+    <?php include '../body/IT/side-nav.php'; ?>
 
     <div class="acc-man-main-content">
         <h2>User Account Data</h2>

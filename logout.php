@@ -3,7 +3,17 @@ session_start();
 // Destroy all session data
 session_unset();
 session_destroy();
-// Redirect to the login page or home page
-header("Location: index.php"); // Adjust the location as needed
-exit();
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0;url=index.php"> <!-- Redirect to login page -->
+    <script>
+        // Clear the modalShown item from sessionStorage
+        sessionStorage.removeItem('modalShown');
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2024 at 12:44 AM
+-- Generation Time: Oct 21, 2024 at 12:01 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -36,18 +36,21 @@ CREATE TABLE `accounts` (
   `phone_num` varchar(11) NOT NULL,
   `h_password` varchar(255) NOT NULL,
   `role` varchar(50) NOT NULL,
-  `date_time` datetime NOT NULL DEFAULT current_timestamp()
+  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `change_type` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`id`, `serial_num`, `last_name`, `first_name`, `email`, `phone_num`, `h_password`, `role`, `date_time`) VALUES
-(30, 10000, 'adona', 'adrian', 'adrian@gmail.com', '09184025526', '$2y$10$O0HVcBoA06RxRgnAWWBDe.UfUP7vv3tPxI4YSWUx4PDtN4gv/0kRu', 'user', '2024-10-11 21:41:30'),
-(31, 10000, 'Proxy', 'Admin', 'proxyadmin@gmail.com', '09091234123', '$2y$10$e7lpd1VFjdWwE8Dg/YP0JuMvKpczLuJtizS/bf4ZdedIceUw/1V2K', 'Admin', '2024-10-11 21:46:43'),
-(32, 10017, 'notadona', 'adrian', 'adon@gmail.com', '09091818123', '$2y$10$jpzNFU7agX2ehag4BbN8e.xJLHgvOisKt5SeTAKMrU7eGbjhXZpqy', 'IT_Support', '2024-10-12 08:45:09'),
-(33, 10019, 'adon3', 'adrian3', 'adrianadona@gmail.com', '09184025526', '$2y$10$25KJamc46FmMC0p8hIF61OmgNbfx0Y32kTbPyK7XvZngTKklmdptu', 'IT_Support', '2024-10-14 05:34:39');
+INSERT INTO `accounts` (`id`, `serial_num`, `last_name`, `first_name`, `email`, `phone_num`, `h_password`, `role`, `date_created`, `updated_at`, `change_type`) VALUES
+(30, 10000, 'adona', 'adrian', 'adrian@gmail.com', '09184025526', '$2y$10$O0HVcBoA06RxRgnAWWBDe.UfUP7vv3tPxI4YSWUx4PDtN4gv/0kRu', 'user', '2024-10-11 21:41:30', '2024-10-20 21:49:01', ''),
+(31, 10000, 'Proxy', 'Admin', 'proxyadmin@gmail.com', '09091234123', '$2y$10$e7lpd1VFjdWwE8Dg/YP0JuMvKpczLuJtizS/bf4ZdedIceUw/1V2K', 'Admin', '2024-10-11 21:46:43', '2024-10-20 21:49:01', ''),
+(32, 10017, 'notadona', 'adrian', 'adon@gmail.com', '09091818123', '$2y$10$jpzNFU7agX2ehag4BbN8e.xJLHgvOisKt5SeTAKMrU7eGbjhXZpqy', 'IT_Support', '2024-10-12 08:45:09', '2024-10-20 21:49:01', ''),
+(33, 10019, 'adon3', 'adrian3', 'adrianadona@gmail.com', '09184025526', '$2y$10$25KJamc46FmMC0p8hIF61OmgNbfx0Y32kTbPyK7XvZngTKklmdptu', 'IT_Support', '2024-10-14 05:34:39', '2024-10-20 21:49:01', ''),
+(34, 10021, 'adona', 'aira', 'aira@gmail.com', '12018320', '$2y$10$a/DfEY.iQ6QxDe1Ef/uxsuiE2iVs3zZfvJvUBqCXBSVeb78pedkSK', 'user', '2024-10-20 22:05:07', '2024-10-20 22:05:07', '');
 
 -- --------------------------------------------------------
 
@@ -121,13 +124,6 @@ CREATE TABLE `products_tb` (
   `p_optional_features` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `products_tb`
---
-
-INSERT INTO `products_tb` (`id`, `serial_num`, `images`, `p_brand`, `p_model`, `p_year`, `p_type`, `p_frame_size`, `p_wheel_size`, `p_weight`, `p_motor_type`, `p_motor_power`, `p_top_speed`, `p_pedal_assist_levels`, `p_throttle`, `p_battery_type`, `p_battery_capacity`, `p_range`, `p_charge_time`, `p_gears`, `p_brakes`, `p_suspension`, `p_tires`, `p_frame_material`, `p_fork`, `p_handlebars`, `p_display`, `p_lighting`, `p_connectivity`, `p_fenders`, `p_rack`, `p_kickstand`, `p_lock`, `p_accessories`, `p_warranty`, `p_torque`, `p_max_rider_weight`, `p_water_resistance`, `p_base_price`, `p_optional_features`) VALUES
-(22, 0, 'products_tb/cat-in-box.png', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
-
 -- --------------------------------------------------------
 
 --
@@ -165,13 +161,15 @@ INSERT INTO `tickets` (`id`, `first_name`, `last_name`, `phone_num`, `serial_num
 (100, 'adrian', 'asd', 2147483647, 10009, 'Technical', 'asdasdasdasdas123', 'Pending', 'P1', '2024-10-11 23:20:44'),
 (101, 'bread', 'magic', 2147483647, 10010, 'Mechanical', '1231', 'Pending', 'P1', '2024-10-11 23:21:56'),
 (102, 'adrian', 'adona', 2147483647, 10011, 'Technical', 'jail time', 'Pending', 'P1', '2024-10-11 23:24:41'),
-(103, 'adrian', 'adona', 2147483647, 10012, 'Technical', 'magical bread ding dong', 'new', 'P1', '2024-10-11 23:39:51'),
-(104, 'adrian', 'adona', 2147483647, 10013, 'Technical', 'vlad', 'new', 'P1', '2024-10-11 23:51:20'),
-(105, 'adrian', 'ad', 0, 10014, 'Technical', 'lplpl', 'new', 'P1', '2024-10-12 00:32:46'),
-(106, 'adrian', 'adona', 2147483647, 10015, 'Technical', 'asda', 'new', 'P1', '2024-10-12 00:34:06'),
+(103, 'adrian', 'adona', 2147483647, 10012, 'Technical', 'magical bread ding dong', 'Pending', 'P1', '2024-10-11 23:39:51'),
+(104, 'adrian', 'adona', 2147483647, 10013, 'Technical', 'vlad', 'Pending', 'P1', '2024-10-11 23:51:20'),
+(105, 'adrian', 'ad', 0, 10014, 'Technical', 'lplpl', 'Pending', 'P1', '2024-10-12 00:32:46'),
+(106, 'adrian', 'adona', 2147483647, 10015, 'Technical', 'asda', 'Pending', 'P1', '2024-10-12 00:34:06'),
 (107, 'adrian', 'adona', 2147483647, 10016, 'Technical', 'asda', 'new', 'P1', '2024-10-12 00:34:10'),
 (108, 'new', 'new', 0, 10017, 'Technical', 'new', 'new', 'P1', '2024-10-13 14:08:55'),
-(109, 'new', 'new', 0, 10018, 'Technical', 'new', 'new', 'P1', '2024-10-13 14:08:58');
+(109, 'new', 'new', 0, 10018, 'Technical', 'new', 'new', 'P1', '2024-10-13 14:08:58'),
+(110, 'bloom', 'blam', 9812098, 10019, 'Billing', 'cheesecake', 'new', 'P1', '2024-10-20 19:08:28'),
+(111, 'again', 'again', 21561558, 10020, 'Technical', 'bread', 'new', 'P1', '2024-10-20 19:18:24');
 
 -- --------------------------------------------------------
 
@@ -210,7 +208,11 @@ INSERT INTO `ticket_assigned` (`id`, `first_name`, `last_name`, `phone_num`, `se
 (52, 'adrian', 'asd', 2147483647, 10008, 'Technical', 'asdasdasdasdas123', 'Pending', 'P1', 'adon@gmail.com', '2024-10-14 06:01:19'),
 (53, 'adrian', 'asd', 2147483647, 10009, 'Technical', 'asdasdasdasdas123', 'Pending', 'P1', 'adrianadona@gmail.com', '2024-10-14 06:01:21'),
 (54, 'bread', 'magic', 2147483647, 10010, 'Mechanical', '1231', 'Pending', 'P1', 'adon@gmail.com', '2024-10-14 06:01:23'),
-(55, 'adrian', 'adona', 2147483647, 10011, 'Technical', 'jail time', 'Pending', 'P1', 'adrianadona@gmail.com', '2024-10-14 06:01:24');
+(55, 'adrian', 'adona', 2147483647, 10011, 'Technical', 'jail time', 'Pending', 'P1', 'adrianadona@gmail.com', '2024-10-14 06:01:24'),
+(56, 'adrian', 'adona', 2147483647, 10012, 'Technical', 'magical bread ding dong', 'Pending', 'P1', 'adrianadona@gmail.com', '2024-10-19 13:11:16'),
+(57, 'adrian', 'adona', 2147483647, 10013, 'Technical', 'vlad', 'Pending', 'P1', 'adon@gmail.com', '2024-10-19 13:11:43'),
+(58, 'adrian', 'ad', 0, 10014, 'Technical', 'lplpl', 'Pending', 'P1', 'adrianadona@gmail.com', '2024-10-19 13:11:44'),
+(59, 'adrian', 'adona', 2147483647, 10015, 'Technical', 'asda', 'Pending', 'P1', 'adon@gmail.com', '2024-10-19 13:11:46');
 
 --
 -- Indexes for dumped tables
@@ -254,7 +256,7 @@ ALTER TABLE `ticket_assigned`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `ledger_tb`
@@ -266,19 +268,19 @@ ALTER TABLE `ledger_tb`
 -- AUTO_INCREMENT for table `products_tb`
 --
 ALTER TABLE `products_tb`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- AUTO_INCREMENT for table `ticket_assigned`
 --
 ALTER TABLE `ticket_assigned`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

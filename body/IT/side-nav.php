@@ -8,12 +8,12 @@
 <body>
     <nav class="right-navbar">
         <ul>
-            <li><a href="../Admin/Dashboard.php">Dashboard</a></li>
-            <li><a href="../Admin/Ledger.php">Ledger</a></li>
-            <li><a href="../Admin/upload_product.php">Add new Product</a></li>
-            <li><a href="../Admin/order_entry.php">Create new Order</a></li>
-            <li><a href="../Admin/Account_Manager.php">User Account Data</a></li>
-            <li><a href="../Manage_Ticket/Recieved_Ticket.php">Tickets</a></li>
+            <li><a href="../IT_Management/Dashboard.php">Dashboard</a></li>
+            <li><a href="../IT_Management/Ledger.php">Ledger</a></li>
+            <li><a href="../IT_Management/upload_product.php">Add new Product</a></li>
+            <li><a href="../IT_Management/order_entry.php">Create new Order</a></li>
+            <li><a href="../IT_Management/Account_Manager.php">User Account Data</a></li>
+            <li><a href="../Manage_Ticket/ticket_support.php">Tickets</a></li>
             <li><a href="#" id="logout-button">Log Out</a></li>
         </ul>
     </nav>
@@ -82,7 +82,7 @@
         top: 0; /* Align to the top */
         right: 0; /* Align to the right */
         overflow-y: auto; /* Scroll if content overflows */
-        z-index: 10000;
+        z-index: 99999;
     }
 
     .right-navbar ul {

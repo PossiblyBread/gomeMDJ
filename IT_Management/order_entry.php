@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <?php include '../body/admin/side-nav.php'; ?>
+    <?php include '../body/IT/side-nav.php'; ?>
     
     <div class="purchase-details">
         <div class="customer-info">

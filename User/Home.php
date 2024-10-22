@@ -14,6 +14,7 @@ $userLastName = isset($_SESSION['last_name']) ? $_SESSION['last_name'] : '';
     <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body>
+    <?php include '../body/logged/greetings.php'; ?>
     <?php include '../body/logged/header.php'; ?>
     <?php include '../body/logged/side-bar.php'; ?>
     <div id="overlay"></div>

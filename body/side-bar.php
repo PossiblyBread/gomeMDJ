@@ -12,6 +12,7 @@
                 <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.31 0-10 1.67-10 5v2h20v-2c0-3.33-6.69-5-10-5z"/>
             </svg>
         </div>
+        <hr>
         <a href="index.php">Home</a>
         <a href="about.php">About</a>
         <a href="store.php">Store</a>

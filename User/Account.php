@@ -1,14 +1,9 @@
 <?php
 session_start();
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 $userFirstName = isset($_SESSION['first_name']) ? $_SESSION['first_name'] : '';
 $userLastName = isset($_SESSION['last_name']) ? $_SESSION['last_name'] : '';
-
-include "../config/home_config.php"
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

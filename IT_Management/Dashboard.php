@@ -87,7 +87,7 @@ $notifications = fetchNotifications($conn);
 </head>
 
 <body>
-    <?php include '../body/admin/side-nav.php'; ?>
+<?php include '../body/IT/side-nav.php'; ?>
 
     <div class="top-nav">
         <div class="bell-notification-container">

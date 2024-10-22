@@ -61,7 +61,7 @@
         </section>
     </main>
     <!-- Login Modal -->
-    <div class="modal" id="login-modal">
+    <!-- <div class="modal" id="login-modal">
         <div class="modal-content">
             <h2>Login</h2>
             <form id="login-form">
@@ -72,7 +72,7 @@
                 <button type="submit">Login</button>
             </form>
         </div>
-    </div>
+    </div> -->
     <!-- Footer Section -->
     <?php include 'body/footer.php'; ?>
 

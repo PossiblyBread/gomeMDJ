@@ -154,7 +154,7 @@ include "config/shop_config.php"
     </main>
 
     <!-- Login Modal -->
-    <div class="modal" id="login-modal">
+    <!-- <div class="modal" id="login-modal">
         <div class="modal-content">
             <h2>Login</h2>
             <form id="login-form">
@@ -165,7 +165,7 @@ include "config/shop_config.php"
                 <button type="submit">Login</button>
             </form>
         </div>
-    </div>
+    </div> -->
     <!-- Footer Section -->
     <?php include 'body/footer.php'; ?>
 
