@@ -82,3 +82,14 @@ Week #17 (October 15) [tuesday]
   -moved all header, footer, side-nav, and chat to "body" folder
   -Updated the SQL database
     -added ticket_recieved table
+    
+Week #18 (October 22, 2024) [tuesday]
+  -added tabs for upload product and managing tickets
+  -added some new items in database tables and removed excess tables
+  -added a welcome pop up for users
+  -added new, open, pending, active and closed ticket files
+  -need to revise upload_product table and file
+  -need to fix login system
+  -need an injection prevention
+  -will probably fix this github in the future, but for now leave it broken
+  -forgot the rest but okay
