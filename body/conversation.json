@@ -1,0 +1,71 @@
+{
+    "greetings": [
+        "Hello! How can I assist you with e-bikes today?",
+        "Hi there! What do you need help with regarding e-bikes?"
+    ],
+    "batteryConcerns": [
+        "Battery issues can be frustrating. Can you provide details about the problem you're experiencing?",
+        "If you're having battery issues, it might be related to the charging process. What have you noticed?",
+        "Let's troubleshoot your battery problem. Can you describe any symptoms you're seeing?"
+    ],
+    "maintenanceTips": [
+        "Regular maintenance is key for e-bikes. Have you checked the brakes and tires recently?",
+        "To keep your e-bike in top shape, make sure to clean the chain and lubricate it regularly.",
+        "It's important to check the battery connections and inspect the wiring periodically. Have you done that?"
+    ],
+    "rangeQuestions": [
+        "The range of your e-bike can vary based on usage. What specific model do you have?",
+        "Are you asking about the distance you can travel on a single charge? That can depend on several factors.",
+        "To help with your range concerns, could you tell me about your typical riding conditions?"
+    ],
+    "accessoriesInfo": [
+        "There are various accessories available for e-bikes. Are you looking for something specific?",
+        "Consider adding a rack or fenders for more functionality. What accessories are you interested in?",
+        "E-bike accessories can enhance your riding experience. Have you checked our latest offerings?"
+    ],
+    "technicalSupport": [
+        "Thank you for reaching out! For technical support, please describe the issue you're facing.",
+        "To expedite assistance, please provide your e-bike model and details of the problem.",
+        "Our technical support team is here to help! Please specify what you need assistance with."
+    ],
+    "purchaseAdvice": [
+        "If you're considering purchasing an e-bike, I can help guide you. What features are important to you?",
+        "Looking for e-bike recommendations? Tell me your budget and preferences.",
+        "There are many great e-bikes available. What type of riding do you plan to do?"
+    ],
+    "warrantyInfo": [
+        "Warranty information can vary by model. Can you tell me which e-bike you own?",
+        "Most e-bikes come with a warranty covering specific parts. Do you need details on your model?",
+        "If you have a warranty question, please provide your e-bike model and purchase date."
+    ],
+    "chargingGuidelines": [
+        "Proper charging is essential for battery life. Are you using the recommended charger for your e-bike?",
+        "Make sure to charge your e-bike in a cool, dry place. Have you checked your charging environment?",
+        "To maximize battery life, avoid fully discharging it regularly. How often do you charge your e-bike?"
+    ],
+    "generalHelp": [
+        "If you have any other questions about e-bikes, feel free to ask!",
+        "Is there anything else I can assist you with regarding e-bikes?",
+        "Don't hesitate to reach out if you have more inquiries about e-bikes!"
+    ],
+    "safetyTips": [
+        "Wearing a helmet is crucial for safety. Do you have one that fits properly?",
+        "Be sure to follow local traffic laws while riding your e-bike. Are you familiar with them?",
+        "Riding defensively is key to safety. Do you have any concerns about riding in traffic?"
+    ],
+    "repairServices": [
+        "If you need repairs, I can help locate a service center. What issue are you facing?",
+        "For repair services, please provide your e-bike model and the nature of the problem.",
+        "Do you need recommendations for e-bike repair services in your area?"
+    ],
+    "yes": [
+        "Great! I'm glad I could assist you today. Is there anything else you need help with?\n\n Yes/No",
+        "I'm here to help with any further questions. Please choose from the options below. \n\n (Tech Support, Battery Issues, etc.)"
+    ],
+    "noResponse": [
+        "To submit a support ticket, <a href='ticketing.php'>click here</a>.<br><br>Fill in the necessary details. Our team will assist you shortly!<br><br> Thank you for using the e-bike support system."
+    ],
+    "ticketNumber": [
+        "Your ticket has been received by our support team. <br><br> 1st Ticket - under review.<br> 2nd Ticket - pending parts.<br> 3rd Ticket - resolved.<br><br> Thank you for using the e-bike support system. If you have further questions, feel free to ask!"
+    ]
+}
