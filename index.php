@@ -166,6 +166,11 @@ include "db_conn.php";
 </html>
 
 <style>
+hr {
+    border: 1px solid #ffff; /* Change color if needed */
+    width: 100%; /* Default width */
+    margin: 20px auto; /* Center the line and add spacing */
+}
 .main-section {
     position: relative;
     background: linear-gradient(to bottom, rgba(0, 123, 255, 0.8), rgba(128, 128, 128, 0.5)); /* Bluish to gray gradient */
@@ -173,12 +178,7 @@ include "db_conn.php";
     overflow: hidden;
     display: flex; /* Use flexbox for layout */
 }
-.ebikeImage{
-    margin-left: -150px;
-    margin-top: -50px;
-    width: 550px; /* Adjust the width as needed */
-    height: auto; /* Maintain aspect ratio */
-}
+
 .content-container {
     display: flex;
     width: 100%; /* Make sure it takes full width */
@@ -200,8 +200,6 @@ include "db_conn.php";
     margin-bottom: 20px; /* Space between sections */
     padding-left: 160px; /* Match this to the padding of .bigName */
 }
-
-/* Keep existing styles for .bigName, .diagonal1, .diagonal2, .diagonal3, .diagonal4 */
 
 .bigName {
     position: relative;
@@ -236,10 +234,12 @@ include "db_conn.php";
     color: rgba(255, 255, 255, 0.8); /* Slightly lighter color for readability */
     line-height: 1.6; /* Improve line height for better readability */
 }
-.inner-section p {
-    font-size: 18px; /* Font size for paragraph text */
-    color: rgba(255, 255, 255, 0.8); /* Slightly lighter color for readability */
-    line-height: 1.6; /* Improve line height for better readability */
+
+.ebikeImage {
+    margin-left: -150px;
+    margin-top: -50px;
+    width: 550px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
 }
 
 .main-section h2 {
@@ -256,6 +256,7 @@ include "db_conn.php";
     height: 100%;
     z-index: 0; /* Ensure they are behind other content */
 }
+
 .diagonal1 {
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
     clip-path: polygon(9% 0, 13% 0, 0 46%, 0 33%);
@@ -286,8 +287,6 @@ include "db_conn.php";
     top: 50px; /* Adjust this value to move it down */
 }
 
-
-
 .chat-box { 
     position: fixed;
     right: 20px; 
@@ -302,6 +301,7 @@ include "db_conn.php";
     flex-direction: column; 
     z-index: 1000; 
 }
+
 .features {
     text-align: center; /* Center the text */
     margin: 40px 0; /* Add vertical spacing */
@@ -323,6 +323,61 @@ include "db_conn.php";
     height: 3px; /* Height of the line */
     background-color: #3498db; /* Line color */
     margin: 10px auto; /* Center the line and add spacing */
+}
+
+/* Media Queries for Mobile View */
+@media (max-width: 768px) {
+    hr {
+        width: 70%; /* Reduce width on medium devices */
+    }
+    .main-section {
+        flex-direction: column; /* Stack columns on top of each other */
+        height: auto; /* Allow height to adjust automatically */
+    }
+
+    .content-container {
+        flex-direction: column; /* Ensure content is vertical */
+        align-items: center; /* Center align items */
+    }
+
+    .left-column, .right-column {
+        flex: none; /* Reset flex property */
+        width: 100%; /* Full width for each column */
+        padding: 10px; /* Less padding on mobile */
+        text-align: center; /* Center text */
+    }
+
+    .bigName {
+        padding-left: 0; /* Remove left padding */
+        margin-top: 20px; /* Adjust margin */
+    }
+
+    .big-text, .sub-text {
+        font-size: 50px; /* Reduce font size for mobile */
+    }
+
+    .ebikeImage {
+        width: 90%; /* Adjust image width */
+        margin: 20px 0; /* Add margin for spacing */
+    }
+
+    .inner-section {
+        padding-left: 0; /* Remove left padding */
+    }
+
+    .main-section h3 {
+        margin-left: 0; /* Remove left margin */
+    }
+    
+}
+
+@media (max-width: 480px) {
+    .big-text, .sub-text {
+        font-size: 30px; /* Further reduce font size for smaller screens */
+    }
+    hr {
+        width: 50%; /* Further reduce width on smaller devices */
+    }
 }
 
 </style>
