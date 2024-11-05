@@ -97,6 +97,8 @@ function validateModeratorPassword($password) {
                     <th>Email</th>
                     <th>Phone Number</th>
                     <th>Role</th>
+                    <th>Edit Account</th>
+                    <th>Validate User</th>
                     <th>Date Created</th> 
                 </tr>
 
@@ -125,12 +127,18 @@ function validateModeratorPassword($password) {
                                 <button type="button" onclick="openModal('<?php echo $row['id']; ?>')">Save</button>
                             </form>
                         </td>
+                        <td>
+                            <a href="edit_user.php?id=<?php echo $row['id']; ?>" class="edit-button">Edit</a>
+                        </td>
+                        <td>
+                            <a href="validate_user.php?id=<?php echo $row['id']; ?>" class="validate-button">Validate</a>
+                        </td>
                         <td><?php echo $row["date_created"] ?></td>
                     </tr>
                 <?php
                     }
                 } else {
-                    echo "<tr><td colspan='7'>No records found</td></tr>";
+                    echo "<tr><td colspan='9'>No records found</td></tr>";
                 }
                 ?>
             </table>
@@ -173,7 +181,6 @@ function validateModeratorPassword($password) {
 </body>
 </html>
 <style>
-
 /* Main content styles */
 .main-content {
     margin: 20px;
@@ -228,12 +235,42 @@ table {
 
 th, td {
     padding: 8px;
-    text-align: left;
+    text-align: left; /* Default text alignment */
     border-bottom: 1px solid #ddd;
 }
 
 th {
     background-color: #f4f4f4;
+}
+
+/* Centering buttons */
+td {
+    text-align: center; /* Center-align text and elements within the cell */
+}
+
+/* Button styles */
+.edit-button, .validate-button {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 5px;
+    background-color: #28a745; /* Green for edit */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.validate-button {
+    background-color: #007bff; /* Blue for validate */
+}
+
+.validate-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
 }
 
 /* Modal styles */

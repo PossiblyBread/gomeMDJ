@@ -34,11 +34,15 @@ $notifications = fetchNotifications($conn);
 <head>
     <title>Dashboard</title>
     <style>
+        body {
+            background-color: #d1dae1; /* Set background color */
+        }
+
         .top-nav {
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            background-color: #f8f9fa;
+            background-color: #6e89a0;
             padding: 10px 20px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             width: 100%;
@@ -56,7 +60,7 @@ $notifications = fetchNotifications($conn);
         .bell-notification-container {
             position: relative;
             display: inline-block;
-            margin: 10px 300px 0 0;
+            margin: 10px 50px 0 0;
         }
 
         .bell-notification-button {
@@ -83,6 +87,7 @@ $notifications = fetchNotifications($conn);
             left: -300px;
             max-height: 400px; /* Set a maximum height */
             overflow-y: auto; /* Enable vertical scrolling */
+            border-radius: 15px;
         }
 
         .bell-dropdown-item {
@@ -159,4 +164,3 @@ $notifications = fetchNotifications($conn);
 </body>
 
 </html>
-        

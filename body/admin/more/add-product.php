@@ -22,22 +22,31 @@
         }
         .ap-container {
             display: flex; 
-            max-width: 900px; 
+            max-width: 600px; 
             width: 100%; 
+            background-color: #cfd8dc; /* Grayish blue */
+            padding: 20px; 
+            border-radius: 8px; 
+            
         }
         .ap-form {
             flex-grow: 1; 
-            margin-right: 20px; 
+            margin-right: 20px;
+            border-radius: 30px; 
         }
         .ap-tabs {
+            padding-left: 20px;
             display: flex;
             flex-direction: column; 
-            margin-top: 20px; /* Space between form and tabs */
+            margin-top: 20px; 
+            background-color: #cfd8dc; /* Grayish blue */
+            border-radius: 5px; 
+            padding: 10px; 
         }
         .ap-tab {
-            padding: 10px 20px;
+            padding: 8px 16px; 
             cursor: pointer;
-            background-color: #ccc; 
+            background-color: #b0bec5; /* Light grayish blue */
             border: 1px solid #aaa; 
             border-radius: 5px 5px 0 0; 
             margin-bottom: 5px; 
@@ -52,52 +61,54 @@
             display: none; 
             border: 1px solid #aaa; 
             border-radius: 0 0 5px 5px; 
-            padding: 20px; 
+            padding: 10px; 
             background-color: #fff; 
             width: 100%; 
             max-width: 600px; 
+            border-radius: 15px; 
         }
         .ap-tab-content.active {
             display: block; 
         }
         .ap-label {
-            margin-top: 10px;
+            margin-top: 5px; 
             display: block; 
             color: #555; 
+            font-size: 14px; 
         }
         .ap-input, .ap-select, .ap-textarea {
-            width: calc(100% - 22px); 
-            padding: 10px; 
-            margin-top: 5px;
+            width: calc(100% - 20px); 
+            padding: 6px; 
+            margin-top: 3px; 
             border: 1px solid #aaa; 
             border-radius: 4px; 
             box-sizing: border-box; 
             color: #333; 
+            font-size: 14px; 
         }
-        .ap-file-upload-container {
-            display: flex;
-            align-items: center; /* Align items vertically */
-            margin-top: 10px;
+        .ap-button-container {
+            display: flex;                
+            justify-content: center;    
+            margin-top: 15px; 
         }
-
         .ap-image-preview {
-            margin-left: 10px; /* Space between button and image */
-            margin-top: 11px;
-            width: 60px; 
-            height: 60px; 
+            margin-left: 10px; /* Add some space between the preview and the button */
+            width: 50px; 
+            height: 50px; 
             object-fit: cover; 
             border-radius: 8px; 
         }
+
         .ap-file-upload {
             position: relative;
             display: inline-block;
-            width: 60px; 
-            height: 60px; 
-            background-color: #ccc; 
+            width: 50px; 
+            height: 50px; 
+            background-color: #b0bec5; /* Light grayish blue */
             border-radius: 8px; 
             overflow: hidden;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 5px; 
             margin-left: 0; 
         }
         .ap-file-upload input[type="file"] {
@@ -113,8 +124,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 35px; 
-            height: 35px; 
+            width: 30px; 
+            height: 30px; 
             stroke: #000; 
             fill: none; 
             z-index: 1; 
@@ -123,17 +134,18 @@
         .ap-button {
             background-color: #555; 
             color: white; 
-            padding: 10px 15px; 
+            padding: 8px 12px; 
             border: none; 
             border-radius: 4px; 
             cursor: pointer; 
-            margin-top: 15px; 
+            margin-top: 10px; 
             width: 100%; 
-            font-size: 16px; 
+            font-size: 14px; 
         }
         .ap-button:hover {
             background-color: #333; 
         }
+
     </style>
     <script>
         function showTab(tabName) {
@@ -183,11 +195,11 @@
                 <label class="ap-label" for="p_model">Product Model:</label>
                 <input class="ap-input" type="text" name="p_model" id="p_model" placeholder="e.g., Model X1" required>
 
-                <label class="ap-label" for="p_price">Base Price (in USD):</label>
+                <label class="ap-label" for="p_price">Base Price (in Php Peso):</label>
                 <input class="ap-input" type="text" name="p_price" id="p_price" placeholder="e.g., 1200" required>
                 
                 <label class="ap-label" for="images">Product Image:</label>
-                <div class="ap-file-upload-container">
+                <div class="ap-file-upload-container" style="display: flex; align-items: center;">
                     <div class="ap-file-upload">
                         <input type="file" name="images" id="images" accept="image/*" required />
                         <svg width="256px" height="256px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg">

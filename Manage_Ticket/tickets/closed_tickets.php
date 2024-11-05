@@ -85,6 +85,10 @@ $closed_tickets_result = mysqli_query($conn, $closed_tickets_sql);
                         <td><?= calculateTimeElapsed($row['date_time_updated']) ?></td>
                         <td>
                             <button onclick="openModal('<?= $row['id'] ?>')">View</button>
+                            <form action="reopen.php" method="POST" style="display:inline;">
+                                <input type="hidden" name="ticket_id" value="<?= $row['id'] ?>">
+                                <button type="submit" onclick="return confirm('Are you sure you want to reopen this ticket?');">Reopen</button>
+                            </form>
                         </td>
                     </tr>
                     <tr id="sent-message-<?= $row['id'] ?>" style="display:none;">

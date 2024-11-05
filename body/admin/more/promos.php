@@ -16,6 +16,7 @@ $result = $conn->query($sql);
     <title>Promos</title>
     <style>
         .promos-header {
+            color: black;
             font-size: 1.8em;
             font-weight: bold;
             margin-bottom: 10px;
@@ -30,14 +31,15 @@ $result = $conn->query($sql);
         }
         .carousel {
             display: grid;
-            justify-content: flex-start;
+            justify-content: flex-start; /* Keep contents aligned to the left */
             grid-template-columns: repeat(6, calc(33.33% - 40px));
             gap: 40px;
             transition: transform 0.5s ease-in-out;
+            width: 80%; /* Set a fixed width for the carousel */
+            margin: auto; /* Center the carousel */
         }
         .promo-box {
-            background-color: #a6a6a6;
-            padding: 15px;
+            background-color: transparent; /* Set promo box background to transparent */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -49,19 +51,22 @@ $result = $conn->query($sql);
             z-index: 900;
             border-radius: 15px;
             align-items: center;
+            border: 1px solid #ccc; /* Optional: add a border to the promo box */
         }
+
         .promo-box img {
-            object-fit: cover;
-            width: 50%;
-            height: 100%;
-            border-radius: 10px;
+            object-fit: cover; /* Ensure the image covers the container */
+            width: 100%; /* Adjust to fit your design */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10px; /* Rounded corners */
+            background-color: transparent; /* Ensure transparency */
+            cursor: pointer; /* Change cursor to pointer */
         }
         .carousel-controls {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            margin-left: -40px;
-            width: 70%;
+            width: 100%;
             display: flex;
             justify-content: space-between;
             z-index: 1000;
@@ -73,20 +78,7 @@ $result = $conn->query($sql);
             padding: 10px;
             cursor: pointer;
         }
-        .curtain1, .curtain2 {
-            position: relative;
-            background: linear-gradient(to right, rgba(125, 125, 125, 1), rgba(125, 125, 125, 0.85));
-            height: 100%;
-            width: 600px;
-            z-index: 950;
-            float: left;
-        }
-        .curtain2 {
-            background: linear-gradient(to left, rgba(125, 125, 125, 1), rgba(125, 125, 125, 0.85));
-            float: right;
-            width: 575px;
-            padding-left: 10px;
-        }
+        
         .promoModal {
             display: none;
             position: fixed;
@@ -132,7 +124,7 @@ $result = $conn->query($sql);
         }
 
         .promoModal .close-modal {
-            background-color: #333; /* Green background for buttons */
+            background-color: #333; /* Close button background */
             color: white; /* White text for better contrast */
             border: none; /* No border */
             padding: 10px 15px; /* Padding for buttons */
@@ -141,20 +133,17 @@ $result = $conn->query($sql);
             width: calc(40% - 5px); /* Button width adjustment */
             margin-right: 5px; /* Space between buttons */
         }
-
     </style>
 </head>
 <body>
     <div class="promos-header">Promos</div>
     
     <div class="carousel-container">
-        <div class="curtain1"></div>
         <div class="carousel">
             <?php if ($result->num_rows > 0): ?>
                 <?php while($row = $result->fetch_assoc()): ?>
                     <div class="promo-box">
-                        <img src="<?php echo htmlspecialchars($row['p_image']); ?>" alt="<?php echo htmlspecialchars($row['p_name']); ?>" class="promo-img">
-                        <button class="promo-box-modal-button" data-id="<?php echo $row['id']; ?>" data-name="<?php echo htmlspecialchars($row['p_name']); ?>" data-monthly="<?php echo htmlspecialchars($row['p_monthly']); ?>" data-year="<?php echo htmlspecialchars($row['p_year']); ?>">Edit Promo</button>
+                        <img src="<?php echo htmlspecialchars($row['p_image']); ?>" alt="<?php echo htmlspecialchars($row['p_name']); ?>" class="promo-img" data-id="<?php echo $row['id']; ?>" data-name="<?php echo htmlspecialchars($row['p_name']); ?>" data-monthly="<?php echo htmlspecialchars($row['p_monthly']); ?>" data-year="<?php echo htmlspecialchars($row['p_year']); ?>">
                     </div>
                 <?php endwhile; ?>
             <?php else: ?>
@@ -165,7 +154,6 @@ $result = $conn->query($sql);
             <button id="promoPrevBtn">❮</button>
             <button id="promoNextBtn">❯</button>
         </div>
-        <div class="curtain2"></div>
     </div>
 
     <div id="editPromoModal" class="promoModal">
@@ -189,21 +177,20 @@ $result = $conn->query($sql);
         </form>
     </div>
 
-
     <script>
-        const promoModalButtons = document.querySelectorAll('.promo-box-modal-button');
+        const promoImages = document.querySelectorAll('.promo-box img');
         const editPromoModal = document.getElementById('editPromoModal');
         const promoIdInput = document.getElementById('promo_id');
         const promoNameInput = document.getElementById('p_name');
         const promoMonthlyInput = document.getElementById('p_monthly');
         const promoYearInput = document.getElementById('p_year');
 
-        promoModalButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                promoIdInput.value = button.getAttribute('data-id');
-                promoNameInput.value = button.getAttribute('data-name');
-                promoMonthlyInput.value = button.getAttribute('data-monthly');
-                promoYearInput.value = button.getAttribute('data-year');
+        promoImages.forEach(img => {
+            img.addEventListener('click', () => {
+                promoIdInput.value = img.getAttribute('data-id');
+                promoNameInput.value = img.getAttribute('data-name');
+                promoMonthlyInput.value = img.getAttribute('data-monthly');
+                promoYearInput.value = img.getAttribute('data-year');
                 
                 // Show the modal
                 editPromoModal.style.display = 'block';
@@ -236,6 +223,5 @@ $result = $conn->query($sql);
             }
         });
     </script>
-
 </body>
 </html>

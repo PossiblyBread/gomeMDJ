@@ -10,12 +10,12 @@ include '../body/admin/config/get-info.php'; // Adjust the path to your database
     <title>Order Entry</title>
     <link rel="stylesheet" href="style.css">
     <script>
-        let productsCache = []; // Cache to hold products
+        let apProductsCache = []; // Cache to hold products
 
         // Fetch all products when the page loads
         window.onload = function() {
             fetchProducts();
-            openTab('accountDetails'); // Automatically open the first tab
+            openTab('apAccountDetails'); // Automatically open the first tab
         };
 
         function fetchProducts() {
@@ -28,8 +28,8 @@ include '../body/admin/config/get-info.php'; // Adjust the path to your database
             .then(data => {
                 console.log('Fetched products data:', data); // Log fetched data
                 if (data.success && data.type === 'product') {
-                    productsCache = data.data; // Cache the products
-                    populateProductDropdown(productsCache); // Populate dropdown with products
+                    apProductsCache = data.data; // Cache the products
+                    populateProductDropdown(apProductsCache); // Populate dropdown with products
                 } else {
                     console.error('Failed to fetch products:', data.message);
                 }
@@ -40,19 +40,19 @@ include '../body/admin/config/get-info.php'; // Adjust the path to your database
         }
 
         function searchAccount() {
-            const searchValue = document.getElementById('search-input').value;
+            const apSearchValue = document.getElementById('apSearchInput').value;
             fetch('', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: 'search_value=' + encodeURIComponent(searchValue)
+                body: 'search_value=' + encodeURIComponent(apSearchValue)
             })
             .then(response => response.json())
             .then(data => {
                 if (data.success && data.type === 'account') {
-                    document.getElementById('serial_num').value = data.data.serial_num;
-                    document.getElementById('name').value = data.data.first_name + ' ' + data.data.last_name;
-                    document.getElementById('email').value = data.data.email;
-                    document.getElementById('phone_num').value = data.data.phone_num;
+                    document.getElementById('apSerialNum').value = data.data.serial_num;
+                    document.getElementById('apName').value = data.data.first_name + ' ' + data.data.last_name;
+                    document.getElementById('apEmail').value = data.data.email;
+                    document.getElementById('apPhoneNum').value = data.data.phone_num;
                 } else {
                     alert('No account found with that email or serial number.');
                 }
@@ -60,137 +60,114 @@ include '../body/admin/config/get-info.php'; // Adjust the path to your database
         }
 
         function searchProduct() {
-            const searchValue = document.getElementById('product-search-input').value.toLowerCase(); // Convert to lowercase
-            const dropdown = document.getElementById('product-dropdown');
+            const apSearchValue = document.getElementById('apProductSearchInput').value.toLowerCase(); // Convert to lowercase
+            const apDropdown = document.getElementById('apProductDropdown');
 
             // Filter the options based on the search value
-            for (let i = 1; i < dropdown.options.length; i++) { // Start from 1 to skip the default option
-                const option = dropdown.options[i];
-                option.style.display = option.text.toLowerCase().includes(searchValue) ? 'block' : 'none';
+            for (let i = 1; i < apDropdown.options.length; i++) { // Start from 1 to skip the default option
+                const apOption = apDropdown.options[i];
+                apOption.style.display = apOption.text.toLowerCase().includes(apSearchValue) ? 'block' : 'none';
             }
         }
 
         function fillProductDetailsFromDropdown() {
-            const dropdown = document.getElementById('product-dropdown');
-            const selectedProduct = productsCache.find(p => p.prod_serial_num === dropdown.value);
+            const apDropdown = document.getElementById('apProductDropdown');
+            const apSelectedProduct = apProductsCache.find(p => p.prod_serial_num === apDropdown.value);
 
-            if (selectedProduct) {
+            if (apSelectedProduct) {
                 // Fill in product details
-                document.getElementById('prod_serial_num').value = selectedProduct.prod_serial_num;
-                document.getElementById('images').src = selectedProduct.images;
-                document.getElementById('p_model').value = selectedProduct.p_model;
-                document.getElementById('p_price').value = selectedProduct.p_price;
-                document.getElementById('assessment_p_price').value = selectedProduct.p_price; // Set price in assessment tab as well
+                document.getElementById('apProdSerialNum').value = apSelectedProduct.prod_serial_num;
+                document.getElementById('apImages').src = apSelectedProduct.images;
+                document.getElementById('apPModel').value = apSelectedProduct.p_model;
+                document.getElementById('apPPrice').value = apSelectedProduct.p_price;
+                document.getElementById('apAssessmentPPrice').value = apSelectedProduct.p_price; // Set price in assessment tab as well
             }
         }
 
-        function populateProductDropdown(products) {
-            const dropdown = document.getElementById('product-dropdown');
-            dropdown.innerHTML = ''; // Clear previous options
-            dropdown.innerHTML = '<option value="">Select a Product</option>'; // Reset with a default option
-            products.forEach(product => {
-                const option = document.createElement('option');
-                option.value = product.prod_serial_num; // Use product serial number as value
-                option.innerText = product.p_model; // Display product model
-                dropdown.appendChild(option);
+        function populateProductDropdown(apProducts) {
+            const apDropdown = document.getElementById('apProductDropdown');
+            apDropdown.innerHTML = ''; // Clear previous options
+            apDropdown.innerHTML = '<option value="">Select a Product</option>'; // Reset with a default option
+            apProducts.forEach(product => {
+                const apOption = document.createElement('option');
+                apOption.value = product.prod_serial_num; // Use product serial number as value
+                apOption.innerText = product.p_model; // Display product model
+                apDropdown.appendChild(apOption);
             });
-            dropdown.onchange = fillProductDetailsFromDropdown; // Call fillProductDetails on change
+            apDropdown.onchange = fillProductDetailsFromDropdown; // Call fillProductDetails on change
         }
     </script>
 </head>
 <body>
     <?php include '../body/admin/side-nav.php'; ?>
-    <div class="container">
+    <div class="apContainer">
         <h1>Order Entry</h1>
 
-        <div class="tabs">
-            <button class="tab" onclick="openTab('accountDetails')">Account Details</button>
-            <button class="tab" onclick="openTab('productDetails')">Product Details</button>
-            <button class="tab" onclick="openTab('assessmentTab')">Assessment</button>
+        <div class="apTabs">
+            <button class="apTab" onclick="openTab('apAccountDetails')">Account Details</button>
+            <button class="apTab" onclick="openTab('apProductDetails')">Product Details</button>
+            <button class="apTab" onclick="openTab('apAssessmentTab')">Assessment</button>
         </div>
 
-        <form id="orderForm" method="POST" action="../body/admin/config/upload-order.php"> <!-- Adjust action URL as necessary -->
-            <div id="accountDetails" class="tab-content">
+        <form id="apOrderForm" method="POST" action="../body/admin/config/upload-order.php"> <!-- Adjust action URL as necessary -->
+            <div id="apAccountDetails" class="apTabContent">
                 <div style="display: flex; align-items: center;">
-                    <input type="text" id="search-input" placeholder="Enter account email or serial number">
+                    <input type="text" id="apSearchInput" placeholder="Enter account email or serial number">
                     <button type="button" onclick="searchAccount()">Search Account</button>
                 </div>
 
                 <h2>Account Details</h2>
-                <div class="form-group">
-                    <label for="serial_num">Serial Num:</label>
-                    <input type="text" id="serial_num" name="serial_num" placeholder="Serial Number" readonly>
+                <div class="apFormGroup">
+                    <label for="apSerialNum">Serial Num:</label>
+                    <input type="text" id="apSerialNum" name="serial_num" placeholder="Serial Number" readonly>
                 </div>
-                <div class="form-group">
-                    <label for="name">Full Name:</label>
-                    <input type="text" id="name" name="user_name" placeholder="Full Name" readonly>
+                <div class="apFormGroup">
+                    <label for="apName">Full Name:</label>
+                    <input type="text" id="apName" name="user_name" placeholder="Full Name" readonly>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="Email" readonly>
+                <div class="apFormGroup">
+                    <label for="apEmail">Email:</label>
+                    <input type="email" id="apEmail" name="email" placeholder="Email" readonly>
                 </div>
-                <div class="form-group">
-                    <label for="phone_num">Phone Num:</label>
-                    <input type="text" id="phone_num" name="phone_num" placeholder="Phone Number" readonly>
+                <div class="apFormGroup">
+                    <label for="apPhoneNum">Phone Num:</label>
+                    <input type="text" id="apPhoneNum" name="phone_num" placeholder="Phone Number" readonly>
                 </div>
             </div>
 
-            <div id="productDetails" class="tab-content" style="display:none;">
+            <div id="apProductDetails" class="apTabContent" style="display:none;">
                 <h2>Product Details</h2>
-                <div class="flex-container">
-                    <input type="text" id="product-search-input" placeholder="Search for a Product Model" oninput="searchProduct()">
-                    <select id="product-dropdown" name="product_id">
+                <div class="apFlexContainer">
+                    <input type="text" id="apProductSearchInput" placeholder="Search for a Product Model" oninput="searchProduct()">
+                    <select id="apProductDropdown" name="product_id">
                         <option value="">Select a Product</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="prod_serial_num">Product Serial Num:</label>
-                    <input type="text" id="prod_serial_num" name="prod_serial_num" placeholder="Product Serial Number" readonly>
+                <div class="apFormGroup">
+                    <label for="apProdSerialNum">Product Serial Num:</label>
+                    <input type="text" id="apProdSerialNum" name="prod_serial_num" placeholder="Product Serial Number" readonly>
                 </div>
-                <div class="form-group">
-                    <label for="images">Image Preview:</label>
-                    <img id="images" src="" alt="Product Image" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg viewBox=\'0 0 120 120\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg id=\'SVGRepo_bgCarrier\' stroke-width=\'0\'%3E%3C/g%3E%3Cg id=\'SVGRepo_tracerCarrier\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3C/g%3E%3Cg id=\'SVGRepo_iconCarrier\'%3E%3Crect width=\'120\' height=\'120\' fill=\'%23EFF1F3\'%3E%3C/rect%3E%3Cpath fill-rule=\'evenodd\' clip-rule=\'evenodd\' d=\'M33.2503 38.4816C33.2603 37.0472 34.4199 35.8864 35.8543 35.875H83.1463C84.5848 35.875 85.7503 37.0431 85.7503 38.4816V80.5184C85.7403 81.9528 84.5807 83.1136 83.1463 83.125H35.8543C34.4158 83.1236 33.2503 81.957 33.2503 80.5184V38.4816ZM80.5006 41.1251H38.5006V77.8751L62.8921 53.4783C63.9172 52.4536 65.5788 52.4536 66.6039 53.4783L80.5006 67.4013V41.1251ZM43.75 51.6249C43.75 54.5244 46.1005 56.8749 49 56.8749C51.8995 56.8749 54.25 54.5244 54.25 51.6249C54.25 48.7254 51.8995 46.3749 49 46.3749C46.1005 46.3749 43.75 48.7254 43.75 51.6249Z\' fill=\'%23687787\'%3E%3C/path%3E%3C/g%3E%3C/svg%3E';">            
+                <div class="apFormGroup">
+                    <label for="apImages">Image Preview:</label>
+                    <img id="apImages" src="" alt="Product Image" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg viewBox=\'0 0 120 120\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg id=\'SVGRepo_bgCarrier\' stroke-width=\'0\'%3E%3C/g%3E%3Cg id=\'SVGRepo_tracerCarrier\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3C/g%3E%3Cg id=\'SVGRepo_iconCarrier\'%3E%3Crect width=\'120\' height=\'120\' fill=\'%23EFF1F3\'%3E%3C/rect%3E%3Cpath fill-rule=\'evenodd\' clip-rule=\'evenodd\' d=\'M33.2503 38.4816C33.2603 37.0472 34.4199 35.8864 35.8543 35.875H83.1463C84.5848 35.875 85.7503 37.0431 85.7503 38.4816V80.5184C85.7403 81.9528 84.5807 83.1136 83.1463 83.125H35.8543C34.4158 83.1236 33.2503 81.957 33.2503 80.5184V38.4816ZM80.5006 41.1251H38.5006V77.8751L62.8921 53.4783C63.9172 52.4536 65.5788 52.4536 66.6039 53.4783L80.5006 67.4013V41.1251ZM43.75 51.6249C43.75 54.5244 46.1005 56.8749 49 56.8749C51.8995 56.8749 54.25 54.5244 54.25 51.6249C54.25 48.7254 51.8995 46.3749 49 46.3749C46.1005 46.3749 43.75 48.7254 43.75 51.6249ZM49 55.3749C47.4477 55.3749 46.25 54.1772 46.25 52.6249C46.25 51.0726 47.4477 49.8749 49 49.8749C50.5523 49.8749 51.75 51.0726 51.75 52.6249C51.75 54.1772 50.5523 55.3749 49 55.3749Z\' fill=\'%236A6A6A\'%3E%3C/path%3E%3C/g%3E%3C/svg%3E';">
                 </div>
-                <div class="form-group">
-                    <label for="p_model">Product Model:</label>
-                    <input type="text" id="p_model" name="p_model" placeholder="Product Model" readonly>
+                <div class="apFormGroup">
+                    <label for="apPModel">Product Model:</label>
+                    <input type="text" id="apPModel" name="product_model" placeholder="Product Model" readonly>
                 </div>
-                <div class="form-group">
-                    <label for="p_price">Product Price:</label>
-                    <input type="text" id="p_price" name="product_price" placeholder="Product Price" readonly>
+                <div class="apFormGroup">
+                    <label for="apPPrice">Price:</label>
+                    <input type="text" id="apPPrice" name="price" placeholder="Price" readonly>
                 </div>
             </div>
 
-            <div id="assessmentTab" class="tab-content" style="display:none;">
+            <div id="apAssessmentTab" class="apTabContent" style="display:none;">
                 <h2>Assessment</h2>
-                
-                <div class="form-group">
-                    <label for="assessment_p_price">Assessment Price:</label>
-                    <input type="text" id="assessment_p_price" name="assessment_price" placeholder="Assessment Price" readonly>
+                <div class="apFormGroup">
+                    <label for="apAssessmentPPrice">Assessment Price:</label>
+                    <input type="text" id="apAssessmentPPrice" name="assessment_price" placeholder="Assessment Price" readonly>
                 </div>
-
-                <div class="form-group">
-                    <label>Payment Option:</label>
-                    <label>
-                        <input type="radio" name="payment_option" value="full" onclick="updatePrice()"> Full Payment
-                    </label>
-                    <label>
-                        <input type="radio" name="payment_option" value="installment" onclick="updatePrice()"> Installment
-                    </label>
-                </div>
-
-                <div class="form-group" id="installment-details" style="display:none;">
-                    <label for="installment_months">Number of Months:</label>
-                    <input type="number" id="installment_months" name="installment_months" placeholder="Enter number of months" min="1" onchange="updatePrice()">
-                </div>
-
-                <div class="form-group">
-                    <label for="final_price">Final Price:</label>
-                    <input type="text" id="final_price" name="due_to_be_paid" placeholder="Final Price" readonly>
-                </div>
-
-                <input type="hidden" id="user_id" name="user_id" value="<!-- Your user ID here -->">
-                <input type="hidden" id="user_name" name="user_name" value="<!-- Your user name here -->">
+                <!-- Add other assessment-related fields here -->
             </div>
 
             <button type="submit">Submit Order</button>
@@ -199,68 +176,17 @@ include '../body/admin/config/get-info.php'; // Adjust the path to your database
 
     <script>
         function openTab(tabName) {
-            const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => {
-                tab.style.display = 'none'; // Hide all tabs
-            });
-            document.getElementById(tabName).style.display = 'block'; // Show the selected tab
-        }
-
-        document.getElementById('orderForm').onsubmit = function(event) {
-            event.preventDefault(); // Prevent the default form submission
-
-            // Gather data from the form
-            const formData = new FormData(this);
-
-            // Send form data to the server
-            fetch('', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Order submitted successfully!');
-                    // Optionally, you could reset the form or redirect
-                    this.reset();
-                } else {
-                    alert('Failed to submit order: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error submitting form:', error);
-                alert('An error occurred. Please try again.');
-            });
-        };
-        function updatePrice() {
-            const basePrice = parseFloat(document.getElementById('p_price').value) || 0; // Get the base price from the product details
-            const paymentOption = document.querySelector('input[name="payment_option"]:checked');
-            const finalPriceField = document.getElementById('final_price');
-            const installmentMonthsField = document.getElementById('installment_months');
-            
-            if (paymentOption) {
-                if (paymentOption.value === 'full') {
-                    finalPriceField.value = basePrice.toFixed(2); // Set final price to base price
-                    installmentMonthsField.value = ''; // Clear the installment months input
-                    document.getElementById('installment-details').style.display = 'none'; // Hide installment details
-                } else if (paymentOption.value === 'installment') {
-                    document.getElementById('installment-details').style.display = 'block'; // Show installment details
-                    const months = parseInt(installmentMonthsField.value) || 0;
-                    if (months > 0) {
-                        const installmentPrice = basePrice * Math.pow(1.02, months); // Calculate price with 2% increase per month
-                        finalPriceField.value = installmentPrice.toFixed(2.79); // Set final price based on installment
-                    } else {
-                        finalPriceField.value = ''; // Clear final price if no months are selected
-                    }
-                }
+            const apTabs = document.getElementsByClassName('apTabContent');
+            for (let i = 0; i < apTabs.length; i++) {
+                apTabs[i].style.display = 'none'; // Hide all tabs
             }
+            document.getElementById(tabName).style.display = 'block'; // Show selected tab
         }
     </script>
 </body>
 </html>
 <style>
-    /* General styles */
-.container {
+    .apContainer {
     max-width: 800px;
     margin: auto;
     background: #fff;
@@ -289,7 +215,7 @@ form {
 }
 
 /* Flex styles for label and input */
-.form-group {
+.apFormGroup {
     display: flex;
     align-items: center;
     padding-top: 10px;
@@ -320,21 +246,20 @@ input[readonly] {
 }
 
 /* Flex styles for search bar and dropdown */
-.flex-container {
+.apFlexContainer {
     display: flex;
     align-items: center; /* Align items vertically centered */
     margin-bottom: 15px; /* Space below the container */
 }
 
-.flex-container input[type="text"] {
+.apFlexContainer input[type="text"] {
     flex: 1; /* Allow the search input to take remaining space */
     margin-right: -10px; /* Space between search input and dropdown */
 }
 
-.flex-container select {
+.apFlexContainer select {
     flex: 0 0 150px; /* Fixed width for the dropdown */
 }
-
 
 /* Buttons */
 button {

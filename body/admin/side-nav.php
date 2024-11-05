@@ -8,111 +8,143 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            display: flex; /* Use flex to align navbar and content */
+            padding: 0; 
+            display: flex;
         }
 
-        /* Styling for the fixed navigation bar */
-        .right-navbar {
-            width: 250px; /* Width of the side navigation */
-            background-color: #333; /* Dark gray background */
-            height: 100vh; /* Full height */
-            padding: 20px 0; /* Padding */
-            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); /* Shadow for depth */
-            position: fixed; /* Fixed position */
-            top: 0; /* Align to the top */
-            right: 0; /* Align to the right */
-            overflow-y: auto; /* Scroll if content overflows */
+        .left-navbar {
+            width: 150px;
+            background-color: #d1dae1;
+            height: 100vh;
+            padding: 10px 0;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
             z-index: 10000;
+            text-align: center;
         }
 
-        .right-navbar ul {
-            list-style-type: none; /* Remove default list style */
-            padding: 0; /* Remove padding */
+        .left-navbar .logo {
+            width: 50%;
+            height: auto;
+            margin-bottom: 15px;
         }
 
-        .right-navbar li {
-            margin: 15px 0; /* Margin between list items */
+        .left-navbar hr {
+            border: none;
+            height: 1px;
+            background-color: #01344C;
+            margin: 0;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 2px;
         }
 
-        .right-navbar a {
-            text-decoration: none; /* Remove underline from links */
-            color: #f0f0f0; /* Light gray text color */
-            padding: 10px 15px; /* Padding for better click area */
-            display: block; /* Make link fill the whole list item */
-            transition: background-color 0.3s; /* Smooth transition for hover effect */
+        .left-navbar ul {
+            list-style-type: none;
+            padding: 0;
         }
 
-        .right-navbar a:hover {
-            background-color: #555; /* Darker gray on hover */
-            border-radius: 5px; /* Slightly rounded corners on hover */
+        .left-navbar li {
+            margin: 10px 0;
+            border-radius: 5px;
         }
 
-        /* Modal styles */
+        .left-navbar a {
+            text-decoration: none;
+            color: #01344C;
+            padding: 8px 10px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            transition: background-color 0.3s, color 0.3s;
+            white-space: nowrap;
+        }
+
+        .left-navbar a:hover {
+            background-color: #BDDADB;
+            color: #01344C;
+            border-radius: 5px;
+        }
+
+        .left-navbar img {
+            width: 32px;
+            height: auto;
+            margin-right: 10px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
         .custom-logout-modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1000; /* Sit on top */
+            display: none;
+            position: fixed;
+            z-index: 1000;
             left: 0;
             top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0, 0, 0, 0.5); /* Slightly darker background with transparency */
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
         .custom-modal-content {
-            background-color: #e0e0e0; /* Light gray background for modal */
-            margin: 15% auto; /* 15% from the top and centered */
-            padding: 20px; /* Padding inside the modal */
-            border: 1px solid #bbb; /* Light gray border */
-            width: 300px; /* Width of the modal */
-            border-radius: 8px; /* Rounded corners */
-            color: #333; /* Dark gray text color for better contrast */
+            background-color: #e0e0e0;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #bbb;
+            width: 300px;
+            border-radius: 8px;
+            color: #333;
         }
 
-        /* Modal button styles */
         .modal-buttons {
-            display: flex; /* Flexbox for buttons */
-            justify-content: space-between; /* Space between buttons */
+            display: flex;
+            justify-content: space-between;
         }
 
         #confirm-logout-btn {
-            background-color: #7a7a7a; /* Gray background for confirm */
-            color: white; /* White text */
-            border: none; /* Remove border */
-            padding: 10px 15px; /* Padding */
-            border-radius: 5px; /* Rounded corners */
-            cursor: pointer; /* Pointer cursor */
+            background-color: #7a7a7a;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
         #confirm-logout-btn:hover {
-            background-color: #555; /* Darker gray on hover */
+            background-color: #555;
         }
 
         .cancel-logout-btn {
-            background-color: #9e9e9e; /* Light gray background for cancel */
-            color: white; /* White text */
-            border: none; /* Remove border */
-            padding: 10px 15px; /* Padding */
-            border-radius: 5px; /* Rounded corners */
-            cursor: pointer; /* Pointer cursor */
+            background-color: #9e9e9e;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
         .cancel-logout-btn:hover {
-            background-color: #777; /* Darker gray on hover */
+            background-color: #777;
         }
     </style>
 </head>
 <body>
-    <nav class="right-navbar">
+    <nav class="left-navbar">
+        <!-- Logo section -->
+        <img src="../Images/Logo-dark.png" alt="Logo" class="logo">
+        <hr>
+
         <ul>
-            <li><a href="../Admin/Dashboard.php">Dashboard</a></li>
-            <li><a href="../Admin/order_entry.php">Create new Order</a></li>
-            <li><a href="../Admin/Ledger.php">Ledger</a></li>
-            <li><a href="../Admin/Account_Manager.php">User Account Data</a></li>
-            <li><a href="../Manage_Ticket/Recieved_Ticket.php">Tickets</a></li>
-            <li><a href="#" id="custom-logout-button">Log Out</a></li>
+            <li><a href="../Admin/Dashboard.php"><img src="../SVGrepo/Dashboard.svg" alt="Dashboard">Dashboard</a></li>
+            <li><a href="../Admin/order_entry.php"><img src="../SVGrepo/orderEntry.svg" alt="New Order">New Order</a></li>
+            <li><a href="../Admin/Ledger.php"><img src="../SVGrepo/Ledger.svg" alt="Ledger">Ledger</a></li>
+            <li><a href="../Admin/Account_Manager.php"><img src="../SVGrepo/userAccountData.svg" alt="Users">Users</a></li>
+            <li><a href="../Manage_Ticket/Recieved_Ticket.php"><img src="../SVGrepo/Tickets.svg" alt="Tickets">Tickets</a></li>
+            <li><a href="#" id="custom-logout-button"><img src="../SVGrepo/Logout.svg" alt="Log Out">Log Out</a></li>
         </ul>
     </nav>
 

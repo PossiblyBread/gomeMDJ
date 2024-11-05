@@ -1,21 +1,21 @@
 <?php
-    include "../db_conn.php";
-    // Fetch IT_Users
-    session_start();
-    $email = $_SESSION['email'];
-    
-    $it_support_sql = "SELECT id, first_name, last_name, email FROM `accounts` WHERE role = 'Admin'";
-    $it_support_result = mysqli_query($conn, $it_support_sql);
-    $it_support_users = [];
-    while ($row = mysqli_fetch_assoc($it_support_result)) {
-        $it_support_users[] = $row;
-    }
-    $it_support_query = "SELECT a.first_name, a.last_name, a.email, 
-                        (SELECT COUNT(*) FROM tickets t WHERE t.assigned_to = a.email) 
-                            AS ticket_count 
-                         FROM accounts a 
-                         WHERE a.role = 'IT_Support'";
-    $it_support_result = mysqli_query($conn, $it_support_query);
+include "../db_conn.php";
+// Fetch IT_Users
+session_start();
+$email = $_SESSION['email'];
+
+$it_support_sql = "SELECT id, first_name, last_name, email FROM `accounts` WHERE role = 'Admin'";
+$it_support_result = mysqli_query($conn, $it_support_sql);
+$it_support_users = [];
+while ($row = mysqli_fetch_assoc($it_support_result)) {
+    $it_support_users[] = $row;
+}
+$it_support_query = "SELECT a.first_name, a.last_name, a.email, 
+                    (SELECT COUNT(*) FROM tickets t WHERE t.assigned_to = a.email) 
+                        AS ticket_count 
+                     FROM accounts a 
+                     WHERE a.role = 'IT_Support'";
+$it_support_result = mysqli_query($conn, $it_support_query);
 ?>
 <!-- admin side to distribute tickets -->
 <!DOCTYPE html>
@@ -140,6 +140,7 @@
     .main-content {
         display: flex;
         padding: 20px;
+        margin-top: -60px; /* Move up by 60px */
     }
 
     .ticket-table-content {

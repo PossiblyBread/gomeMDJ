@@ -3,150 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Logout Modal Example</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0; /* Remove default margin */
-            padding: 0; /* Remove default padding */
+            margin: 0;
+            padding: 0; 
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Styling for the fixed navigation bar */
+        /* Top navigation styles */
         .top-navbar {
-            display: flex; /* Use flex for horizontal layout */
-            justify-content: flex-start; /* Align items to the left */
-            background-color: #333; /* Dark gray background */
-            padding: 25px 15px; /* Padding for the navbar */
-            position: fixed; /* Fixed position at the top */
-            top: 0; /* Align to the top */
-            width: 100%; /* Full width */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Shadow for depth */
-            z-index: 1000; /* Sit on top of other elements */
+            display: flex;
+            align-items: center;
+            background-color: #d1dae1;
+            height: 60px;
+            padding: 0 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10000;
+        }
+
+        .top-navbar .logo {
+            width: 50px;
+            height: auto;
+            margin-right: 20px;
         }
 
         .top-navbar ul {
-            list-style-type: none; /* Remove default list style */
-            padding: 0; /* Remove padding */
-            margin: 0; /* Remove margin */
-            display: flex; /* Flexbox for horizontal alignment */
+            list-style-type: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
         }
 
         .top-navbar li {
-            margin: 0 10px; /* Margin between list items */
+            margin: 0 15px;
         }
 
         .top-navbar a {
-            text-decoration: none; /* Remove underline from links */
-            color: #f0f0f0; /* Light gray text color */
-            padding: 10px 15px; /* Padding for better click area */
-            transition: background-color 0.3s; /* Smooth transition for hover effect */
+            text-decoration: none;
+            color: #01344C;
+            padding: 8px 10px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            transition: background-color 0.3s, color 0.3s;
+            white-space: nowrap;
         }
 
         .top-navbar a:hover {
-            background-color: #666; /* Darker gray on hover */
-            border-radius: 5px; /* Slightly rounded corners on hover */
+            background-color: #BDDADB;
+            color: #01344C;
+            border-radius: 5px;
         }
 
-        /* Modal styles */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1000; /* Sit on top */
+        .top-navbar img {
+            width: 32px;
+            height: auto;
+            margin-right: 5px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        .custom-logout-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
             left: 0;
             top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0, 0, 0, 0.5); /* Slightly darker background with transparency */
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
-        .modal-content {
-            background-color: #e0e0e0; /* Light gray background for modal */
-            margin: 15% auto; /* 15% from the top and centered */
-            padding: 20px; /* Padding inside the modal */
-            border: 1px solid #bbb; /* Light gray border */
-            width: 300px; /* Width of the modal */
-            border-radius: 8px; /* Rounded corners */
-            color: #333; /* Dark gray text color for better contrast */
+        .custom-modal-content {
+            background-color: #e0e0e0;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #bbb;
+            width: 300px;
+            border-radius: 8px;
+            color: #333;
         }
 
-        .close-btn {
-            color: #666; /* Medium gray */
-            float: right; /* Right align */
-            font-size: 28px; /* Font size */
-            font-weight: bold; /* Bold text */
-        }
-
-        .close-btn:hover,
-        .close-btn:focus {
-            color: #444; /* Darker gray on hover */
-            text-decoration: none; /* No underline */
-            cursor: pointer; /* Pointer cursor */
-        }
-
-        /* Modal button styles */
         .modal-buttons {
-            display: flex; /* Flexbox for buttons */
-            justify-content: space-between; /* Space between buttons */
+            display: flex;
+            justify-content: space-between;
         }
 
-        #confirm-logout {
-            background-color: #7a7a7a; /* Gray background for confirm */
-            color: white; /* White text */
-            border: none; /* Remove border */
-            padding: 10px 15px; /* Padding */
-            border-radius: 5px; /* Rounded corners */
-            cursor: pointer; /* Pointer cursor */
+        #confirm-logout-btn, .cancel-logout-btn {
+            background-color: #7a7a7a;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
-        #confirm-logout:hover {
-            background-color: #555; /* Darker gray on hover */
+        #confirm-logout-btn:hover, .cancel-logout-btn:hover {
+            background-color: #555;
         }
 
-        .cancel-btn {
-            background-color: #9e9e9e; /* Light gray background for cancel */
-            color: white; /* White text */
-            border: none; /* Remove border */
-            padding: 10px 15px; /* Padding */
-            border-radius: 5px; /* Rounded corners */
-            cursor: pointer; /* Pointer cursor */
+        .cancel-logout-btn {
+            background-color: #9e9e9e;
         }
 
-        .cancel-btn:hover {
-            background-color: #777; /* Darker gray on hover */
+        .cancel-logout-btn:hover {
+            background-color: #777;
         }
 
-        /* Additional styles for body content */
+        /* Adding a top margin for content below the navbar */
         .content {
-            padding-top: 70px; /* Space for the fixed navbar */
-            width: 80%; /* Set the width of the content */
-            max-width: 1200px; /* Max width for larger screens */
-            margin: 0 auto; /* Center the content */
+            margin-top: 70px; /* Adjust for navbar height */
+            padding: 20px;
+            flex: 1; /* Allow content to fill remaining space */
         }
     </style>
 </head>
 <body>
     <nav class="top-navbar">
+        <!-- Logo section -->
+        <img src="../Images/Logo-dark.png" alt="Logo" class="logo">
         <ul>
-            <li><a href="../IT_Management/Dashboard.php">Dashboard</a></li>
-            <li><a href="../IT_Management/Ledger.php">Ledger</a></li>
-            <li><a href="../IT_Management/upload_product.php">Add new Product</a></li>
-            <li><a href="../IT_Management/order_entry.php">Create new Order</a></li>
-            <li><a href="../IT_Management/Account_Manager.php">User Account Data</a></li>
-            <li><a href="../Manage_Ticket/ticket_support.php">Tickets</a></li>
-            <li><a href="#" id="logout-button">Log Out</a></li>
+            <li><a href="../Admin/Dashboard.php"><img src="../SVGrepo/Dashboard.svg" alt="Dashboard">Dashboard</a></li>
+            <li><a href="../Admin/order_entry.php"><img src="../SVGrepo/orderEntry.svg" alt="New Order">New Order</a></li>
+            <li><a href="../Admin/Ledger.php"><img src="../SVGrepo/Ledger.svg" alt="Ledger">Ledger</a></li>
+            <li><a href="../Admin/Account_Manager.php"><img src="../SVGrepo/userAccountData.svg" alt="Users">Users</a></li>
+            <li><a href="../Manage_Ticket/ticket_support.php"><img src="../SVGrepo/Tickets.svg" alt="Tickets">Tickets</a></li>
+            <li><a href="#" id="custom-logout-button"><img src="../SVGrepo/Logout.svg" alt="Log Out">Log Out</a></li>
         </ul>
     </nav>
-    <br><br><br>
-    <div id="logout-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" id="close-logout-modal">&times;</span>
+
+    <div class="content">
+        <!-- Main content goes here -->
+    </div>
+
+    <div id="custom-logout-modal" class="custom-logout-modal">
+        <div class="custom-modal-content">
             <h2>Log Out</h2>
             <p>Are you sure you want to log out?</p>
-            <form id="logout-form" action="../logout.php" method="post">
+            <form id="custom-logout-form" action="../logout.php" method="post">
                 <div class="modal-buttons">
-                    <button type="submit" id="confirm-logout">Confirm</button>
-                    <button type="button" class="cancel-btn" id="cancel-logout">Cancel</button>
+                    <button type="submit" id="confirm-logout-btn">Confirm</button>
+                    <button type="button" class="cancel-logout-btn" id="custom-cancel-logout">Cancel</button>
                 </div>
             </form>
         </div>
@@ -154,30 +159,25 @@
 
     <script>
         // Get modal element
-        var adminLogoutModal = document.getElementById('logout-modal');
-        var adminLogoutButton = document.getElementById('logout-button');
-        var adminCloseModal = document.getElementById('close-logout-modal');
-        var adminCancelLogout = document.getElementById('cancel-logout');
+        var customLogoutModal = document.getElementById('custom-logout-modal');
+        var customLogoutButton = document.getElementById('custom-logout-button');
+        var customCancelLogout = document.getElementById('custom-cancel-logout');
 
         // Show the modal when logout button is clicked
-        adminLogoutButton.onclick = function() {
-            adminLogoutModal.style.display = 'block';
-        }
-
-        // Close the modal when the close button is clicked
-        adminCloseModal.onclick = function() {
-            adminLogoutModal.style.display = 'none';
+        customLogoutButton.onclick = function(event) {
+            event.preventDefault(); // Prevent the default anchor click behavior
+            customLogoutModal.style.display = 'block';
         }
 
         // Close the modal when the cancel button is clicked
-        adminCancelLogout.onclick = function() {
-            adminLogoutModal.style.display = 'none';
+        customCancelLogout.onclick = function() {
+            customLogoutModal.style.display = 'none';
         }
 
         // Close the modal when clicking outside of it
         window.onclick = function(event) {
-            if (event.target == adminLogoutModal) {
-                adminLogoutModal.style.display = 'none';
+            if (event.target === customLogoutModal) {
+                customLogoutModal.style.display = 'none';
             }
         }
     </script>

@@ -4,26 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Promos Carousel</title>
-   <style>
-         /* General container styling */
-         .dash-cont-container {
+    <style>
+        /* General container styling */
+        .dash-cont-container {
             display: flex;
             flex-direction: column;
             position: absolute;
             bottom: 0;
-            left: 0;
-            width: calc(100% - 250px); 
+            left: 150px; /* Offset the container 150px from the left */
+            width: calc(100% - 150px); /* 100% width minus the 150px offset */
             height: 90%;
-            margin-right: 250px; 
-            box-sizing: border-box; 
+            box-sizing: border-box;
         }
+
+        /* Box styling for sections */
+        .section-box {
+            background-color: #6e89a0; /* White background */
+            border-radius: 10px; /* Rounded edges */
+            padding: 20px; /* Padding inside the box */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+            margin-bottom: 20px; /* Space between boxes */
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
         /* Promos section styling */
         .promos-section {
-            background-color: #7d7d7d; /* Dark gray */
+            background-color: #f1f6fa; 
             flex: 0 0 50%; 
             display: flex;
             flex-direction: column;
-            padding: 20px;
             color: white;
             font-size: 1.5em;
             box-sizing: border-box;
@@ -46,46 +56,64 @@
             display: flex;
             flex-direction: column;
             flex: 2;
-            border-right: 2px solid #ccc; 
         }
 
+        /* Left top section styling */
         .dash-cont-left-top {
-            padding: 20px;
-            box-sizing: border-box;
-            background-color: #b0b0b0; 
             flex: 0 0 auto;
+            background-color: #f1f6fa; /* Set background color */
         }
 
+        /* Left bottom section styling */
         .dash-cont-left-bottom {
-            background-color: #d9d9d9; 
             overflow-y: auto; 
             flex: 1; 
             padding: 20px;
             box-sizing: border-box;
+            background-color: #f1f6fa; /* Set background color */
         }
 
         /* Product view section styling */
         .view-product-section {
+            background-color: #f1f6fa; 
             flex: 1;
-            background-color: #a6a6a6; /* Gray */
-            padding: 20px;
+            padding: 20px; /* Padding for this section */
             box-sizing: border-box;
         }
 
         /* Table styling */
         table {
             width: 100%; /* Full width of the page */
-            border-collapse: collapse; /* Merge borders */
+            border-collapse: separate; /* Separate borders to allow rounding */
+            border-spacing: 0; /* Remove spacing between cells */
         }
 
         th, td {
             border: 1px solid #000; 
             padding: 8px;
-            text-align: left;
+            text-align: center; /* Center the content in table cells */
+            border-radius: 10px; /* Rounded corners for table cells */
+        }
+
+        /* Ensure header cells have rounded corners */
+        th:first-child {
+            border-top-left-radius: 10px; /* Top left corner */
+        }
+
+        th:last-child {
+            border-top-right-radius: 10px; /* Top right corner */
+        }
+
+        tbody tr:last-child td:first-child {
+            border-bottom-left-radius: 10px; /* Bottom left corner */
+        }
+
+        tbody tr:last-child td:last-child {
+            border-bottom-right-radius: 10px; /* Bottom right corner */
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: #f2f2f2; /* Background color for header */
         }
 
         /* Image styling */
@@ -121,20 +149,21 @@
         #confirm-delete-button {
             display: none; /* Initially hide the confirm delete button */
         }
+
     </style>
 </head>
 <body>
     <div class="dash-cont-container">
-        <section class="promos-section">
+        <section class="promos-section section-box">
             <?php include 'more/promos.php'; ?>
         </section>
 
-        <section class="dash-cont-bottom-section">
+        <section class="dash-cont-bottom-section section-box">
             <section class="dash-cont-left-section">
-                <section class="dash-cont-left-top">
+                <section class="dash-cont-left-top section-box">
                     <?php include 'more/add-product.php'; ?>
                 </section>
-                <section class="dash-cont-left-bottom">
+                <section class="dash-cont-left-bottom section-box">
                     <h3>Product List</h3>
 
                     <table>
@@ -186,7 +215,7 @@
                 </section>
             </section>
 
-            <section class="view-product-section" id="viewProductSection">
+            <section class="view-product-section section-box" id="viewProductSection">
                 <!-- Loaded content will show here -->
             </section>
         </section>
