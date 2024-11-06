@@ -1,7 +1,0 @@
-<!-- to prevent 301 injection -->
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteCond %{HTTP:CF-Connecting-IP} ^$ [OR]
-    RewriteCond %{HTTP:X-Forwarded-For} ^$
-    RewriteRule ^ - [F,L]
-</IfModule>
