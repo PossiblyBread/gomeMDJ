@@ -1,0 +1,357 @@
+/* General styles */
+/* handles the mobile design format */
+/* handles the main content design */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+}
+
+/* Top navigation || Header */ 
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #1b212f;
+    color: white;
+}
+
+.top-nav h1 {
+    font-size: 24px;
+}
+
+.top-nav-btn {
+    display: flex;
+    gap: 15px;
+}
+
+.top-nav-btn a {
+    color: white;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+main {
+    padding: 40px;
+    background: linear-gradient(to top right, #a0d6e0 30%, #ecf6fe 70%); /* Stronger gradient */
+}
+
+
+.hero {
+    text-align: center;
+    padding: 50px;
+    background-color: #777;
+    color: white;
+    border-radius: 10px;
+}
+
+.hero h2 {
+    font-size: 36px;
+}
+
+.hero p {
+    font-size: 18px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.learn-more-btn {
+    padding: 10px 20px;
+    background-color: white;
+    color: #777;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.learn-more-btn:hover {
+    background-color: #555;
+    color: white;
+}
+
+/* Profile Icon */
+.profile-icon {
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Could be placed on a separate file ¯\_(ツ)_/¯ */
+/*Styles for Register and Login Form */
+/* Modal Background Overlay */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+}
+
+/* Modal Content Box */
+.login-modal-content {
+    background: linear-gradient(135deg, #d0e7ff, #e6edf3); /* Light blue to light gray gradient */
+    margin: 100px auto; /* Center vertically */
+    padding: 30px;
+    border-radius: 12px;
+    width: 350px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    color: #333; /* General text color */
+}
+
+/* Header Styling */
+.login-modal-content h2 {
+    font-size: 24px;
+    color: #4a4a4a; /* Slightly darker for contrast */
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Close Button */
+.close {
+    color: #777;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #555;
+}
+
+/* Login Form Styling */
+#login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#login-form label {
+    color: #666; /* Lighter gray for labels */
+    font-size: 15px;
+}
+
+/* Input Field Styling */
+#login-form input[type="text"],
+#login-form input[type="password"] {
+    padding: 10px;
+    border: 3px solid #436776; /* Soft gray border */
+    border-radius: 5px;
+    font-size: 15px;
+    color: #333;
+    background-color: #f7fafc; /* Light background for contrast */
+    box-sizing: border-box;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+#login-form input:focus {
+    border-color: #8cb4e7; /* Light blue on focus */
+    background-color: #eaf3fc; /* Slightly tinted blue */
+    outline: none;
+}
+
+/* Login Button */
+#login-form button[type="submit"] {
+    padding: 12px;
+    background-color: #6d9ad2; /* Darker blue button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#login-form button[type="submit"]:hover {
+    background-color: #5178aa; /* Darker blue on hover */
+}
+
+/* Register Prompt */
+.register-prompt {
+    text-align: center;
+    margin-top: 15px;
+    color: #666; /* Light gray text */
+}
+
+.register-prompt p {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+/* Register Prompt Button */
+.register-prompt button {
+    padding: 8px 16px;
+    background-color: #00254a; /* Darker blue-gray button */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.register-prompt button:hover {
+    background-color: #738da9; /* Darker gray-blue on hover */
+}
+/* register button to modal part */
+/* Heading Styles for Register Form */
+/* Modal Overlay */
+.register-modal-content h2 {
+    margin: 10px 0; /* Add margin above and below the heading */
+    padding: 0; /* Optional: reset padding if any */
+    font-size: 24px; /* Adjust font size if needed */
+    color: #333; /* Set a color for the heading */
+    text-align: center; /* Center align the heading text */
+}
+/* Register Modal Styles */
+#register-modal {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 10; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.register-modal-content {
+    background-color: white;
+    margin: 110px auto; /* Centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px; /* Could be more or less, depending on screen size */
+    border-radius: 15px;
+}
+/* Close Button for mobile */
+.register-close {
+    color: #aaa;
+    float: right;
+    font-size: 17px;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.register-close:hover,
+.register-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Register Form Styles */
+#register-form {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+}
+#register-form label {
+    margin: 10px 0 5px; /* Spacing for labels */
+    font-size: 14px; /* Font size for labels */
+    color: #333; /* Dark gray text for labels */
+}
+
+#register-form input[type="text"],
+#register-form input[type="tel"],
+#register-form input[type="email"],
+#register-form input[type="password"] {
+    padding: 8px; /* Padding for input */
+    margin-bottom: 15px; /* Spacing between input fields */
+    border: 1px solid #ccc; /* Light gray border */
+    width: 100%; /* Full width */
+}
+
+/* Button Styles */
+#register-form button {
+    padding: 10px;
+    background-color: #444; /* Dark background for button */
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px; /* Space above button */
+}
+
+#register-form button:hover {
+    background-color: #666; /* Darker gray on hover */
+}
+
+/* Link Styles */
+#register-form a {
+    color: #3b3e3f; /* Blue link color */
+    text-decoration: none;
+}
+
+#register-form a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+/* End for Register and Login Form */
+
+/* Overlay for when the sidebar is open */
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000; /* Behind the sidebar */
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .top-nav-btn {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .features {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .feature-item {
+        width: 90%;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+    }
+}
+
