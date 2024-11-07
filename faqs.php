@@ -44,7 +44,7 @@
             </div>
             <div class="faq-item">
                 <h4>7. What’s the cost of an e-bike in the Philippines?</h4>
-                <p>E-bike prices vary based on model, features, and brand. Typically, e-bikes in the Philippines range from PHP 20,000 to PHP 70,000 or more. Check our <a href="#">e-bike catalog page</a> for the latest pricing.</p>
+                <p>E-bike prices vary based on model, features, and brand. Typically, e-bikes in the Philippines range from PHP 20,000 to PHP 70,000 or more. Check our <a href="store.php">products</a> page for the latest pricing.</p>
             </div>
             <div class="faq-item">
                 <h4>8. Do you offer financing or installment plans?</h4>
@@ -55,28 +55,12 @@
                 <p>To purchase, select your preferred model from our catalog, add it to your cart, and proceed to checkout. We offer various payment options, including credit card, debit card, and bank transfer.</p>
             </div>
             <div class="faq-item">
-                <h4>10. Do you offer nationwide shipping?</h4>
-                <p>Yes, we offer nationwide shipping across the Philippines. Shipping fees and delivery times depend on your location. Our logistics team will keep you updated throughout the process.</p>
-            </div>
-            <div class="faq-item">
-                <h4>11. What is the warranty policy on e-bikes?</h4>
-                <p>We offer a standard warranty on all e-bikes covering the motor, battery, and electrical components. The duration of the warranty depends on the model. Please refer to our <a href="#">Warranty Policy page</a> for more details.</p>
-            </div>
-            <div class="faq-item">
-                <h4>12. Do you offer repairs and maintenance services?</h4>
+                <h4>10. Do you offer repairs and maintenance services?</h4>
                 <p>Yes, we have authorized service centers and technicians across the Philippines to assist with repairs and maintenance. Contact our support team to schedule a service.</p>
             </div>
             <div class="faq-item">
-                <h4>13. Can I test-ride an e-bike before buying?</h4>
+                <h4>11. Can I test-ride an e-bike before buying?</h4>
                 <p>Yes, test rides are available at select showrooms. Please check with our customer service to find a test-ride location near you.</p>
-            </div>
-            <div class="faq-item">
-                <h4>14. How do I maintain my e-bike?</h4>
-                <p>Basic maintenance includes keeping the battery charged, cleaning the bike regularly, checking tire pressure, and scheduling periodic check-ups at a service center. Refer to our <a href="#">Maintenance Tips page</a> for a complete guide.</p>
-            </div>
-            <div class="faq-item">
-                <h4>15. Who can I contact for more questions?</h4>
-                <p>For further questions, please reach out to our customer service team via our <a href="#">Contact Us page</a> or call us at <a href="tel:+1234567890">+123 456 7890</a>. We're here to help!</p>
             </div>
         </div>
     </main>
@@ -86,3 +70,51 @@
     <script src="js/script.js"></script>
 </body>
 </html>
+<style>
+/* Style for the FAQ links with permanent underline and glowing effect */
+.faq-item a {
+    text-decoration: underline; /* Always show the underline */
+    color: #007BFF; /* Default color for the link */
+    font-weight: bold; /* Make it bold for emphasis */
+    position: relative; /* For positioning the glowing effect */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Smooth transitions */
+}
+
+/* Glowing effect on hover */
+.faq-item a:hover {
+    color: #00b3b3; /* Change color on hover (can be adjusted) */
+    text-shadow: 0 0 8px #00b3b3, 0 0 15px #00b3b3, 0 0 25px #00b3b3; /* Glowing effect */
+}
+
+/* Optional: You can modify the underline color and thickness on hover if desired */
+.faq-item a:hover {
+    text-decoration-color: #00b3b3; /* Change underline color on hover */
+    text-decoration-thickness: 2px; /* Thicker underline on hover */
+}
+
+/* If you want to add a custom animated underline, you can use the following */
+.faq-item a:after {
+    content: ''; /* Creates the underline */
+    position: absolute;
+    bottom: -2px; /* Adjusts the distance of the underline from the text */
+    left: 0;
+    width: 100%;
+    height: 2px; /* Thickness of the underline */
+    background-color: #00b3b3; /* Underline color */
+    transform: scaleX(0); /* Initially no underline */
+    transform-origin: bottom right; /* Start the animation from right */
+    transition: transform 0.3s ease-out; /* Animate the underline */
+}
+
+.faq-item a:hover:after {
+    transform: scaleX(1); /* Underline expands on hover */
+    transform-origin: bottom left; /* Animation direction */
+}
+
+/* Indent for paragraphs inside .faq-item */
+.faq-item p {
+    text-indent: 40px; /* Add indentation to the first line of each paragraph */
+    line-height: 1.6; /* Adjust line spacing for better readability */
+}
+
+</style>

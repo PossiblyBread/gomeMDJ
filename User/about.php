@@ -1,19 +1,29 @@
-<!-- Needs additional content -->
+<?php
+session_start();
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+$userFirstName = isset($_SESSION['first_name']) ? $_SESSION['first_name'] : '';
+$userLastName = isset($_SESSION['last_name']) ? $_SESSION['last_name'] : '';
+
+include "../db_conn.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - My Website</title>
-    <link rel="stylesheet" href="styles/styles.css">  <!-- Assuming the CSS styles from the template -->
+    <link rel="stylesheet" href="../styles/styles.css">  <!-- Assuming the CSS styles from the template -->
 </head>
 <body>
     
-    <?php include 'body/header.php'; ?>
-    <?php include 'body/side-bar.php'; ?>
+    <?php include '../body/logged/header.php'; ?>
+    <?php include '../body/logged/side-bar.php'; ?>
     
     <div id="overlay"></div>
-
+    <br><br>
     <!-- Main Content Section -->
     <main>
         <section class="about-section">
@@ -61,7 +71,7 @@
         </section>
     </main>
     <!-- Login Modal -->
-    <!-- <div class="modal" id="login-modal">
+    <div class="modal" id="login-modal">
         <div class="modal-content">
             <h2>Login</h2>
             <form id="login-form">
@@ -72,11 +82,11 @@
                 <button type="submit">Login</button>
             </form>
         </div>
-    </div> -->
+    </div>
     <!-- Footer Section -->
-    <?php include 'body/footer.php'; ?>
+    <?php include '../body/footer.php'; ?>
 
-    <script src="js/script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>
 <style>
