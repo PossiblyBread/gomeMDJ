@@ -1,0 +1,259 @@
+{
+    "responses": {
+      "do e-bikes require insurance?": {
+        "text": "Insurance requirements vary by region. In some areas, e-bikes are covered under regular bike insurance, while other regions may require separate e-bike insurance. Check your local regulations and consider theft or damage coverage.",
+        "quickReplies": []
+      },
+      "is it possible to increase the top speed of my e-bike?": {
+        "text": "Modifying the top speed can void your warranty and may be illegal in certain areas. E-bikes are designed to meet local regulations, so we don’t recommend attempting to alter the speed limit.",
+        "quickReplies": []
+      },
+      "can i charge my e-bike battery while it’s still on the bike?": {
+        "text": "Yes, most e-bike batteries can be charged while on the bike. However, removing the battery and charging it indoors may be safer, especially in extreme temperatures or wet weather.",
+        "quickReplies": []
+      },
+      "what is regenerative braking, and does my e-bike have it?": {
+        "text": "Regenerative braking converts some of the energy from braking into battery charge. This feature is not available on all e-bikes, as it’s typically seen in specific models. Check your product specifications or contact support to confirm.",
+        "quickReplies": []
+      },
+      "can i ride my e-bike on mountain trails?": {
+        "text": "Our standard e-bikes are designed for urban use. If you’re interested in trail riding, consider a model designed for mountain biking, as these have enhanced suspension and tires for off-road conditions.",
+        "quickReplies": []
+      },
+      "how do i transport my e-bike on public transit?": {
+        "text": "Some public transit systems allow e-bikes on trains or buses, but regulations vary. Be mindful of the e-bike’s weight and battery size, as these factors may affect transport rules. Check with your local transit authority for guidelines.",
+        "quickReplies": []
+      },
+      "how fast can i go on my e-bike?": {
+        "text": "The top speed varies by model and local regulations, typically around 25-32 km/h (15-20 mph) in pedal assist mode. Some models with throttle support may have lower speed limits depending on regional laws.",
+        "quickReplies": []
+      },
+      "can i add a basket or panniers to my e-bike?": {
+        "text": "Yes, many e-bikes support baskets and panniers. Be sure to check compatibility and weight capacity for your model. Our accessories section includes options designed for specific models, or contact us for recommendations.",
+        "quickReplies": []
+      },
+      "what e-bike models do you offer?": {
+        "text": "We offer a variety of e-bikes. Each bike has unique features suited to different riding styles.",
+        "quickReplies": []
+      },
+      "what’s the difference between each model?": {
+        "text": "Each model differs in range, speed, motor power, and battery life. You can view detailed specs for each model on our product pages.",
+        "quickReplies": []
+      },
+      "what types of e-bikes do you offer?": {
+        "text": "We offer various e-bike models, including city and commuter bikes, designed for easy and efficient rides around town.",
+        "quickReplies": []
+      },
+      "what’s the battery range for your e-bikes?": {
+        "text": "Our e-bikes range from 20 to 50 miles per charge, depending on the model and usage. Specific battery details are listed on each product page.",
+        "quickReplies": []
+      },
+      "how much do your e-bikes cost?": {
+        "text": "Our e-bikes range from affordable entry-level models to premium options. Prices are listed on each product page.",
+        "quickReplies": []
+      },
+      "are e-bikes suitable for uphill rides?": {
+        "text": "Yes, our e-bikes have motor assistance that makes riding uphill much easier.",
+        "quickReplies": []
+      },
+      "do you sell replacement tires and brakes?": {
+        "text": "Yes, we offer a range of replacement parts, including tires, brakes, and other essential components.",
+        "quickReplies": []
+      },
+      "do you offer maintenance services?": {
+        "text": "Yes, we provide annual maintenance packages. Contact support to learn more or schedule a service.",
+        "quickReplies": []
+      },
+      "do you have a showroom where i can see the e-bikes in person?": {
+        "text": "Yes, we have a physical store, but our website offers detailed photos and descriptions. Contact us if you’d like personalized guidance.",
+        "quickReplies": []
+      },
+      "how do i know when my tires need to be replaced?": {
+        "text": "Look for signs of wear, such as reduced tread depth, visible cracks, or frequent flats. If the tires feel less stable or don’t grip well, it’s time for new ones. For assistance, our service team can inspect and replace them.",
+        "quickReplies": []
+      },
+      "how do i adjust the saddle height on my e-bike?": {
+        "text": "Loosen the quick-release lever or bolt on the seat post, adjust the saddle to your desired height, then secure it. Ensure it’s tight enough to avoid slipping. Adjusting to the right height can improve comfort and pedaling efficiency.",
+        "quickReplies": []
+      },
+      "are there any weight distribution tips when riding with cargo?": {
+        "text": "For safe handling, try to balance the weight evenly on both sides of the bike, especially if you’re using panniers. Avoid placing heavy items high up or overloading the rear, as it can affect stability.",
+        "quickReplies": []
+      },
+      "what are the signs of a worn-out brake pad on my e-bike?": {
+        "text": "If you hear squeaking or feel reduced braking power, your brake pads may need replacing. Visual inspection can also reveal if they’ve thinned. For replacement, follow your manual or visit a service center.",
+        "quickReplies": []
+      },
+      "how do i change the pedal assist level on my e-bike?": {
+        "text": "Most e-bikes allow you to adjust pedal assist through the display or control panel on the handlebars. Refer to your user manual for specific instructions on increasing or decreasing assistance levels.",
+        "quickReplies": []
+      },
+      "how do i adjust the brakes on my e-bike?": {
+        "text": "If you notice the brakes are too tight or too loose, you can adjust them by turning the barrel adjuster near the brake levers. For more precise adjustments, or if you're unfamiliar with brake tuning, we recommend taking your e-bike to a qualified mechanic or contacting our support team.",
+        "quickReplies": []
+      },
+      "what type of maintenance does the motor need?": {
+        "text": "Generally, e-bike motors are designed to be low-maintenance. However, keep the motor area clean and avoid exposing it to excessive water or mud. For any motor issues, please contact our service team to ensure proper handling and repairs.",
+        "quickReplies": []
+      },
+      "how should i prepare my e-bike for long-distance travel?": {
+        "text": "Ensure your e-bike is fully charged, tires are inflated, and all bolts and parts are secure. Bringing a charger, spare tube, and basic repair tools can also help you stay prepared for longer trips.",
+        "quickReplies": []
+      },
+      "can i use a regular bike pump to inflate my e-bike tires?": {
+        "text": "Yes, standard bike pumps work with e-bike tires. Just ensure you’re inflating to the recommended PSI indicated on the tire sidewall. A pump with a gauge is helpful for accuracy.",
+        "quickReplies": []
+      },
+      "do i need to perform regular maintenance on my e-bike?": {
+        "text": "Yes, regular maintenance like checking tire pressure, brakes, and battery health can extend your e-bike’s lifespan.",
+        "quickReplies": []
+      },
+      "can i remove the battery for charging?": {
+        "text": "Yes, most of our e-bikes have removable batteries for easy charging at home or in the office.",
+        "quickReplies": []
+      },
+      "how many charge cycles can the battery handle?": {
+        "text": "Our batteries typically last for around 500-1000 charge cycles before needing replacement.",
+        "quickReplies": []
+      },
+      "is it safe to charge the battery overnight?": {
+        "text": "While our batteries have safety features, we recommend unplugging them once fully charged to avoid unnecessary wear.",
+        "quickReplies": []
+      },
+      "how do i store my e-bike during the rainy season?": {
+        "text": "Store it in a dry, covered area. Remove the battery and store it separately if possible.",
+        "quickReplies": []
+      },
+      "how much weight can an e-bike carry?": {
+        "text": "Our e-bikes typically support weights up to 250 lbs. Check specific models for details on maximum load capacity.",
+        "quickReplies": []
+      },
+      "can i ride the e-bike in the rain?": {
+        "text": "Yes, our e-bikes are designed to handle light rain. However, avoid riding in heavy rain or through deep water to protect the electrical components.",
+        "quickReplies": []
+      },"can i wash my e-bike?": {
+        "text": "Yes, but avoid using high-pressure water near the motor and battery. A gentle wash with a cloth and mild soap is best.",
+        "quickReplies": []
+      },
+      "what happens if i lose my e-bike keys?": {
+        "text": "If your e-bike uses a key for the battery or lock, contact our support team with your bike’s model and serial number. We can assist with ordering a replacement key or directing you to a service center.",
+        "quickReplies": []
+      },
+      "can i replace the battery with one that has a larger capacity?": {
+        "text": "Upgrading to a higher-capacity battery may be possible if it’s compatible with your model. However, using an incompatible battery could affect performance or void the warranty, so consult support before making any changes.",
+        "quickReplies": []
+      },
+      "how does the warranty work on my e-bike?": {
+        "text": "Our e-bikes come with a standard warranty covering the frame, motor, and battery. Warranty duration varies by component, and specific terms can be found in your purchase documentation. Extended warranties are also available for certain models.",
+        "quickReplies": []
+      },
+      "are there any weight restrictions for attaching a trailer to my e-bike?": {
+        "text": "Yes, each model has a recommended towing capacity. Exceeding it can affect the motor and frame stability. For details, check your user manual or contact our support team for guidance on safe towing.",
+        "quickReplies": []
+      },
+      "can i replace the battery myself, or should i go to a service center?": {
+        "text": "While replacing the battery is usually straightforward, we recommend contacting our service center for installation to ensure safety and compatibility. This way, you also avoid any accidental voiding of the warranty.",
+        "quickReplies": []
+      },
+      "does my e-bike come with a theft-prevention system?": {
+        "text": "Some models come with built-in security features like alarms or tracking systems. We also recommend investing in a sturdy lock and registering your e-bike with our support team for added protection.",
+        "quickReplies": []
+      },
+      "what should i do if my display screen isn’t turning on?": {
+        "text": "Start by checking that the battery is charged and securely connected. If the display still doesn’t turn on, it may need a reset, or there could be a loose connection. Contact support for troubleshooting assistance.",
+        "quickReplies": []
+      },
+      "can i upgrade the motor on my e-bike?": {
+        "text": "Upgrading the motor may not be possible due to compatibility and warranty limitations. If you're looking for higher power, consider one of our models with a more powerful motor. Our sales team can help you explore options.",
+        "quickReplies": []
+      },
+      "can i use my e-bike to tow a small trailer?": {
+        "text": "Some e-bike models can support lightweight trailers. However, towing capacity depends on the motor and frame strength. Contact us to check if your specific model is suitable for towing.",
+        "quickReplies": []
+      },
+      "how should i store my e-bike when not in use for extended periods?": {
+        "text": "Store your e-bike in a cool, dry place, and keep the battery partially charged (around 50%). Avoid exposing it to extreme temperatures, and try to recharge the battery every 1-2 months to keep it healthy.",
+        "quickReplies": []
+      },
+      "can i get a rebate or discount?": {
+        "text": "We occasionally offer discounts and rebates. Sign up for our newsletter to stay updated on discounts and rebates.",
+        "quickReplies": []
+      },
+      "what is the warranty on your e-bikes?": {
+        "text": "All our e-bikes come with a 1-year warranty on the frame and components, and a 6-month warranty on the battery.",
+        "quickReplies": []
+      },
+      "my e-bike won’t start. What should i do?": {
+        "text": "Please check the battery charge level and connections. If the issue persists, use our ticketing system to contact technical support.",
+        "quickReplies": []
+      },
+      "how can i replace parts?": {
+        "text": "We offer replacement parts on our website. If you’re unsure, submit a ticket, and our support team will assist you.",
+        "quickReplies": []
+      },
+      "do you accept g-cash for payments?": {
+        "text": "Yes, we accept payments through G-Cash for all e-bike purchases.",
+        "quickReplies": []
+      },
+      "can i upgrade the battery for a longer range?": {
+        "text": "Depending on the model, an upgraded battery may be available. Contact support for details on compatible battery options.",
+        "quickReplies": []
+      },
+      "my e-bike sometimes shuts off unexpectedly. What should i check?": {
+        "text": "Sudden shut-offs may be due to a loose battery connection or an issue with the wiring. Verify that the battery is securely attached and inspect the wiring. If the issue persists, please open a support ticket.",
+        "quickReplies": []
+      },
+      "how do i change my email address linked to my account?": {
+        "text": "To change your email address, send a ticket. So our admin will be able to assist you.",
+        "quickReplies": []
+      },
+      "what should i do if i get locked out of my account?": {
+        "text": "If you’re locked out, try using the “Forgot Password” option. If that doesn’t work, submit a ticket, and our team will assist in recovering your account.",
+        "quickReplies": []
+      },
+      "my e-bike battery doesn’t hold a charge as well as it used to. What could be the issue?": {
+        "text": "Over time, batteries may lose capacity due to regular use. Temperature and storage conditions also impact performance. If your battery is still under warranty, submit a ticket to discuss replacement options.",
+        "quickReplies": []
+      },
+      "why is my e-bike motor making a high-pitched noise?": {
+        "text": "While some noise is normal, high-pitched sounds may signal a motor or gear issue. We recommend submitting a ticket so our technical team can assess and address any problems.",
+        "quickReplies": []
+      },
+      "my e-bike’s pedals feel stiff. What could be causing this?": {
+        "text": "Stiff pedals could be due to a need for lubrication or an issue with the pedal bearings. Try applying lubricant. If that doesn’t help, please open a ticket, and we can help further.",
+        "quickReplies": []
+      },
+      "i feel a vibration when riding my e-bike. What could be wrong?": {
+        "text": "Vibrations could come from low tire pressure, alignment issues, or worn components. Check the tire pressure and ensure all bolts are tight. Open a support ticket if the problem continues.",
+        "quickReplies": []
+      },
+      "my e-bike display keeps resetting itself. What should i do?": {
+        "text": "This could be due to a software bug or power supply issue. Please turn the e-bike off and on. If the issue persists, submit a support ticket so our tech team can look into it.",
+        "quickReplies": []
+      },
+      "can i contact customer support as a guest?": {
+        "text": "No, you can access our customer support if you are a verified user.",
+        "quickReplies": []
+      },
+      "how can i find the right e-bike model for my needs?": {
+        "text": "Consider factors like your typical riding terrain, commute distance, and speed preferences. Our product pages include detailed descriptions to help you choose.",
+        "quickReplies": []
+      },
+      "do your e-bikes come fully assembled?": {
+        "text": "Our e-bikes are mostly assembled upon delivery, with only minor assembly required. We also include instructions to guide you through the final steps.",
+        "quickReplies": []
+      },
+      "can i test ride an e-bike before purchasing?": {
+        "text": "Yes, we welcome test rides! Contact us to schedule a test ride appointment at our showroom, and we’ll set up a convenient time for you.",
+        "quickReplies": []
+      },
+      "what is your return policy?": {
+        "text": "We offer a 14-day return policy for unused e-bikes in their original condition. If you have questions about a return, our support team is here to help.",
+        "quickReplies": []
+      },
+      "do your e-bikes come with a warranty?": {
+        "text": "Yes, all our e-bikes come with a one-year warranty covering the frame, motor, battery, and key electrical components.",
+        "quickReplies": []
+      }
+    }
+  }
