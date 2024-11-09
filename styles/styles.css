@@ -1,0 +1,589 @@
+/* General styles */
+/* handles the mobile design format */
+/* handles the main content design */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px 15px;
+}
+
+/* Top navigation || Header */ 
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #1b212f;
+  color: white;
+}
+
+.top-nav h1 {
+  font-size: 24px;
+}
+
+.top-nav-btn {
+  display: flex;
+  gap: 15px;
+}
+
+.top-nav-btn a {
+  color: white;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+main {
+  padding: 40px;
+  background: linear-gradient(to top right, #a0d6e0 30%, #ecf6fe 70%); /* Stronger gradient */
+}
+
+
+.hero {
+  text-align: center;
+  padding: 50px;
+  background-color: #777;
+  color: white;
+  border-radius: 10px;
+}
+
+.hero h2 {
+  font-size: 36px;
+}
+
+.hero p {
+  font-size: 18px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.learn-more-btn {
+  padding: 10px 20px;
+  background-color: white;
+  color: #777;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.learn-more-btn:hover {
+  background-color: #555;
+  color: white;
+}
+
+/* Profile Icon */
+.profile-icon {
+  cursor: pointer;
+  font-size: 24px;
+  color: white;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* style for sidebar */
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000; /* Behind the sidebar */
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .top-nav-btn {
+      display: none;
+  }
+
+  .menu-toggle {
+      display: block;
+  }
+
+  .features {
+      flex-direction: column;
+      gap: 30px;
+  }
+
+  .feature-item {
+      width: 90%;
+  }
+
+  .footer-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .footer-bottom {
+      flex-direction: column;
+  }
+  
+}
+
+/*Styles for Register and Login Form */
+/* Modal Background Overlay */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+}
+
+/* Modal Content Box */
+.login-modal-content {
+  background: linear-gradient(135deg, #d0e7ff, #e6edf3); 
+  margin: 100px auto; 
+  padding: 30px;
+  border-radius: 12px;
+  width: 350px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  color: #333; 
+}
+
+/* Header Styling */
+.login-modal-content h2 {
+  font-size: 24px;
+  color: #4a4a4a; /* Slightly darker for contrast */
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Close Button */
+.close {
+  color: #777;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #555;
+}
+
+/* Login Form Styling */
+#login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#login-form label {
+  color: #666; /* Lighter gray for labels */
+  font-size: 15px;
+}
+
+/* Input Field Styling */
+#login-form input[type="text"],
+#login-form input[type="password"] {
+  padding: 10px;
+  border: 3px solid #436776; /* Soft gray border */
+  border-radius: 5px;
+  font-size: 15px;
+  color: #333;
+  background-color: #f7fafc; /* Light background for contrast */
+  box-sizing: border-box;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+#login-form input:focus {
+  border-color: #8cb4e7; /* Light blue on focus */
+  background-color: #eaf3fc; /* Slightly tinted blue */
+  outline: none;
+}
+
+/* Login Button */
+#login-form button[type="submit"] {
+  padding: 12px;
+  background-color: #6d9ad2; /* Darker blue button */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+#login-form button[type="submit"]:hover {
+  background-color: #5178aa; /* Darker blue on hover */
+}
+/* Style for the close (X) button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-btn:hover {
+  color: black;
+}
+
+/* Register Prompt */
+.register-prompt {
+  text-align: center;
+  margin-top: 15px;
+  color: #666; /* Light gray text */
+}
+
+.register-prompt p {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+/* Register Prompt Button */
+.register-prompt button {
+  padding: 8px 16px;
+  background-color: #00254a; 
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.register-prompt button:hover {
+  background-color: #738da9; 
+}
+/* register button to modal part */
+/* Heading Styles for Register Form */
+/* Modal Overlay */
+.register-modal-content h2 {
+  margin: 10px 0;
+  padding: 0; 
+  font-size: 24px; 
+  color: #333;
+  text-align: center; 
+}
+/* Register Modal Styles */
+#register-modal {
+  display: none; /* Hidden by default */
+  position: fixed; 
+  z-index: 1001; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.register-modal-content {
+  background-color: white;
+  margin: 110px auto; /* Centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px; /* Could be more or less, depending on screen size */
+  border-radius: 15px;
+}
+/* Close Button for mobile */
+.register-close {
+  color: #f46d6d;
+  float: right;
+  font-size: 25px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+.register-close:hover,
+.register-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.login-close {
+  color: #f46d6d;
+  float: right;
+  font-size: 25px;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.login-close:hover,
+.login-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Register Form Styles */
+#register-form {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+}
+#register-form label {
+  margin: 10px 0 5px; /* Spacing for labels */
+  font-size: 14px; /* Font size for labels */
+  color: #333; /* Dark gray text for labels */
+}
+
+#register-form input[type="text"],
+#register-form input[type="tel"],
+#register-form input[type="email"],
+#register-form input[type="password"] {
+  padding: 8px; /* Padding for input */
+  margin-bottom: 15px; /* Spacing between input fields */
+  border: 1px solid #ccc; /* Light gray border */
+  width: 100%; /* Full width */
+}
+
+/* Button Styles */
+#register-form button {
+  padding: 10px;
+  background-color: #444; /* Dark background for button */
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px; /* Space above button */
+}
+
+#register-form button:hover {
+  background-color: #666; /* Darker gray on hover */
+}
+
+/* Link Styles */
+#register-form a {
+  color: #3b3e3f; /* Blue link color */
+  text-decoration: none;
+}
+
+#register-form a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+/* End for Register and Login Form */
+
+/* OTP FORM CSS */
+/* Form Container Styles */
+.modal-content#otp-form {
+  max-width: 400px;
+  margin: auto;
+  padding: 25px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Message Container Styles */
+.message-container {
+  margin: 15px 0;
+  padding: 12px;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+}
+
+#otp-status-message {
+  color: #004085;
+  background-color: #cce5ff;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+#otp-expiry-message {
+  color: #155724;
+  background-color: #d4edda;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+#otp-wait-message {
+  color: #856404;
+  background-color: #fff3cd;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* Form Group Styles */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #495057;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus {
+  border-color: #80bdff;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+/* Button Group Styles */
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.button-group button {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Primary Button Styles */
+.primary-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.primary-btn:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+/* Secondary Button Styles */
+.secondary-btn {
+  background-color: #6c757d;
+  color: white;
+}
+
+.secondary-btn:hover:not(:disabled) {
+  background-color: #545b62;
+}
+
+/* Back Button Styles */
+.back-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.back-btn:hover {
+  background-color: #c82333;
+}
+
+/* Disabled Button States */
+.button-group button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  position: relative;
+}
+
+/* Loading Spinner for Disabled Buttons */
+.button-group button:disabled::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin: -8px 0 0 -8px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: button-loading-spinner 0.8s linear infinite;
+}
+
+/* Countdown Timer Style */
+#countdown {
+  font-family: monospace;
+  font-weight: bold;
+  color: #dc3545;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes button-loading-spinner {
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+  .modal-content#otp-form {
+      padding: 15px;
+      margin: 10px;
+  }
+
+  .button-group {
+      flex-direction: column;
+  }
+
+  .button-group button {
+      width: 100%;
+      margin: 5px 0;
+  }
+}
+
+/* Focus States */
+.button-group button:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+/* Active States */
+.primary-btn:active:not(:disabled) {
+  background-color: #004085;
+}
+
+.secondary-btn:active:not(:disabled) {
+  background-color: #4e555b;
+}
+
+.back-btn:active {
+  background-color: #bd2130;
+}
