@@ -177,7 +177,8 @@ function getImagePath($image, $pageId)
                                     'Battery' => $row['p_battery'],
                                     'Max Speed' => $row['p_max_speed'],
                                     'Range' => $row['p_range'],
-                                    'Charging Time' => $row['p_charging_time']
+                                    'Charging Time' => $row['p_charging_time'],
+                                    'Availability' => $row['u_availability']
                                 ];
                                 foreach ($specs as $label => $value):
                                 ?>
