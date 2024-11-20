@@ -1,0 +1,293 @@
+<?php
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $user_type = $_POST['user_type'];
+    $feedback_rating = $_POST['feedback_rating'];
+    $feedback_comment = $_POST['feedback_comment'];
+
+    $stmt = $conn->prepare("INSERT INTO website_feedback (user_type, feedback_rating, feedback_comment) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $user_type, $feedback_rating, $feedback_comment);
+
+    if ($stmt->execute()) {
+        $_SESSION['message'] = "Feedback submitted successfully!";
+    } else {
+        $_SESSION['message'] = "Error: " . $stmt->error;
+    }
+
+    $stmt->close();
+    $conn->close();
+
+    header('Location: ' . $_SERVER['PHP_SELF']);
+    exit;
+}
+
+$message = isset($_SESSION['message']) ? $_SESSION['message'] : '';
+unset($_SESSION['message']);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Feedback</title>
+    <style>
+        /* Feedback Form Modal */
+        .feedback-form-modal {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .feedback-form {
+            position: relative; /* Added to allow absolute positioning for close button */
+            width: 400px;
+            padding: 20px;
+            background-color: #f9fafb;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .feedback-form h2 {
+            margin-bottom: 10px;
+        }
+
+        /* Rating Stars */
+        .rating {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .rating input {
+            display: none; /* Hide the radio buttons */
+        }
+
+        .rating .star {
+            font-size: 2rem;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .rating .star:hover,
+        .rating .star:hover ~ .star {
+            color: #f59e0b; /* Hover color */
+        }
+
+        .rating input:checked ~ .star {
+            color: #f59e0b; /* Selected color */
+        }
+
+        /* Feedback Comment Box */
+        textarea {
+            width: 100%;
+            resize: vertical;
+            margin-bottom: 20px;
+        }
+
+        /* Submit Button */
+        .feedback-submit-btn {
+            padding: 10px 20px;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .feedback-submit-btn:hover {
+            background-color: #2563eb;
+        }
+
+        /* Timer and Modal Styles */
+        #timer {
+            display: none; /* Hide the timer */
+        }
+
+        /* Close Button Styles */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        @media (max-width: 768px) {
+            .feedback-form {
+                width: 70%;
+            }
+
+            .rating .star {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .feedback-form {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Timer Display (hidden) -->
+    <div id="timer">Time Left: 2:00</div>
+
+    <!-- Feedback Form Modal (Initially hidden) -->
+    <div id="feedbackFormModal" class="feedback-form-modal">
+        <div class="feedback-form">
+            <!-- Close Button Inside the Modal -->
+            <button class="close-btn" id="closeBtn">&times;</button>
+            
+            <h2>We Value Your Feedback</h2>
+            <p>Please Share Your Experience With The Website!</p>
+
+            <!-- Feedback Form -->
+            <form id="feedback-form" method="POST" action="">
+                <!-- Optional user type field -->
+                <input type="hidden" name="user_type" value="Guest">
+
+                <div class="rating">
+                    <label>
+                        <input type="radio" name="feedback_rating" value="1" required>
+                        <i class="star" data-value="1">&#9733;</i>
+                    </label>
+                    <label>
+                        <input type="radio" name="feedback_rating" value="2">
+                        <i class="star" data-value="2">&#9733;</i>
+                    </label>
+                    <label>
+                        <input type="radio" name="feedback_rating" value="3">
+                        <i class="star" data-value="3">&#9733;</i>
+                    </label>
+                    <label>
+                        <input type="radio" name="feedback_rating" value="4">
+                        <i class="star" data-value="4">&#9733;</i>
+                    </label>
+                    <label>
+                        <input type="radio" name="feedback_rating" value="5">
+                        <i class="star" data-value="5">&#9733;</i>
+                    </label>
+                </div>
+
+                <!-- Optional feedback comment -->
+                <textarea name="feedback_comment" placeholder="Leave a comment (optional)" rows="4" style="width: 100%;"></textarea>
+
+                <button type="submit" class="feedback-submit-btn">Submit Feedback</button>
+            </form>
+
+            <!-- Display success or error message after redirect -->
+            <?php if ($message): ?>
+                <p style="text-align: center; color: green;"><?php echo $message; ?></p>
+            <?php endif; ?>
+        </div>
+    </div>
+
+    <script>
+        // Timer countdown logic
+        let timeLeft = 0; // 2 minutes in seconds
+        const timerDisplay = document.getElementById('timer');
+        const feedbackFormModal = document.getElementById('feedbackFormModal');
+        const closeBtn = document.getElementById('closeBtn');
+
+        const timerInterval = setInterval(() => {
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            // Update the timer display
+            // (Timer is hidden but still runs)
+            timerDisplay.textContent = `Time Left: ${minutes}:${seconds}`;
+
+            if (timeLeft === 0) {
+                clearInterval(timerInterval);
+                showFeedbackForm(); // Show the feedback form modal when time is up
+            }
+
+            timeLeft--;
+        }, 1000);
+
+        // Function to show the feedback form modal
+        function showFeedbackForm() {
+            feedbackFormModal.style.display = 'flex';
+        }
+
+        // Close the modal when the close button is clicked
+        closeBtn.addEventListener('click', () => {
+            feedbackFormModal.style.display = 'none';
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const stars = document.querySelectorAll('.rating .star');
+            const ratingInputs = document.querySelectorAll('.rating input');
+
+            // Highlight stars on hover
+            stars.forEach((star, index) => {
+                star.addEventListener('mouseover', () => {
+                    highlightStars(index + 1);
+                });
+
+                // Reset highlight on mouse out
+                star.addEventListener('mouseout', () => {
+                    const selectedValue = getSelectedRating();
+                    highlightStars(selectedValue);
+                });
+
+                // Set selected rating
+                star.addEventListener('click', () => {
+                    setRating(index + 1);
+                });
+            });
+
+            // Highlight stars up to the given index
+            function highlightStars(count) {
+                stars.forEach((star, index) => {
+                    if (index < count) {
+                        star.style.color = '#f59e0b'; // Highlight color
+                    } else {
+                        star.style.color = '#ccc'; // Default color
+                    }
+                });
+            }
+
+            // Get the currently selected rating
+            function getSelectedRating() {
+                const selectedInput = Array.from(ratingInputs).find(input => input.checked);
+                return selectedInput ? parseInt(selectedInput.value) : 0;
+            }
+
+            // Set the rating and ensure the corresponding input is checked
+            function setRating(value) {
+                ratingInputs.forEach((input, index) => {
+                    input.checked = index + 1 === value;
+                });
+                highlightStars(value);
+            }
+        });
+    </script>
+</body>
+</html>
