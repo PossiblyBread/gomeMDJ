@@ -32,6 +32,7 @@ if (isset($_FILES['cover-image'])) {
     $p_charging_time = htmlspecialchars(trim($_POST['p_charging_time']));
     $p_variants = htmlspecialchars(trim($_POST['p_variants']));
     $p_other_features = htmlspecialchars(trim($_POST['p_other_features']));
+    $u_availability = htmlspecialchars(trim($_POST['u_availability']));
     $p_price = htmlspecialchars(trim($_POST['p_price']));
     $productId = intval($_GET['id']); // Get the product ID from the URL
 
@@ -44,12 +45,12 @@ if (isset($_FILES['cover-image'])) {
                 p_model = ?, p_wheels = ?, p_motor_power = ?,
                 p_battery = ?, p_max_speed = ?, p_range = ?, 
                 p_max_load = ?, p_charging_time = ?, p_variants = ?,
-                p_other_features = ?, p_price = ?
+                p_other_features = ?, u_availability = ?, p_price = ?
                 WHERE products_id = ?";
 
         $stmt = $conn->prepare($sql);
         $stmt->bind_param(
-            "sssssssssssi",
+            "ssssssssssssi",
             $p_model,
             $p_wheels,
             $p_motor_power,
@@ -60,6 +61,7 @@ if (isset($_FILES['cover-image'])) {
             $p_charging_time,
             $p_variants,
             $p_other_features,
+            $u_availability,
             $p_price,
             $productId
         );
