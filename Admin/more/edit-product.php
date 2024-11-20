@@ -174,8 +174,8 @@ if (isset($_GET['id'])) {
                     <label class="ap-label tooltip" for="p_other_features">Other Features</label>
                     <textarea class="ap-textarea" name="p_other_features" id="p_other_features" rows="4"><?php echo htmlspecialchars($product['p_other_features']); ?></textarea>
 
-                    <label class="ap-label tooltip" for="p_availability">Availability<span class="required-asterisk">*</span></label>
-                    <select class="ap-select" name="p_availability" id="p_availability" required>
+                    <label class="ap-label tooltip" for="u_availability">Availability<span class="required-asterisk">*</span></label>
+                    <select class="ap-select" name="u_availability" id="u_availability" required>
                         <option value="" disabled>Select availability</option>
                         <option value="Available" <?php echo ($product['u_availability'] == 'Available') ? 'selected' : ''; ?>>Available</option>
                         <option value="Unavailable" <?php echo ($product['u_availability'] == 'Unavailable') ? 'selected' : ''; ?>>Unavailable</option>
@@ -348,6 +348,7 @@ if (isset($_GET['id'])) {
             const chargingTime = document.getElementById('p_charging_time').value;
             const variants = document.getElementById('p_variants').value;
             const otherFeatures = document.getElementById('p_other_features').value;
+            const unitAvailability = document.getElementById('u_availability').value;
 
             const coverPreview = document.getElementById('cover-preview')?.src;
             const thumbnailsContainer = document.getElementById('thumbnails-container');
@@ -400,6 +401,10 @@ if (isset($_GET['id'])) {
                             <div class="summary-item features" data-aos="fade-up">
                                 <span class="label">Other Features</span>
                                 <span class="value">${otherFeatures}</span>
+                            </div>
+                            <div class="summary-item features" data-aos="fade-up">
+                                <span class="label">Availability</span>
+                                <span class="value">${unitAvailability}</span>
                             </div>
                         </div>
                     </div>
