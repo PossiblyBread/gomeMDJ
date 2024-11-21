@@ -134,7 +134,6 @@ body {
     color: #01344C;
     border-radius: 5px;
 }
-
 .left-navbar img {
     width: 32px;
     height: auto;
