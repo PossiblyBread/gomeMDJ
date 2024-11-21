@@ -92,10 +92,9 @@ include "db_conn.php";
         domain="www.chatbase.co"
         defer>
     </script>
-
-    </script>
     <?php include 'footer.php'; ?>
     <script src="js/script.js"></script>
+    <script src="js/Otp_script.js"></script>
 </body>
 </html>
 <style>

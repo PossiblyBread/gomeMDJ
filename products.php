@@ -33,7 +33,14 @@ $pageId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
             domain: "www.chatbase.co"
         }
     </script>
-
+    <script
+        src="https://www.chatbase.co/embed.min.js"
+        chatbotId="e8_c510p3vG8EPF2g33Vw"
+        domain="www.chatbase.co"
+        defer>
+    </script>
+    <script src="js/script.js"></script>
+    <script src="js/Otp_script.js"></script>
 </body>
 
 </html>

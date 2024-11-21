@@ -37,6 +37,7 @@
                 <input type="password" id="password" name="i_password" required>
                 <button type="submit">Login</button>
             </form>
+            <a href="javascript:void(0);" onclick="openForgotPasswordModal()">Forgot Password?</a>
             <div class="register-prompt">
                 <p>Don't have an account?</p>
                 <button type="button" id="register-button" onclick="showRegisterModal()">Register</button>
@@ -79,7 +80,18 @@
             </div>
         </div>
     </div>
-
+    <!-- Forgot Password Modal -->
+    <div class="modal" id="forgot-password-modal">
+        <div class="forgot-password-modal-content">
+            <span class="forgot-password-close" onclick="document.getElementById('forgot-password-modal').style.display='none'">&times;</span>
+            <h2>Forgot Password</h2>
+            <form id="forgot-password-form" action="send-password-reset.php" method="POST">
+                <label for="email">Enter your email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
     <!-- Registration Modal -->
     <div id="register-modal">
         <div class="register-modal-content">
@@ -116,6 +128,13 @@
                     <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required maxlength="32">
                 </div>
                 <div>
+                    <!-- Terms and Conditions Checkbox -->
+                    <input type="checkbox" id="terms-checkbox" required>
+                    <label for="terms-checkbox">
+                        I agree to the <a href="javascript:void(0);" onclick="openTermsModal()" class="terms-link">Terms and Conditions</a>.
+                    </label>
+                </div>
+                <div>
                     <button type="submit" name="Submit">Register</button>
                     <button type="button" onclick="document.getElementById('register-modal').style.display='none';">Cancel</button>
                 </div>
@@ -123,7 +142,32 @@
             </form>
         </div>
     </div>
+    <!-- Terms and Conditions Modal -->
+    <div id="terms-modal" style="display:none;">
+        <div class="terms-modal-content">
+            <span class="terms-close" onclick="document.getElementById('terms-modal').style.display='none'">&times;</span>
+            <h2>Terms and Conditions</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <div>
+            <input type="radio" id="terms-agree" name="terms-agree" value="agree" onclick="enableCloseButton()">
+                <label for="terms-agree">I have read and agree to the terms and conditions.</label>
+            </div>
+            <div>
+                <button id="terms-close-btn" onclick="closeTermsModal()" disabled>Close</button>
+            </div>
+        </div>
+    </div>
     <script>
+        function openForgotPasswordModal() {
+            document.getElementById('login-modal').style.display = 'none';
+            document.getElementById('forgot-password-modal').style.display = 'block';
+        }
+        function closeForgotPasswordModal() {
+            document.getElementById('forgot-password-modal').style.display = 'none';
+        }
+
         function checkPasswordStrength() {
             const password = document.getElementById('a_password').value;
             const strengthMessage = document.getElementById('password-strength-message');
@@ -149,7 +193,28 @@
                 strengthMessage.classList.add(strengthClass);
             }
         }
-
+        // Function to open the Terms and Conditions modal
+        function openTermsModal() {
+            document.getElementById('terms-modal').style.display = 'block';
+        }
+        // Function to close the Terms and Conditions modal
+        function closeTermsModal() {
+            document.getElementById('terms-modal').style.display = 'none';
+        }
+        // Enable the close button when the user agrees to the terms
+        function enableCloseButton() {
+            const closeButton = document.getElementById('terms-close-btn');
+            const agreeRadioButton = document.getElementById('terms-agree');
+            
+            // Enable the close button if the radio button is selected
+            if (agreeRadioButton.checked) {
+                closeButton.disabled = false;  // Enable button
+                document.getElementById('terms-close').style.cursor = 'pointer'; // Change cursor to pointer
+            } else {
+                closeButton.disabled = true;  // Disable button
+                document.getElementById('terms-close').style.cursor = 'not-allowed'; // Keep cursor as not-allowed
+            }
+        }
         function validatePasswordAndEmail() {
             const password = document.getElementById('a_password').value;
             const confirmPassword = document.getElementById('confirm_password').value;
@@ -195,7 +260,11 @@
                 errorMessage.textContent += 'Email must be a valid Gmail address (e.g., example@gmail.com)!';
                 return false; // Prevent form submission
             }
-
+            // Ensure terms and conditions checkbox is checked
+            if (!termsCheckbox.checked) {
+                errorMessage.textContent += 'You must agree to the terms and conditions.';
+                return false; // Prevent form submission
+            }
             return true; // Allow form submission
         }
     </script>
@@ -211,7 +280,7 @@
         left: 0;
         right: 0;
         z-index: 1000;
-        background-color:#1b212f ;
+        background-color:#1b212f;
         color: white;
     }
     .logo {
@@ -244,5 +313,142 @@
     /* White glow effect on hover for links */
     .top-nav-btn a:hover {
         text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+    }
+    /* Forgot Password Modal Styles */
+    #forgot-password-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.6);
+        z-index: 1000;
+    }
+
+    .forgot-password-modal-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        width: 300px;
+        margin: 100px auto;
+        position: relative;
+    }
+
+    .forgot-password-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 25px;
+        cursor: pointer;
+    }
+
+    .forgot-password-modal-content h2 {
+        text-align: center;
+    }
+
+    .forgot-password-modal-content form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .forgot-password-modal-content input[type="email"] {
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .forgot-password-modal-content button {
+        padding: 10px;
+        background-color: #80bdff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .forgot-password-modal-content button:hover {
+        background-color: #1b212f;
+    }
+    /* Style for the Terms and Conditions link */
+    .terms-link {
+        margin-left: -15px;
+        text-decoration: underline;
+    }
+
+    .terms-link:hover {
+        color: #80bdff;
+    }
+    .terms-modal-content {
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        width: 500px;
+        max-width: 90%;
+        margin: 100px auto;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+
+    .terms-close {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    #terms-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.6);
+        z-index: 999999;
+    }
+    /* Basic styling for the modal */
+    .terms-modal-content {
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        width: 500px;
+        max-width: 90%;
+        margin: 100px auto;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+
+    .terms-close {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 20px;
+        cursor: not-allowed;
+    }
+
+    #terms-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.6);
+        z-index: 999999;
+    }
+
+    #terms-close-btn {
+        padding: 10px 20px;
+        background-color: #738da9;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 15px;
+    }
+
+    #terms-close-btn:disabled {
+        background-color: #ccc;
     }
 </style>

@@ -59,6 +59,14 @@ if (isset($_GET['msg'])) {
 
         </div>
     </section>
+    <!-- Modal -->
+    <div id="resetPasswordModal" class="resetPasswordModal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <strong>Success!</strong>
+            <p>The link to reset your password has been sent to the email you have provided!</p>
+        </div>
+    </div>
     <!-- Main Content Section -->
     <main>
         <hr>
@@ -98,27 +106,95 @@ if (isset($_GET['msg'])) {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/script.js"></script>
     <script src="js/Otp_script.js"></script>
+    <script>
+        // Show the modal
+        function showModal() {
+            var modal = document.getElementById("resetPasswordModal");
+            modal.style.display = "block";
+        }
 
+        // Close the modal when the user clicks the 'X'
+        document.getElementById("closeModal").onclick = function() {
+            document.getElementById("resetPasswordModal").style.display = "none";
+        }
+
+        // Close the modal if the user clicks outside of it
+        window.onclick = function(event) {
+            var modal = document.getElementById("resetPasswordModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Check if the URL has the query parameter reset_success=true
+        window.onload = function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('reset_success') && urlParams.get('reset_success') === 'true') {
+                showModal();
+            }
+        }
+    </script>
 </body>
 
 </html>
 <style>
     #password-strength-message {
-        text-align: center;
-        font-weight: bold;
-        transition: color 0.3s ease;
-        margin-bottom: 15px;
-    }
+    text-align: center;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    margin-bottom: 15px;
+}
 
-    .weak {
-        color: red;
-    }
+.weak {
+    color: red;
+}
 
-    .medium {
-        color: orange;
-    }
+.medium {
+    color: orange;
+}
 
-    .strong {
-        color: green;
-    }
+.strong {
+    color: green;
+}
+
+/* Modal Styles */
+.resetPasswordModal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 999999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.resetPasswordModal .modal-content {
+    background-color: #add8e6; /* Light blue color */
+    margin: 200px auto 15% auto; /* Added 200px top margin */
+    max-width: 500px;
+    padding: 20px;
+    border: 2px solid #1b212f;
+    width: 80%;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.resetPasswordModal .close {
+    margin-top: -10px;
+    color: maroon;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.resetPasswordModal .close:hover,
+.resetPasswordModal .close:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 </style>

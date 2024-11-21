@@ -163,10 +163,13 @@ function getImagePath($image, $pageId)
                             <strong><?php echo htmlspecialchars($row['p_model']); ?></strong>
                         </div>
                         <div class="price-tag">
-                            <span>Price:</span>
+                            <span>Cash Price:</span>
                             <strong><?php echo htmlspecialchars(formatPeso($row['p_price'])); ?></strong>
                         </div>
-
+                        <div class="price-tag">
+                            <span>Installment Term:</span>
+                            <strong>12 mos</strong>
+                        </div>
                         <section class="specs">
                             <h2 class="subtitle">Specifications</h2>
                             <div class="specs-grid">

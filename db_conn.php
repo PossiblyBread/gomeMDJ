@@ -19,7 +19,6 @@ try {
     ]);
     exit();
 }
-
 // set the timezone for Philippine time
 function calculateTimeElapsed($date_time)
 {

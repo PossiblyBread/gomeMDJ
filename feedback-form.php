@@ -1,10 +1,10 @@
 <?php
 if (!isset($_SESSION['time_left'])) {
-    $_SESSION['time_left'] = 120; // Reset timer to 2 minutes (120 seconds)
+    $_SESSION['time_left'] = 300; // Reset timer to 5 minutes (300 seconds)
 }
 
 if (isset($_POST['reset_timer']) && $_POST['reset_timer'] === 'true') {
-    $_SESSION['time_left'] = 3600; // Reset timer to 1 hour
+    $_SESSION['time_left'] = 900; // Reset timer to 15 minutes
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $conn->close(); // Close the connection
 
     // Reset timer after submission
-    $_SESSION['time_left'] = 3600;
+    $_SESSION['time_left'] = 900;
 
     // Redirect to prevent resubmission
     header('Location: ' . $_SERVER['PHP_SELF']);
@@ -147,6 +147,7 @@ unset($_SESSION['message']); // Clear the message after displaying it
         closeBtn.addEventListener('click', () => {
             feedbackFormModal.style.display = 'none';
         });
+        
     </script>
 </body>
 </html>
@@ -169,7 +170,7 @@ unset($_SESSION['message']); // Clear the message after displaying it
         position: relative; /* Added to allow absolute positioning for close button */
         width: 400px;
         padding: 20px;
-        background-color: #f9fafb;
+        background: linear-gradient(135deg, #d0e7ff, #e6edf3); 
         border-radius: 10px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         text-align: center;
@@ -212,6 +213,7 @@ unset($_SESSION['message']); // Clear the message after displaying it
         width: 100%;
         resize: vertical;
         margin-bottom: 20px;
+        padding: 10px;
     }
 
     /* Submit Button */
