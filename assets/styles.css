@@ -9,7 +9,6 @@ body {
   margin: 0;
   padding: 0;
   background-color:#CBDCEB;
-  color: #333;
 }
 
 h1, h2, h3 {
@@ -17,7 +16,7 @@ h1, h2, h3 {
 }
 a {
   text-decoration: none;
-  color: #333;
+  color: #00254a;
   padding: 10px 15px;
 }
 
@@ -174,7 +173,9 @@ main {
   text-align: center;
   font-weight: bold;
 }
-
+.login-modal-content a {
+  margin-left: 27.5%;
+}
 /* Close Button */
 .close {
   color: #777;
@@ -378,15 +379,6 @@ main {
   background-color: #031e3c; /* Darker gray on hover */
 }
 
-/* Link Styles */
-#register-form a {
-  color: #3b3e3f; /* Blue link color */
-  text-decoration: none;
-}
-
-#register-form a:hover {
-  text-decoration: underline; /* Underline on hover */
-}
 @media (max-width: 470px){
   .login-modal-content {
     width: 250px;
@@ -590,6 +582,9 @@ main {
   .button-group button {
       width: 100%;  /* Full width buttons */
       margin: 5px 0;
+  }
+  .login-modal-content a {
+    margin-left: 17%;
   }
 }
 
