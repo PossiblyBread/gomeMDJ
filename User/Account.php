@@ -231,6 +231,7 @@ if (isset($_POST['change_password'])) {
         </div>
     </main>
 
+    <!-- ai chat bot -->
     <script>
         window.embeddedChatbotConfig = {
             chatbotId: "e8_c510p3vG8EPF2g33Vw",
@@ -243,7 +244,6 @@ if (isset($_POST['change_password'])) {
         domain="www.chatbase.co"
         defer>
     </script>
-
     <!-- Footer Section -->
     <?php include 'footer.php'; ?>
     <script src="../js/script.js"></script>

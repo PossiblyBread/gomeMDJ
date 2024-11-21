@@ -40,6 +40,7 @@ $pageId = isset($_GET['id']) ? (int)$_GET['id'] : 1;
     <?php include 'side-bar.php'; ?>
     <div id="overlay"></div>
     <?php include '../products_item.php'; ?>
+    <!-- ai chat bot -->
     <script>
         window.embeddedChatbotConfig = {
             chatbotId: "e8_c510p3vG8EPF2g33Vw",

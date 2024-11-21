@@ -107,7 +107,7 @@ unset($_SESSION['message']);
     }
 
     .feedback-modal-content {
-        background-color: #fefefe;
+        background: linear-gradient(135deg, #d0e7ff, #e6edf3); 
         margin: 150px auto; /* 15% from the top and centered */
         padding: 20px;
         border: 1px solid #888;
@@ -201,6 +201,7 @@ unset($_SESSION['message']);
         width: 100%;
         resize: vertical;
         margin-bottom: 20px;
+        padding: 10px;
     }
 
     /* Submit Button */

@@ -23,8 +23,7 @@ include "../db_conn.php";
     <?php include 'header.php'; ?>
     <?php include 'side-bar.php'; ?>
     <div id="overlay"></div>
-        <br><br>
-    <br><br>
+    <br><br><br><br>
     <!-- Main Content Section -->
     <main>
         <section class="about-section">
@@ -87,6 +86,7 @@ include "../db_conn.php";
             </div>
         </section>
     </main>
+    <!-- ai chat bot -->
     <script>
         window.embeddedChatbotConfig = {
             chatbotId: "e8_c510p3vG8EPF2g33Vw",
@@ -98,8 +98,6 @@ include "../db_conn.php";
         chatbotId="e8_c510p3vG8EPF2g33Vw"
         domain="www.chatbase.co"
         defer>
-    </script>
-
     </script>
     <?php include 'footer.php'; ?>
     <script src="../js/script.js"></script>
