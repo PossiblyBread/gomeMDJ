@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2024 at 12:20 AM
+-- Generation Time: Nov 21, 2024 at 11:18 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -36,18 +36,21 @@ CREATE TABLE `accounts` (
   `phone_num` varchar(20) DEFAULT NULL,
   `h_password` varchar(75) DEFAULT NULL,
   `role` varchar(20) DEFAULT NULL,
+  `reset_token_hash` varchar(75) DEFAULT NULL,
+  `reset_token_expires_at` datetime DEFAULT NULL,
   `date_created` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `validation` varchar(10) NOT NULL
+  `validation` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`id`, `serial_num`, `last_name`, `first_name`, `email`, `phone_num`, `h_password`, `role`, `date_created`, `updated_at`, `validation`) VALUES
-(1, 10000, 'Admin', ' ', 'mdjbikes23@gmail.com', '2147483647', '$2y$10$OyKmhgHFSNFc.dobWOEsfumb7klN.lxrhPRViaR8JSwpNni2UrUAK', 'Admin', '2024-10-29 19:33:41', '2024-10-29 19:33:41', 'Validated'),
-(67, 10001, 'adona', 'adrian', 'adrian2zero@gmail.com', '09184025526', '$2y$10$s3.7/M/9vGIJfIosUR7eeezDqhXWRgbfJtD9AHAMVlDBam.z7AUnO', 'IT_Support', '2024-11-19 05:10:05', '2024-11-19 12:10:05', 'Validated');
+INSERT INTO `accounts` (`id`, `serial_num`, `last_name`, `first_name`, `email`, `phone_num`, `h_password`, `role`, `reset_token_hash`, `reset_token_expires_at`, `date_created`, `validation`) VALUES
+(1, 10000, 'Admin', ' ', 'mdjbikes23@gmail.com', '2147483647', '$2y$10$OyKmhgHFSNFc.dobWOEsfumb7klN.lxrhPRViaR8JSwpNni2UrUAK', 'Admin', NULL, NULL, '2024-10-29 19:33:41', 'Validated'),
+(67, 10001, 'adona', 'adrian', 'adrian2zero@gmail.com', '09184025526', '$2y$10$7HHG2tBwCCJFTnfyD08dB.510M9hKYKEEMafnJ843gncaIY13ipbe', 'IT_Support', NULL, NULL, '2024-11-19 05:10:05', 'Validated'),
+(68, 10002, 'De Luna', 'Vivien', 'delunavivien27@gmail.com', '09995682821', '$2y$10$TFngW/WXwog82MGCkwV6KuxjfA5BChWk63HtqCfocC8/8KOZ2in3S', 'user', NULL, NULL, '2024-11-20 09:10:08', ''),
+(69, 10003, 'Vicencio', 'Christian Kyle', 'kristyankayl26@gmail.com', '09214388440', '$2y$10$x9hWZTeqLnRDBO3hGZNtdOq09Px839HCfPbn/M8aA6eS.APWcBKym', 'user', NULL, NULL, '2024-11-20 11:13:34', '');
 
 -- --------------------------------------------------------
 
@@ -176,7 +179,7 @@ INSERT INTO `products_tb` (`products_id`, `prod_serial_num`, `p_model`, `p_wheel
 (110, 10006, 'E-TRUCK With ROOF', '3 wheels', '1200W', '70V20AH', '40-50KM', '', '500', '8-10 Hours', 'Red, Blue, Black', 'Reverse Feature, Keyless Activation, Automatic Wiper, Anti-theft Alarm, Remote Control', '85000', 'Available'),
 (111, 10007, 'GC10', '2 wheels', '350W', '48V12AH', '30-40KM', '', '120', '6-8 Hours', 'Yellow, Red, White', 'Anti-Theft Alarm', '19800', 'Available'),
 (112, 10008, 'LION', '4 wheels', '1000W', '60V32AH', '35-40KM', '123', '300', '6-8 Hours', 'Red, Pink, Orange, Blue, White', 'Reverse Feature, Anti-Theft Alarm, Tubeless Tire, Automatic Wiper', '88000', 'Available'),
-(113, 10009, 'MINI RIO PLUS', '3 wheels', '650W', '48V20AH', '35-45KM', '123', '123', '6-8 Hours', 'Red, Blue', 'Anti-Theft Alarm, Keyless Activation, Reverse Feature, Remote Control, Automatic Wiper', '53000', 'Available');
+(113, 10009, 'MINI RIO PLUS', '3 wheels', '650W', '48V20AH', '35-45KM', '123', '123', '6-8 Hours', 'Red, Blue', 'Anti-Theft Alarm, Keyless Activation, Reverse Feature, Remote Control, Automatic Wiper', '53000', 'Unavailable');
 
 -- --------------------------------------------------------
 
@@ -199,8 +202,8 @@ CREATE TABLE `promos_tb` (
 --
 
 INSERT INTO `promos_tb` (`id`, `p_name`, `p_image`, `p_monthly`, `p_year`, `total_discount`, `base_price`) VALUES
-(8, '123', '../uploads/1.png', '123', '123', 123123213, 123),
-(9, '123', '../uploads/2.png', '123', '', 0, 0),
+(8, 'Vintage S', '../uploads/1.png', '2870', '12', 34440, 42000),
+(9, 'Standard Cargo with Full Roof', '../uploads/2.png', '5666.67', '12', 68000, 85000),
 (10, '123', '../uploads/3.png', '123', '', 0, 0),
 (11, '123', '../uploads/4.png', '123', '123', 123, 123),
 (12, '123', '../uploads/5.png', '123', '123', 123, 123),
@@ -293,19 +296,10 @@ CREATE TABLE `website_feedback` (
 --
 
 INSERT INTO `website_feedback` (`id`, `user_type`, `feedback_rating`, `feedback_comment`) VALUES
-(8, 'Guest', '4', 'he'),
-(9, 'Guest', '4', 'asd'),
-(10, 'Guest', '5', 'jhgf'),
-(11, 'Guest', '4', 'asdasdasdasdasd'),
-(12, 'Guest', '5', 'asdasd'),
-(13, 'Validated User', '4', 'asd'),
-(14, 'Validated User', '3', 'hello'),
-(15, 'Validated User', '4', 'great feedback'),
-(16, 'Validated User', '3', 'feedback test'),
-(17, 'Validated User', '2', 'asddas'),
-(18, 'Validated User', '2', 'asd'),
-(19, 'Validated User', '0', ''),
-(20, 'Validated User', '0', '');
+(23, 'Registered User', '0', ''),
+(24, 'Validated User', '0', ''),
+(25, 'Validated User', '0', ''),
+(26, 'Validated User', '0', '');
 
 --
 -- Indexes for dumped tables
@@ -315,7 +309,8 @@ INSERT INTO `website_feedback` (`id`, `user_type`, `feedback_rating`, `feedback_
 -- Indexes for table `accounts`
 --
 ALTER TABLE `accounts`
-  ADD PRIMARY KEY (`id`) USING BTREE;
+  ADD PRIMARY KEY (`id`) USING BTREE,
+  ADD UNIQUE KEY `reset_token_hash` (`reset_token_hash`);
 
 --
 -- Indexes for table `ledger_tb`
@@ -373,7 +368,7 @@ ALTER TABLE `website_feedback`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `ledger_tb`
@@ -421,7 +416,7 @@ ALTER TABLE `validated_tb`
 -- AUTO_INCREMENT for table `website_feedback`
 --
 ALTER TABLE `website_feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
