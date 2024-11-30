@@ -135,7 +135,7 @@ function showSuccessModal() {
     }
 
     // Close the error modal when the user clicks the 'X'
-    document.getElementById("closeErrorModal").onclick = function() {
+    document.getElementById("forgot-password-modal").onclick = function() {
         document.getElementById("forgot-password-modal-error").style.display = "none";
     }
 

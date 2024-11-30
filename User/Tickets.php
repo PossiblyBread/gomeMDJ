@@ -19,7 +19,7 @@ $date_from = isset($_POST['date_from']) ? $_POST['date_from'] : '';
 $date_to = isset($_POST['date_to']) ? $_POST['date_to'] : '';
 
 // Prepare base SQL query with filtering conditions
-$sql = "SELECT serial_num, first_name, last_name, user_email, phone_num, t_status, description, date_time_created 
+$sql = "SELECT serial_num, first_name, last_name, user_email, type, phone_num, t_status, description, date_time_created 
         FROM tickets 
         WHERE user_email = ?";
 
@@ -111,7 +111,7 @@ $result = $stmt->get_result();
                     <tr>
                         <th>Serial Number</th>
                         <th>Full Name</th>
-                        <th>Email</th>
+                        <th>Ticket Type</th>
                         <th>Phone Number</th>
                         <th>Status</th>
                         <th>Description</th>
@@ -125,7 +125,7 @@ $result = $stmt->get_result();
                             <tr>
                                 <td><?= htmlspecialchars($row['serial_num']) ?></td>
                                 <td><?= htmlspecialchars($row['first_name']) . ' ' . htmlspecialchars($row['last_name']) ?></td>
-                                <td><?= htmlspecialchars($row['user_email']) ?></td>
+                                <td><?= htmlspecialchars($row['type']) ?></td>
                                 <td><?= htmlspecialchars($row['phone_num']) ?></td>
                                 <td><?= htmlspecialchars($row['t_status']) ?></td>
                                 <td><?= htmlspecialchars($row['description']) ?></td>

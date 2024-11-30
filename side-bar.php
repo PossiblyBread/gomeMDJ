@@ -16,6 +16,7 @@
         <a href="index.php">Home</a>
         <a href="about.php">About</a>
         <a href="products.php">Products</a>
+        <a href="faqs.php">FAQs</a>
     </aside>
     <script src="js/script.js"></script>
     <script>

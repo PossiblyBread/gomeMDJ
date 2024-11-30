@@ -65,8 +65,17 @@ if (!isset($_SESSION['id'])) {
             
             // Check if still in cooldown period
             if (timeElapsed < COOLDOWN_PERIOD) {
-                const timeLeft = ((COOLDOWN_PERIOD - timeElapsed) / 1000).toFixed(0);
-                result.innerText = `Please wait ${timeLeft} seconds before submitting another ticket.`;
+                const timeLeftInSeconds = Math.floor((COOLDOWN_PERIOD - timeElapsed) / 1000); // Remaining time in seconds
+                
+                // Convert time left in seconds to hours, minutes, and seconds
+                const hours = Math.floor(timeLeftInSeconds / 3600);
+                const minutes = Math.floor((timeLeftInSeconds % 3600) / 60);
+                const seconds = timeLeftInSeconds % 60;
+
+                // Format the time into a human-readable format
+                const formattedTime = `${hours} hour${hours !== 1 ? 's' : ''}, ${minutes} minute${minutes !== 1 ? 's' : ''}, and ${seconds} second${seconds !== 1 ? 's' : ''}`;
+                
+                result.innerText = `Please wait ${formattedTime} before submitting another ticket.`;
             }
         });
 
@@ -76,8 +85,17 @@ if (!isset($_SESSION['id'])) {
 
             // Check if cooldown period has passed
             if (currentTime - lastSubmissionTime < COOLDOWN_PERIOD) {
-                const timeLeft = ((COOLDOWN_PERIOD - (currentTime - lastSubmissionTime)) / 1000).toFixed(0);
-                result.innerText = `Please wait ${timeLeft} seconds before submitting another ticket.`;
+                const timeLeftInSeconds = Math.floor((COOLDOWN_PERIOD - (currentTime - lastSubmissionTime)) / 1000); // Remaining time in seconds
+                
+                // Convert time left in seconds to hours, minutes, and seconds
+                const hours = Math.floor(timeLeftInSeconds / 3600);
+                const minutes = Math.floor((timeLeftInSeconds % 3600) / 60);
+                const seconds = timeLeftInSeconds % 60;
+
+                // Format the time into a human-readable format
+                const formattedTime = `${hours} hour${hours !== 1 ? 's' : ''}, ${minutes} minute${minutes !== 1 ? 's' : ''}, and ${seconds} second${seconds !== 1 ? 's' : ''}`;
+
+                result.innerText = `Please wait ${formattedTime} before submitting another ticket.`;
                 return;
             }
 
@@ -135,6 +153,7 @@ if (!isset($_SESSION['id'])) {
                 console.error(error);
             });
         });
+
     </script>
     <style>
         /* ticket form starts*/

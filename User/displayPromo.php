@@ -108,7 +108,7 @@ $result = $conn->query($sql);
             caption.innerText = `${captionText}`;
             details.innerText = `
                 Monthly: ${monthly}
-                Year: ${year}
+                Months: ${year}
                 Total Discount: ${discount}
                 Base Price: ${basePrice} PHP
             `;

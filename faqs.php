@@ -72,8 +72,8 @@
              <!-- Contact Info -->
             <div class="contact-info">
                 <h3>Contact Information</h3>
-                <p><strong>Email:</strong> support@gmail.com</p>
-                <p><strong>Phone:</strong> +123 456 7890</p>
+                <p><strong>Email:</strong> mdjbikes23@gmail.com</p>
+                <p><strong>Phone:</strong> +(63)933-858-9231</p>
                 <p><strong>Working Hours:</strong> Monday - Friday, 9:00 AM - 5:00 PM</p>
             </div>
         </section>

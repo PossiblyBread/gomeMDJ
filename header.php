@@ -17,6 +17,7 @@
                 <a href="index.php">Home</a>
                 <a href="about.php">About</a>
                 <a href="products.php">Products</a>
+                <a href="faqs.php">FAQs</a>
                 <div class="profile-icon" id="profile-icon"><span>Login</span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white">
                         <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.31 0-10 1.67-10 5v2h20v-2c0-3.33-6.69-5-10-5z" />
@@ -94,7 +95,7 @@
     </div>
     <div class="modal" id="forgot-password-modal-error">
         <div class="forgot-password-modal-content">
-            <span class="forgot-password-close" onclick="document.getElementById('forgot-password-modal').style.display='none'">&times;</span>
+            <span class="forgot-password-close" onclick="document.getElementById('forgot-password-modal-error').style.display='none'">&times;</span>
             <strong>Oops!</strong>
             <p>Make sure the email you have provided is correct or is registered in our website!</p>
             <h2>Forgot Password</h2>
@@ -165,12 +166,12 @@
                 Before registering and using the MDJ eBike Store website, users must agree to the following:
             </p>
             <ol>
-                <li><strong>Registration with Gmail Account</strong>
+                <li><strong>Registration with Email Account</strong>
                     <ul>
-                        <li>I confirm that I will use a valid Gmail account to register on the Website.</li>
-                        <li>I agree to provide accurate and complete information during registration, including my Gmail address.</li>
-                        <li>I acknowledge that the Gmail address provided will be used for communication regarding inquiries, updates, and other related matters.</li>
-                        <li>I am responsible for ensuring that my Gmail account remains active and accessible.</li>
+                        <li>I confirm that I will use a valid Email account to register on the Website.</li>
+                        <li>I agree to provide accurate and complete information during registration, including my Email address.</li>
+                        <li>I acknowledge that the Email address provided will be used for communication regarding inquiries, updates, and other related matters.</li>
+                        <li>I am responsible for ensuring that my Email account remains active and accessible.</li>
                     </ul>
                 </li>
                 <li><strong>Website Usage</strong>
@@ -182,20 +183,19 @@
                 </li>
                 <li><strong>Privacy and Security</strong>
                     <ul>
-                        <li>I agree to the collection, use, and storage of my Gmail address and other personal data as described in the Privacy Policy.</li>
+                        <li>I agree to the collection, use, and storage of my Email address and other personal data as described in the Privacy Policy.</li>
                         <li>I acknowledge that MDJ eBike Store will take reasonable measures to protect my information but cannot guarantee absolute security.</li>
                     </ul>
                 </li>
-                <li><strong>Gmail Notifications</strong>
+                <li><strong>Email Notifications</strong>
                     <ul>
-                        <li>I understand that MDJ eBike Store may send email notifications to my Gmail account regarding account activity, updates, or inquiries.</li>
-                        <li>I am responsible for regularly checking my Gmail account to stay informed about these communications.</li>
+                        <li>I understand that MDJ eBike Store may use email account regarding account verification.</li>
+                        <li>I am responsible for regularly checking my Email account to stay informed about these communications.</li>
                     </ul>
                 </li>
                 <li><strong>Limitations and Liability</strong>
                     <ul>
                         <li>I understand that the content on the Website, including eBike specifications and promotions, may be updated or changed without prior notice.</li>
-                        <li>I acknowledge that MDJ eBike Store is not liable for technical issues, errors, or delays in resolving inquiries.</li>
                     </ul>
                 </li>
                 <li><strong>Account Termination</strong>
@@ -222,7 +222,9 @@
         function closeForgotPasswordModal() {
             document.getElementById('forgot-password-modal').style.display = 'none';
         }
-
+        function closeForgotPasswordModal() {
+            document.getElementById('forgot-password-modal-error').style.display = 'none';
+        }
         // Function to check the password strength and requirements
         function checkPasswordStrength() {
             const password = document.getElementById('a_password').value;
@@ -357,7 +359,7 @@
             // Check if email is valid and ends with @gmail.com
             const emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
             if (!emailPattern.test(email)) {
-                errorMessage.textContent += 'Email must be a valid Gmail address (e.g., example@gmail.com)!';
+                errorMessage.textContent += 'Email must be a valid Email address (e.g., example@gmail.com)!';
                 return false; // Prevent form submission
             }
             // Ensure terms and conditions checkbox is checked

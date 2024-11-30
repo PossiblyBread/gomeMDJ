@@ -29,9 +29,68 @@ if ($mysqli->affected_rows) {
     $mail->Subject = "Password Reset";
     $mail->Body = <<<END
 
-    Click <a href="https://gomemdj.online/reset-password.php?token=$token">here</a> 
-    to reset your password.
-
+    <html>
+    <head>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                width: 100%;
+                max-width: 600px;
+                margin: 30px auto;
+                background-color: #ffffff;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+            }
+            .header {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .header h2 {
+                color: #333;
+            }
+            .content {
+                font-size: 16px;
+                line-height: 1.5;
+                color: #555;
+                margin-bottom: 20px;
+            }
+            .content a {
+                color: #007bff;
+                text-decoration: none;
+            }
+            .content a:hover {
+                text-decoration: underline;
+            }
+            .footer {
+                text-align: center;
+                font-size: 12px;
+                color: #888;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h2>Password Reset Request</h2>
+            </div>
+            <div class="content">
+                <p>Hello,</p>
+                <p>We received a request to reset your password. Please click the link below to reset your password:</p>
+                <p><a href="https://gomemdj.online/reset-password.php?token=$token">Reset Your Password</a></p>
+                <p>If you did not request this change, please ignore this email.</p>
+            </div>
+            <div class="footer">
+                <p>Best regards, <br> MDJ Bikes Team</p>
+            </div>
+        </div>
+    </body>
+    </html>
     END;
 
     try {

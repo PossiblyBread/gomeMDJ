@@ -49,9 +49,9 @@ function getImagePath($image, $pageId)
                 <label for="filter">Filter By:</label>
                 <select id="filter" onchange="filterProducts()">
                     <option value="all">All Types</option>
-                    <option value="2 wheels">Bikes</option>
-                    <option value="3 wheels">Trikes</option>
-                    <option value="4 wheels">Quad Bikes</option>
+                    <option value="Bikes">Bikes</option>
+                    <option value="Trikes">Trikes</option>
+                    <option value="Quad Bikes">Quad Bikes</option>
                 </select>
             </div>
         </section>
@@ -163,7 +163,7 @@ function getImagePath($image, $pageId)
                             <strong><?php echo htmlspecialchars($row['p_model']); ?></strong>
                         </div>
                         <div class="price-tag">
-                            <span>Cash Price:</span>
+                            <span>Cash:</span>
                             <strong><?php echo htmlspecialchars(formatPeso($row['p_price'])); ?></strong>
                         </div>
                         <div class="price-tag">
@@ -175,7 +175,7 @@ function getImagePath($image, $pageId)
                             <div class="specs-grid">
                                 <?php
                                 $specs = [
-                                    'Wheels' => $row['p_wheels'],
+                                    'Selection' => $row['p_wheels'],
                                     'Motor' => $row['p_motor_power'],
                                     'Battery' => $row['p_battery'],
                                     'Max Speed' => $row['p_max_speed'],
