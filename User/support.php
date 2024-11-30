@@ -52,19 +52,6 @@ if ($result) {
         <section class="support-section">
             <h2>How Can We Help You?</h2>
             <p>If you have any questions or need assistance, please don’t hesitate to reach out to us. We're here to help!</p>
-
-            <!-- Contact Info -->
-            <div class="contact-info">
-                <h3>Contact Information</h3>
-                <p><strong>Email:</strong> support@gmail.com</p>
-                <p><strong>Phone:</strong> +123 456 7890</p>
-                <p><strong>Working Hours:</strong> Monday - Friday, 9:00 AM - 5:00 PM</p>
-                <?php if ($validation_status === "Validated"): ?>
-                    <br><br>
-                    <button class="support-ticket-button" id="openModalButton">Submit a Ticket</button>
-                <?php endif; ?>
-            </div>
-
             <!-- FAQ Section -->
             <div class="faq-section">
                 <h3>Frequently Asked Questions</h3>
@@ -115,6 +102,17 @@ if ($result) {
                 </div>
 
                 <!-- Add more FAQ items as needed -->
+            </div>
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <p><strong>Email:</strong> support@gmail.com</p>
+                <p><strong>Phone:</strong> +123 456 7890</p>
+                <p><strong>Working Hours:</strong> Monday - Friday, 9:00 AM - 5:00 PM</p>
+                <?php if ($validation_status === "Validated"): ?>
+                    <br><br>
+                    <button class="support-ticket-button" id="openModalButton">Submit a Ticket</button>
+                <?php endif; ?>
             </div>
         </section>
         <!-- Button to open the modal -->
