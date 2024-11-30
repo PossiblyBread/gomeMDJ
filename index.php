@@ -59,14 +59,24 @@ if (isset($_GET['msg'])) {
 
         </div>
     </section>
-    <!-- Modal -->
+    <!-- Success Modal -->
     <div id="resetPasswordModal" class="resetPasswordModal">
         <div class="modal-content">
-            <span class="close" id="closeModal">&times;</span>
+            <span class="close" id="closeSuccessModal">&times;</span>
             <strong>Success!</strong>
             <p>The link to reset your password has been sent to the email you have provided!</p>
         </div>
     </div>
+
+    <!-- Error Modal -->
+    <div id="forgot-password-modal-error" class="resetPasswordModal">
+        <div class="modal-content">
+            <span class="close" id="closeErrorModal">&times;</span>
+            <strong>Oops!</strong>
+            <p>Make sure the email you have provided is correct or is registered in our website!</p>
+        </div>
+    </div>
+
     <!-- Main Content Section -->
     <main>
         <hr>
@@ -107,32 +117,55 @@ if (isset($_GET['msg'])) {
     <script src="js/script.js"></script>
     <script src="js/Otp_script.js"></script>
     <script>
-        // Show the modal
-        function showModal() {
-            var modal = document.getElementById("resetPasswordModal");
-            modal.style.display = "block";
+        // Show the Success Modal
+function showSuccessModal() {
+    var modal = document.getElementById("resetPasswordModal");
+        modal.style.display = "block";
+    }
+
+    // Show the Error Modal
+    function showErrorModal() {
+        var modal = document.getElementById("forgot-password-modal-error");
+        modal.style.display = "block";
+    }
+
+    // Close the modal when the user clicks the 'X'
+    document.getElementById("closeSuccessModal").onclick = function() {
+        document.getElementById("resetPasswordModal").style.display = "none";
+    }
+
+    // Close the error modal when the user clicks the 'X'
+    document.getElementById("closeErrorModal").onclick = function() {
+        document.getElementById("forgot-password-modal-error").style.display = "none";
+    }
+
+    // Close the modal if the user clicks outside of it
+    window.onclick = function(event) {
+        var successModal = document.getElementById("resetPasswordModal");
+        var errorModal = document.getElementById("forgot-password-modal-error");
+        if (event.target == successModal) {
+            successModal.style.display = "none";
+        }
+        if (event.target == errorModal) {
+            errorModal.style.display = "none";
+        }
+    }
+
+    // Check if the URL has the query parameter reset_success=true
+    window.onload = function() {
+        var urlParams = new URLSearchParams(window.location.search);
+
+        // Show success modal if reset_success is true
+        if (urlParams.has('reset_success') && urlParams.get('reset_success') === 'true') {
+            showSuccessModal();
         }
 
-        // Close the modal when the user clicks the 'X'
-        document.getElementById("closeModal").onclick = function() {
-            document.getElementById("resetPasswordModal").style.display = "none";
+        // Show error modal if reset_failed is true
+        if (urlParams.has('reset_failed') && urlParams.get('reset_failed') === 'true') {
+            showErrorModal();
         }
+    }
 
-        // Close the modal if the user clicks outside of it
-        window.onclick = function(event) {
-            var modal = document.getElementById("resetPasswordModal");
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        // Check if the URL has the query parameter reset_success=true
-        window.onload = function() {
-            var urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.has('reset_success') && urlParams.get('reset_success') === 'true') {
-                showModal();
-            }
-        }
     </script>
 </body>
 

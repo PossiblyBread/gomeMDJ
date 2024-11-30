@@ -92,6 +92,19 @@
             </form>
         </div>
     </div>
+    <div class="modal" id="forgot-password-modal-error">
+        <div class="forgot-password-modal-content">
+            <span class="forgot-password-close" onclick="document.getElementById('forgot-password-modal').style.display='none'">&times;</span>
+            <strong>Oops!</strong>
+            <p>Make sure the email you have provided is correct or is registered in our website!</p>
+            <h2>Forgot Password</h2>
+            <form id="forgot-password-form" action="send-password-reset.php" method="POST">
+                <label for="email">Enter your email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
     <!-- Registration Modal -->
     <div id="register-modal">
         <div class="register-modal-content">
@@ -119,8 +132,9 @@
                 <div>
                     <label for="a_password">Password:</label>
                     <input type="password" name="a_password" id="a_password" placeholder="Password" required maxlength="32" oninput="checkPasswordStrength()">
-                    <div id="password-strength" style="height: 5px; width: 100%; margin-top: 5px;"></div>
+                    <div id="password-strength" style="height: 3px; width: 100%; margin-top: 5px; margin-left:5px"></div>
                     <div id="password-strength-message"></div>
+                    <ul id="password-requirements" style="color: red; margin-top: 10px;"></ul> <!-- List of missing requirements -->
                 </div>
 
                 <div>
@@ -148,17 +162,58 @@
             <span class="terms-close" onclick="document.getElementById('terms-modal').style.display='none'">&times;</span>
             <h2>Terms and Conditions</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                Before registering and using the MDJ eBike Store website, users must agree to the following:
             </p>
+            <ol>
+                <li><strong>Registration with Gmail Account</strong>
+                    <ul>
+                        <li>I confirm that I will use a valid Gmail account to register on the Website.</li>
+                        <li>I agree to provide accurate and complete information during registration, including my Gmail address.</li>
+                        <li>I acknowledge that the Gmail address provided will be used for communication regarding inquiries, updates, and other related matters.</li>
+                        <li>I am responsible for ensuring that my Gmail account remains active and accessible.</li>
+                    </ul>
+                </li>
+                <li><strong>Website Usage</strong>
+                    <ul>
+                        <li>I will use the Website for personal and non-commercial purposes only.</li>
+                        <li>I understand that the Website is designed for browsing eBikes, viewing promotions, and managing inquiries or transactions.</li>
+                        <li>I agree to abide by all rules and policies outlined on the Website.</li>
+                    </ul>
+                </li>
+                <li><strong>Privacy and Security</strong>
+                    <ul>
+                        <li>I agree to the collection, use, and storage of my Gmail address and other personal data as described in the Privacy Policy.</li>
+                        <li>I acknowledge that MDJ eBike Store will take reasonable measures to protect my information but cannot guarantee absolute security.</li>
+                    </ul>
+                </li>
+                <li><strong>Gmail Notifications</strong>
+                    <ul>
+                        <li>I understand that MDJ eBike Store may send email notifications to my Gmail account regarding account activity, updates, or inquiries.</li>
+                        <li>I am responsible for regularly checking my Gmail account to stay informed about these communications.</li>
+                    </ul>
+                </li>
+                <li><strong>Limitations and Liability</strong>
+                    <ul>
+                        <li>I understand that the content on the Website, including eBike specifications and promotions, may be updated or changed without prior notice.</li>
+                        <li>I acknowledge that MDJ eBike Store is not liable for technical issues, errors, or delays in resolving inquiries.</li>
+                    </ul>
+                </li>
+                <li><strong>Account Termination</strong>
+                    <ul>
+                        <li>I understand that MDJ eBike Store reserves the right to suspend or terminate my account if I violate these Terms and Conditions.</li>
+                    </ul>
+                </li>
+            </ol>
             <div>
-            <input type="radio" id="terms-agree" name="terms-agree" value="agree" onclick="enableCloseButton()">
+                <input type="radio" id="terms-agree" name="terms-agree" value="agree" onclick="enableCloseButton()">
                 <label for="terms-agree">I have read and agree to the terms and conditions.</label>
             </div>
             <div>
-                <button id="terms-close-btn" onclick="closeTermsModal()" disabled>Close</button>
+                <button id="terms-close-btn" onclick="closeTermsModal()" disabled>Agree</button>
             </div>
         </div>
     </div>
+
     <script>
         function openForgotPasswordModal() {
             document.getElementById('login-modal').style.display = 'none';
@@ -168,31 +223,76 @@
             document.getElementById('forgot-password-modal').style.display = 'none';
         }
 
+        // Function to check the password strength and requirements
         function checkPasswordStrength() {
             const password = document.getElementById('a_password').value;
             const strengthMessage = document.getElementById('password-strength-message');
+            const passwordStrengthBar = document.getElementById('password-strength');
             
-            let strength = "weak"; // Default is weak
-            let strengthClass = "weak"; // Initial class for weak strength
-            
-            if (password.length >= 8 && password.length <= 11) {
-                strength = "medium";
-                strengthClass = "medium";
-            } else if (password.length >= 12) {
+            let strength = "weak"; // Default strength
+            let strengthClass = "weak"; // Default class for weak strength
+            let requirements = {
+                length: password.length >= 8,  // Password length at least 8
+                uppercase: /[A-Z]/.test(password),  // Contains at least one uppercase letter
+                number: /\d/.test(password),  // Contains at least one number
+                specialChar: /[!@#$%^&*]/.test(password),  // Contains at least one special character
+            };
+
+            // Update password strength based on the criteria
+            let strengthPercentage = 0;
+            if (requirements.length) strengthPercentage += 25;
+            if (requirements.uppercase) strengthPercentage += 25;
+            if (requirements.number) strengthPercentage += 25;
+            if (requirements.specialChar) strengthPercentage += 25;
+
+            // Adjust strength level based on percentage
+            if (strengthPercentage === 100) {
                 strength = "strong";
                 strengthClass = "strong";
+            } else if (strengthPercentage >= 50) {
+                strength = "medium";
+                strengthClass = "medium";
             }
 
-            // Update the password strength message and its color
+            // Update the password strength message
             if (strengthMessage) {
                 strengthMessage.innerText = `Password Strength: ${strength.charAt(0).toUpperCase() + strength.slice(1)}`;
-                
-                // Remove previous classes if any
+                // Remove previous classes and add the new one
                 strengthMessage.classList.remove('weak', 'medium', 'strong');
-                // Add the new strength class
                 strengthMessage.classList.add(strengthClass);
             }
+
+            // Update the password strength bar width based on strength
+            if (passwordStrengthBar) {
+                passwordStrengthBar.style.width = `${strengthPercentage}%`;
+                passwordStrengthBar.style.backgroundColor = strengthClass === "strong" ? 'green' :
+                                                        strengthClass === "medium" ? 'orange' : 'red';
+            }
+
+            // Display which password requirements are met or not
+            const requirementMessages = document.getElementById('password-requirements');
+            let requirementText = "";
+
+            // Check each requirement and provide feedback
+            if (!requirements.length) {
+                requirementText += "<li>Password must be at least 8 characters long.</li>";
+            }
+            if (!requirements.uppercase) {
+                requirementText += "<li>Password must contain at least one uppercase letter.</li>";
+            }
+            if (!requirements.number) {
+                requirementText += "<li>Password must contain at least one number.</li>";
+            }
+            if (!requirements.specialChar) {
+                requirementText += "<li>Password must contain at least one special character (!@#$%^&*).</li>";
+            }
+
+            // Display the live feedback for missing requirements
+            if (requirementMessages) {
+                requirementMessages.innerHTML = requirementText;
+            }
         }
+
         // Function to open the Terms and Conditions modal
         function openTermsModal() {
             document.getElementById('terms-modal').style.display = 'block';
@@ -334,7 +434,17 @@
         margin: 100px auto;
         position: relative;
     }
-
+    #forgot-password-modal-error strong {
+        text-align: center;
+        display: block;
+        color: red;
+    }
+    #forgot-password-modal-error p {
+        text-align: center;
+        display: block;
+        color: red;
+        font-size: 13px;
+    }
     .forgot-password-close {
         position: absolute;
         top: 10px;
@@ -345,6 +455,7 @@
 
     .forgot-password-modal-content h2 {
         text-align: center;
+        padding-bottom: 5px;
     }
 
     .forgot-password-modal-content form {
@@ -383,7 +494,7 @@
     }
     .terms-modal-content {
         padding: 20px;
-        background-color: white;
+        background-color:#CBDCEB;
         border-radius: 8px;
         width: 500px;
         max-width: 90%;
@@ -412,12 +523,14 @@
     /* Basic styling for the modal */
     .terms-modal-content {
         padding: 20px;
-        background-color: white;
+        background-color: #CBDCEB;
         border-radius: 8px;
         width: 500px;
         max-width: 90%;
         margin: 100px auto;
         box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        max-height: 70vh; /* Limit the height of the modal content */
+        overflow-y: auto; /* Allow scrolling if content exceeds the height */
     }
 
     .terms-close {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2024 at 11:18 AM
+-- Generation Time: Nov 30, 2024 at 07:08 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -48,8 +48,8 @@ CREATE TABLE `accounts` (
 
 INSERT INTO `accounts` (`id`, `serial_num`, `last_name`, `first_name`, `email`, `phone_num`, `h_password`, `role`, `reset_token_hash`, `reset_token_expires_at`, `date_created`, `validation`) VALUES
 (1, 10000, 'Admin', ' ', 'mdjbikes23@gmail.com', '2147483647', '$2y$10$OyKmhgHFSNFc.dobWOEsfumb7klN.lxrhPRViaR8JSwpNni2UrUAK', 'Admin', NULL, NULL, '2024-10-29 19:33:41', 'Validated'),
-(67, 10001, 'adona', 'adrian', 'adrian2zero@gmail.com', '09184025526', '$2y$10$7HHG2tBwCCJFTnfyD08dB.510M9hKYKEEMafnJ843gncaIY13ipbe', 'IT_Support', NULL, NULL, '2024-11-19 05:10:05', 'Validated'),
-(68, 10002, 'De Luna', 'Vivien', 'delunavivien27@gmail.com', '09995682821', '$2y$10$TFngW/WXwog82MGCkwV6KuxjfA5BChWk63HtqCfocC8/8KOZ2in3S', 'user', NULL, NULL, '2024-11-20 09:10:08', ''),
+(67, 10001, 'adona', 'adrian', 'adrian2zero@gmail.com', '09184025526', '$2y$10$9RCSr0gVmLKzfaVW1oG0bO/WvSosqqWzsbRTwpc18g7X6B1B3xCfS', 'IT_Support', '422893add8468ff4f94cd12f321ee2b9200d47a4bf40d3ed394b9bc90f6c9b9c', '2024-11-30 06:53:19', '2024-11-19 05:10:05', 'Validated'),
+(68, 10002, 'De Luna', 'Vivien', 'delunavivien27@gmail.com', '09995682821', '$2y$10$hh5rfOEA4wK18/y8wHfNmuNZYcj90UKwjoPQHQP2/gWwLpIrwIoBq', 'user', NULL, NULL, '2024-11-20 09:10:08', ''),
 (69, 10003, 'Vicencio', 'Christian Kyle', 'kristyankayl26@gmail.com', '09214388440', '$2y$10$x9hWZTeqLnRDBO3hGZNtdOq09Px839HCfPbn/M8aA6eS.APWcBKym', 'user', NULL, NULL, '2024-11-20 11:13:34', '');
 
 -- --------------------------------------------------------
@@ -89,7 +89,9 @@ INSERT INTO `ledger_tb` (`id`, `receipt_num`, `serial_num`, `full_name`, `phone_
 (73, 'R-10001', '10001', 'adrian adona', '09184025526', 'adrian2zero@gmail.com', 'AITHUSSA PLUS', '70000', '7000', '63956.14', '5329.68', '20000', '2024-11-20 02:29:46', '10000', '0'),
 (79, 'R-10001', '10001', 'adrian adona', '09184025526', 'adrian2zero@gmail.com', 'AITHUSSA PLUS', '70000', '7000', '53956.14', '5329.68', '30000', '2024-11-20 02:33:23', '10000', '0'),
 (80, 'R-10001', '10001', 'adrian adona', '09184025526', 'adrian2zero@gmail.com', 'AITHUSSA PLUS', '70000', '7000', '53956.14', '5329.68', '35000', '2024-11-20 02:35:22', '5000', '5000'),
-(81, 'R-10001', '10001', 'adrian adona', '09184025526', 'adrian2zero@gmail.com', 'AITHUSSA PLUS', '70000', '7000', '0', '5329.68', '88956.14', '2024-11-20 02:36:19', '60000', '0');
+(81, 'R-10001', '10001', 'adrian adona', '09184025526', 'adrian2zero@gmail.com', 'AITHUSSA PLUS', '70000', '7000', '0', '5329.68', '88956.14', '2024-11-20 02:36:19', '60000', '0'),
+(82, 'R-10002', '10000', '  Admin', '2147483647', 'mdjbikes23@gmail.com', 'AITHUSSA PLUS', '70000', '7000.00', '63956.14', '5329.68', '', '2024-11-30 11:36:26', '0.00', ''),
+(83, 'R-10002', '10000', '  Admin', '2147483647', 'mdjbikes23@gmail.com', 'AITHUSSA PLUS', '70000', '7000', '58626.46', '5329.68', '5329.68', '2024-11-30 11:37:54', '5329.68', '0');
 
 -- --------------------------------------------------------
 
@@ -140,7 +142,12 @@ INSERT INTO `products_img_id` (`products_img_id`, `products_id`, `Images`, `imag
 (106, 111, 'COVER_GC10_10007_1731958072.webp', 'cover'),
 (107, 112, 'COVER_LION_10008_1731958225.webp', 'cover'),
 (108, 113, 'COVER_MINI RIO PLUS_10009_1731958442.webp', 'cover'),
-(109, 114, 'COVER_PRODUCT_10010_1732018498.webp', 'cover');
+(109, 114, 'COVER_PRODUCT_10010_1732018498.webp', 'cover'),
+(110, 115, 'COVER_Sample Product_10010_1732937039.webp', 'cover'),
+(111, 115, 'PROD_Sample Product_1732937039_0.webp', 'thumbnail'),
+(112, 115, 'PROD_Sample Product_1732937039_1.webp', 'thumbnail'),
+(113, 115, 'PROD_Sample Product_1732937039_2.webp', 'thumbnail'),
+(114, 115, 'PROD_Sample Product_1732937039_3.webp', 'thumbnail');
 
 -- --------------------------------------------------------
 
@@ -179,7 +186,8 @@ INSERT INTO `products_tb` (`products_id`, `prod_serial_num`, `p_model`, `p_wheel
 (110, 10006, 'E-TRUCK With ROOF', '3 wheels', '1200W', '70V20AH', '40-50KM', '', '500', '8-10 Hours', 'Red, Blue, Black', 'Reverse Feature, Keyless Activation, Automatic Wiper, Anti-theft Alarm, Remote Control', '85000', 'Available'),
 (111, 10007, 'GC10', '2 wheels', '350W', '48V12AH', '30-40KM', '', '120', '6-8 Hours', 'Yellow, Red, White', 'Anti-Theft Alarm', '19800', 'Available'),
 (112, 10008, 'LION', '4 wheels', '1000W', '60V32AH', '35-40KM', '123', '300', '6-8 Hours', 'Red, Pink, Orange, Blue, White', 'Reverse Feature, Anti-Theft Alarm, Tubeless Tire, Automatic Wiper', '88000', 'Available'),
-(113, 10009, 'MINI RIO PLUS', '3 wheels', '650W', '48V20AH', '35-45KM', '123', '123', '6-8 Hours', 'Red, Blue', 'Anti-Theft Alarm, Keyless Activation, Reverse Feature, Remote Control, Automatic Wiper', '53000', 'Unavailable');
+(113, 10009, 'MINI RIO PLUS', '3 wheels', '650W', '48V20AH', '35-45KM', '123', '123', '6-8 Hours', 'Red, Blue', 'Anti-Theft Alarm, Keyless Activation, Reverse Feature, Remote Control, Automatic Wiper', '53000', 'Unavailable'),
+(115, 10010, 'Green :3', '3 wheels', '400', '90', '40kph', '70', '180', '8hr', 'Pink, Green', '', '50000', 'Available');
 
 -- --------------------------------------------------------
 
@@ -235,6 +243,13 @@ CREATE TABLE `tickets` (
   `ticket_rating` varchar(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
+--
+-- Dumping data for table `tickets`
+--
+
+INSERT INTO `tickets` (`id`, `first_name`, `last_name`, `user_email`, `phone_num`, `serial_num`, `type`, `description`, `t_status`, `assigned_to`, `priority`, `severity`, `escalation`, `escalation_reason`, `date_time_created`, `date_time_updated`, `ticket_rating`) VALUES
+(173, ' ', 'Admin', 'mdjbikes23@gmail.com', '12312312312', 10000, 'Technical', 'test1', 'Pending', 'adrian2zero@gmail.com', '3', '3', '1', 'cant solve it', '2024-11-30 11:55:22', '2024-11-30 12:06:27', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -248,6 +263,18 @@ CREATE TABLE `tickets_updates` (
   `escalation_reason` text NOT NULL,
   `date_time_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `tickets_updates`
+--
+
+INSERT INTO `tickets_updates` (`id`, `serial_num`, `t_status`, `escalation_reason`, `date_time_updated`) VALUES
+(138, '10000', 'new', '', '2024-11-29 20:55:22'),
+(139, '10000', 'Open', '', '2024-11-30 04:03:20'),
+(140, '10000', 'Pending', '', '2024-11-30 04:03:24'),
+(141, '10000', 'Active', '', '2024-11-29 21:05:40'),
+(142, '10000', 'Escalated', 'cant solve it', '2024-11-30 04:06:17'),
+(143, '10000', 'Pending', '', '2024-11-30 04:06:27');
 
 -- --------------------------------------------------------
 
@@ -299,7 +326,22 @@ INSERT INTO `website_feedback` (`id`, `user_type`, `feedback_rating`, `feedback_
 (23, 'Registered User', '0', ''),
 (24, 'Validated User', '0', ''),
 (25, 'Validated User', '0', ''),
-(26, 'Validated User', '0', '');
+(26, 'Validated User', '0', ''),
+(27, '', '0', ''),
+(28, '', '0', ''),
+(29, '', '0', ''),
+(30, '', '0', ''),
+(31, '', '0', ''),
+(32, '', '0', ''),
+(33, '', '0', ''),
+(34, '', '0', ''),
+(35, '', '0', ''),
+(36, '', '0', ''),
+(37, '', '0', ''),
+(38, '', '0', ''),
+(39, '', '0', ''),
+(40, 'Guest', '4', 'hallo.'),
+(41, 'Registered User', '5', 'awesome');
 
 --
 -- Indexes for dumped tables
@@ -374,19 +416,19 @@ ALTER TABLE `accounts`
 -- AUTO_INCREMENT for table `ledger_tb`
 --
 ALTER TABLE `ledger_tb`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `products_img_id`
 --
 ALTER TABLE `products_img_id`
-  MODIFY `products_img_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `products_img_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `products_tb`
 --
 ALTER TABLE `products_tb`
-  MODIFY `products_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `products_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- AUTO_INCREMENT for table `promos_tb`
@@ -398,13 +440,13 @@ ALTER TABLE `promos_tb`
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
 
 --
 -- AUTO_INCREMENT for table `tickets_updates`
 --
 ALTER TABLE `tickets_updates`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
 
 --
 -- AUTO_INCREMENT for table `validated_tb`
@@ -416,7 +458,7 @@ ALTER TABLE `validated_tb`
 -- AUTO_INCREMENT for table `website_feedback`
 --
 ALTER TABLE `website_feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

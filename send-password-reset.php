@@ -29,7 +29,7 @@ if ($mysqli->affected_rows) {
     $mail->Subject = "Password Reset";
     $mail->Body = <<<END
 
-    Click <a href="localhost/gomeMDJ9/reset-password.php?token=$token">here</a> 
+    Click <a href="https://gomemdj.online/reset-password.php?token=$token">here</a> 
     to reset your password.
 
     END;
@@ -43,6 +43,7 @@ if ($mysqli->affected_rows) {
         echo "Message could not be sent. Mailer error: {$mail->ErrorInfo}";
     }
 } else {
-    echo "Error: Failed to update record.";
+    header("Location: index.php?reset_failed=true");
+    exit;
 }
 ?>

@@ -237,6 +237,7 @@ include "db_conn.php";
     }
 
     .about-section p {
+        margin-top: -75px;
         font-size: 16px; /* Smaller font for paragraphs */
     }
 

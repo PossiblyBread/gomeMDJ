@@ -92,7 +92,7 @@ unset($_SESSION['message']); // Clear the message after displaying it
                 </div>
 
                 <!-- Optional feedback comment -->
-                <textarea name="feedback_comment" placeholder="Leave a comment (optional)" rows="4" style="width: 100%;"></textarea>
+                <textarea name="feedback_comment" placeholder="Leave a comment (optional)" rows="4" style="width: 90%;"></textarea>
 
                 <button type="submit" class="feedback-submit-btn">Submit Feedback</button>
             </form>
@@ -148,6 +148,48 @@ unset($_SESSION['message']); // Clear the message after displaying it
             feedbackFormModal.style.display = 'none';
         });
         
+        document.addEventListener('DOMContentLoaded', function () {
+            const stars = document.querySelectorAll('.star');
+
+            // Click event to select a star and apply the rating
+            stars.forEach(star => {
+                star.addEventListener('click', function () {
+                    const value = this.getAttribute('data-value');
+                    const radio = document.querySelector(`input[name="feedback_rating"][value="${value}"]`);
+                    if (radio) {
+                        radio.checked = true; // Mark the radio button corresponding to the clicked star
+                    }
+
+                    // Update the star colors based on the selected value
+                    updateStarRatings(value);
+                });
+
+                // Hover event to preview the rating (highlight stars on hover)
+                star.addEventListener('mouseover', function () {
+                    const value = this.getAttribute('data-value');
+                    updateStarRatings(value); // Highlight stars up to the hovered star
+                });
+
+                // Reset on mouse leave, keeping the selected stars highlighted if a rating is set
+                star.addEventListener('mouseleave', function () {
+                    const selectedValue = document.querySelector('input[name="feedback_rating"]:checked')?.value;
+                    updateStarRatings(selectedValue || 0); // Reset to the selected rating or clear on mouse leave
+                });
+            });
+
+            // Function to update the colors of stars based on the selected or hovered value
+            function updateStarRatings(selectedValue) {
+                stars.forEach(star => {
+                    const starValue = star.getAttribute('data-value');
+                    if (parseInt(starValue) <= parseInt(selectedValue)) {
+                        star.style.color = '#f59e0b'; // Gold for selected/hovered stars
+                    } else {
+                        star.style.color = '#ccc'; // Gray for unselected stars
+                    }
+                });
+            }
+        });
+
     </script>
 </body>
 </html>
@@ -180,7 +222,7 @@ unset($_SESSION['message']); // Clear the message after displaying it
         margin-bottom: 10px;
     }
 
-    /* Rating Stars */
+   /* Rating Stars */
     .rating {
         display: flex;
         justify-content: center;
@@ -194,18 +236,25 @@ unset($_SESSION['message']); // Clear the message after displaying it
 
     .rating .star {
         font-size: 2rem;
-        color: #ccc;
+        color: #ccc; /* Default gray color */
         cursor: pointer;
         transition: color 0.3s ease;
     }
 
+    /* Stars change to gold when selected or hovered over */
+    .rating input:checked ~ .star,
+    .rating input:checked ~ .star ~ .star {
+        color: #f59e0b; /* Highlight selected star and all previous ones */
+    }
+
+    /* Hover Effect - Highlight stars on hover */
     .rating .star:hover,
     .rating .star:hover ~ .star {
         color: #f59e0b; /* Hover color */
     }
 
     .rating input:checked ~ .star {
-        color: #f59e0b; /* Selected color */
+        color: #f59e0b; /* Selected star color */
     }
 
     /* Feedback Comment Box */
