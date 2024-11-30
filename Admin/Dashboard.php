@@ -159,8 +159,7 @@ $notifications = fetchNotifications($conn);
 </head>
 
 <body>
-    <!-- <?php //include 'greetings.php'; 
-            ?> -->
+    <?php include 'greetings.php'; ?>
     <?php include 'side-nav.php'; ?>
 
     <div class="main-content">

@@ -7,6 +7,9 @@ if (!isset($_SESSION['id'])) {
     exit("Access denied");
 }
 
+// Assuming email is stored in session
+$user_email = $_SESSION['email'];  // Retrieve the email from the session
+
 $message = "";
 $autofillData = null;
 $results = null;
@@ -172,7 +175,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insert and View Payment Information</title>
+    <title>Admin Ledger</title>
 </head>
 
 <body>

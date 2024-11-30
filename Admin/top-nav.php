@@ -174,6 +174,7 @@ if (!isset($_SESSION['id'])) {
             <li><a href="../Admin/Ledger.php"><img src="../Icons_SVG_repository/Ledger.svg" alt="Ledger">Ledger</a></li>
             <li><a href="../Admin/Account_Manager.php"><img src="../Icons_SVG_repository/userAccountData.svg" alt="Users">Users</a></li>
             <li><a href="../Manage_Ticket/Recieved_Ticket.php"><img src="../Icons_SVG_repository/Tickets.svg" alt="Tickets">Tickets</a></li>
+            <li><a href="../Admin/userFeedback.php"><img src="../Icons_SVG_repository/feedback.svg" alt="Users">Feedback</a></li>
             <li><a href="#" id="custom-logout-button"><img src="../Icons_SVG_repository/Logout.svg" alt="Log Out">Log Out</a></li>
         </ul>
     </nav>

@@ -19,7 +19,6 @@ if (isset($_GET['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Entry</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -63,7 +62,6 @@ if (isset($_GET['id'])) {
             <div id="apProductDetails" class="apTabContent" style="display:none;">
                 <h2>Product Details</h2>
                 <div class="apFlexContainer">
-                    <input type="text" id="apProductSearchInput" placeholder="Search for a Product Model" oninput="searchProduct()">
                     <select id="apProductDropdown" name="product_id">
                         <option value="">Select a Product</option>
                     </select>
@@ -144,7 +142,12 @@ if (isset($_GET['id'])) {
                 <p>Model: <span id="confirmProductModel"></span></p>
                 <p>Price: <span id="confirmProductPrice"></span></p>
             </div>
-
+            <div id="paymentDetailsContainer" style="display: none;">
+                <h3>Payment Details:</h3>
+                <p>Down Payment (10%): <span id="confirmDownPayment"></span></p>
+                <p>Remaining Balance: <span id="confirmRemainingBalance"></span></p>
+                <p>Monthly Payment (2.79% P.A.): <span id="confirmMonthlyPayment"></span></p>
+            </div>
             <button onclick="submitOrder()">Confirm Order</button>
             <button onclick="closeModal()">Cancel</button>
         </div>
@@ -356,7 +359,6 @@ if (isset($_GET['id'])) {
             openTab('apAccountDetails');
             updatePrice(); // Initialize price calculation based on default selection (Pay in Full)
         };
-        // Function to display the confirmation modal with order details
         function showOrderConfirmation() {
             const accountDetails = {
                 serialNum: document.getElementById('apSerialNum').value,
@@ -372,16 +374,28 @@ if (isset($_GET['id'])) {
 
             // Get payment method (full or installment)
             const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
-            let productPrice;
+            let productPrice, downPayment, remainingBalance, monthlyPayment;
 
             if (paymentMethod === 'installment') {
-                // If installment is selected, calculate the total price as Down Payment + Remaining Balance
-                const downPayment = parseFloat(document.getElementById('downPayment').value);
-                const remainingBalance = parseFloat(document.getElementById('remainingBalance').value);
-                productPrice = (downPayment + remainingBalance).toFixed(2); // Sum of downpayment and remaining balance
+                // If installment is selected, retrieve the values
+                downPayment = document.getElementById('downPayment').value;
+                remainingBalance = document.getElementById('remainingBalance').value;
+                monthlyPayment = document.getElementById('monthlyPayment').value;
+
+                // Calculate total product price
+                productPrice = (parseFloat(downPayment) + parseFloat(remainingBalance)).toFixed(2);
+                
+                // Show payment details
+                document.getElementById('paymentDetailsContainer').style.display = 'block';
             } else {
                 // If full payment is selected, use the original product price
                 productPrice = document.getElementById('apPPrice').value;
+                downPayment = '0.00'; // Set down payment to 0 for full payment
+                remainingBalance = '0.00'; // Set remaining balance to 0 for full payment
+                monthlyPayment = '0.00'; // Set monthly payment to 0 for full payment
+                
+                // Hide payment details
+                document.getElementById('paymentDetailsContainer').style.display = 'none';
             }
 
             // Set account details in the modal
@@ -394,6 +408,11 @@ if (isset($_GET['id'])) {
             document.getElementById('confirmProductSerialNum').innerText = productDetails.prodSerialNum;
             document.getElementById('confirmProductModel').innerText = productDetails.model;
             document.getElementById('confirmProductPrice').innerText = '₱' + productPrice; // Updated product price
+
+            // Set payment details in the modal
+            document.getElementById('confirmDownPayment').innerText = '₱' + downPayment;
+            document.getElementById('confirmRemainingBalance').innerText = '₱' + remainingBalance;
+            document.getElementById('confirmMonthlyPayment').innerText = '₱' + monthlyPayment;
 
             // Show modal
             document.getElementById('orderConfirmationModal').style.display = 'block';
@@ -413,32 +432,34 @@ if (isset($_GET['id'])) {
 </body>
 
 </html>
-
 <style>
+    /* Container styles */
     .apContainer {
         min-width: 800px;
         margin: 20px auto;
-        background: #fff;
+        background: #ffffff; /* Light blue background */
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
+    /* Tab styles */
     .apTabs {
         padding-bottom: 10px;
     }
 
+    /* Heading styles */
     h1 {
         text-align: center;
-        color: #333;
+        color: #1e3a5f; /* Dark blue for main heading */
     }
 
     h2 {
         margin-top: 20px;
         margin-bottom: 10px;
-        border-bottom: 2px solid #ccc;
+        border-bottom: 2px solid #a2c4e1; /* Light blue border */
         padding-bottom: 5px;
-        color: #555;
+        color: #2a4d6d; /* Medium blue for subheading */
     }
 
     /* Form styles */
@@ -454,10 +475,11 @@ if (isset($_GET['id'])) {
         margin-bottom: 15px;
     }
 
+    /* Label styles */
     label {
         flex: 0 0 150px;
         font-weight: bold;
-        color: #444;
+        color: #2a4d6d; /* Medium blue for labels */
     }
 
     /* Input fields */
@@ -467,13 +489,14 @@ if (isset($_GET['id'])) {
         flex: 1;
         padding: 10px;
         margin-left: 10px;
-        border: 1px solid #ccc;
+        border: 1px solid #a2c4e1; /* Light blue border */
         border-radius: 4px;
         box-sizing: border-box;
+        background-color: #eaf4fb; /* Very light blue background */
     }
 
     input[readonly] {
-        background-color: #e9ecef;
+        background-color: #d0e7f1; /* Slightly darker blue for readonly fields */
         cursor: not-allowed;
     }
 
@@ -489,15 +512,11 @@ if (isset($_GET['id'])) {
         margin-right: -10px;
     }
 
-    .apFlexContainer select {
-        flex: 0 0 150px;
-    }
-
-    /* Buttons */
+    /* Button styles */
     button {
         padding: 10px 15px;
-        background-color: #ccc;
-        color: #333;
+        background-color: #4fa3f7; /* Blue background */
+        color: #fff; /* White text */
         border: none;
         border-radius: 4px;
         cursor: pointer;
@@ -505,7 +524,7 @@ if (isset($_GET['id'])) {
     }
 
     button:hover {
-        background-color: #bbb;
+        background-color: #3d89d2; /* Darker blue on hover */
     }
 
     /* Image preview */
@@ -516,6 +535,7 @@ if (isset($_GET['id'])) {
         max-height: 150px;
     }
 
+    /* Modal styles */
     .modal {
         display: none;
         position: fixed;
@@ -529,15 +549,16 @@ if (isset($_GET['id'])) {
 
     .modal-content {
         background-color: #fff;
-        margin: 10% auto;
+        margin: 3% auto;
         padding: 20px;
-        border: 1px solid #888;
+        border: 1px solid #a2c4e1; /* Light blue border */
         width: 35%;
         border-radius: 10px;
     }
 
+    /* Modal close button */
     .close {
-        color: #aaa;
+        color: #1e3a5f; /* Dark blue */
         float: right;
         font-size: 28px;
         font-weight: bold;
@@ -545,7 +566,7 @@ if (isset($_GET['id'])) {
 
     .close:hover,
     .close:focus {
-        color: black;
+        color: #4fa3f7; /* Blue on hover */
         text-decoration: none;
         cursor: pointer;
     }

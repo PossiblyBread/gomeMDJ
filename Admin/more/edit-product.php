@@ -336,29 +336,32 @@ if (isset($_GET['id'])) {
         }
 
         function ConfirmationSummary() {
-            const summary = document.getElementById('confirmation-summary');
-            const model = document.getElementById('p_model').value;
-            const price = document.getElementById('p_price').value;
-            const wheels = document.getElementById('p_wheels').value;
-            const motorPower = document.getElementById('p_motor_power').value;
-            const battery = document.getElementById('p_battery').value;
-            const maxSpeed = document.getElementById('p_max_speed').value;
-            const range = document.getElementById('p_range').value;
-            const maxLoad = document.getElementById('p_max_load').value;
-            const chargingTime = document.getElementById('p_charging_time').value;
-            const variants = document.getElementById('p_variants').value;
-            const otherFeatures = document.getElementById('p_other_features').value;
-            const unitAvailability = document.getElementById('u_availability').value;
+                const summary = document.getElementById('confirmation-summary');
+                const model = document.getElementById('p_model').value;
+                const price = document.getElementById('p_price').value;
+                const wheels = document.getElementById('p_wheels').value;
+                const motorPower = document.getElementById('p_motor_power').value;
+                const battery = document.getElementById('p_battery').value;
+                const maxSpeed = document.getElementById('p_max_speed').value;
+                const range = document.getElementById('p_range').value;
+                const maxLoad = document.getElementById('p_max_load').value;
+                const chargingTime = document.getElementById('p_charging_time').value;
+                const variants = document.getElementById('p_variants').value;
+                const otherFeatures = document.getElementById('p_other_features').value;
+                const availability = document.getElementById('u_availability').value;
 
-            const coverPreview = document.getElementById('cover-preview')?.src;
-            const thumbnailsContainer = document.getElementById('thumbnails-container');
-            const thumbnailImages = thumbnailsContainer.querySelectorAll('img');
-            let thumbnailsHTML = '';
-            thumbnailImages.forEach(img => {
-                thumbnailsHTML += `<img src="${img.src}" class="ap-image-preview" alt="Thumbnail Preview" style="width: 50px; height: 50px; margin: 5px;">`;
-            });
+                // Get cover image preview
+                const coverPreview = document.getElementById('cover-preview').src;
 
-            summary.innerHTML = `
+                // Get thumbnail previews
+                const thumbnailsContainer = document.getElementById('thumbnails-container');
+                const thumbnailImages = thumbnailsContainer.querySelectorAll('img');
+                let thumbnailsHTML = '';
+                thumbnailImages.forEach(img => {
+                    thumbnailsHTML += `<img src="${img.src}" class="ap-image-preview" alt="Thumbnail Preview" style="width: 50px; height: 50px; margin: 5px;">`;
+                });
+
+                summary.innerHTML = `
                     <div class="product-summary fade-in" style="max-width: 800px; max-height: 500px; overflow-y: auto;">
                         <h4 class="summary-title" style="font-size: 1.4rem;">Product Summary</h4>
                         <div class="summary-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
@@ -377,6 +380,10 @@ if (isset($_GET['id'])) {
                             <div class="summary-item" data-aos="fade-up">
                                 <span class="label">Motor Power</span>
                                 <span class="value">${motorPower}</span>
+                            </div>
+                            <div class="summary-item" data-aos="fade-up">
+                                <span class="label">Battery</span>
+                                <span class="value">${battery}</span>
                             </div>
                             <div class="summary-item" data-aos="fade-up">
                                 <span class="label">Max Speed</span>
@@ -404,12 +411,142 @@ if (isset($_GET['id'])) {
                             </div>
                             <div class="summary-item features" data-aos="fade-up">
                                 <span class="label">Availability</span>
-                                <span class="value">${unitAvailability}</span>
+                                <span class="value">${availability}</span>
+                            </div>
+                        </div>
+
+                        <style>
+                            .product-summary {
+                                margin: 0 auto;
+                                padding: 1rem;
+                                background: #ffffff;
+                                border-radius: 8px;
+                                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                            }
+
+                            .summary-title {
+                                font-size: 1.4rem;
+                                color: #333;
+                                text-align: center;
+                                margin-bottom: 1rem;
+                                font-weight: 600;
+                                border-bottom: 1px solid #eee;
+                                padding-bottom: 0.5rem;
+                            }
+
+                            .summary-grid {
+                                display: grid;
+                                gap: 1rem;
+                                margin-bottom: 1rem;
+                            }
+
+                            .summary-item {
+                                background: #f8f9fa;
+                                padding: 0.75rem;
+                                border-radius: 6px;
+                                transition: transform 0.2s ease;
+                            }
+
+                            .summary-item:hover {
+                                transform: translateY(-2px);
+                                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                            }
+
+                            .label {
+                                display: block;
+                                font-size: 0.8rem;
+                                color: #666;
+                                margin-bottom: 0.25rem;
+                            }
+
+                            .value {
+                                display: block;
+                                font-size: 1rem;
+                                color: #333;
+                                font-weight: 500;
+                            }
+
+                            .highlight {
+                                color: #2c3e50;
+                                font-weight: 600;
+                            }
+
+                            .image-section {
+                                margin-top: 1rem;
+                            }
+
+                            .image-title {
+                                font-size: 1.2rem;
+                                color: #333;
+                                margin-bottom: 0.5rem;
+                            }
+
+                            .cover-image-wrapper {
+                                width: 100%;
+                                max-width: 300px;
+                                margin: 0 auto;
+                                overflow: hidden;
+                                border-radius: 6px;
+                                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                            }
+
+                            .cover-preview {
+                                width: 100%;
+                                height: auto;
+                                transition: transform 0.2s ease;
+                            }
+
+                            .hover-zoom:hover {
+                                transform: scale(1.02);
+                            }
+
+                            .thumbnails-grid {
+                                display: grid;
+                                grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+                                gap: 0.5rem;
+                                margin-top: 0.5rem;
+                            }
+
+                            .ap-image-preview {
+                                border-radius: 4px;
+                                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+                                transition: transform 0.2s ease;
+                                cursor: pointer;
+                            }
+
+                            .ap-image-preview:hover {
+                                transform: scale(1.05);
+                            }
+
+                            @media (max-width: 768px) {
+                                .product-summary {
+                                    padding: 0.75rem;
+                                }
+
+                                .summary-grid {
+                                    grid-template-columns: 1fr;
+                                }
+
+                                .summary-title {
+                                    font-size: 1.2rem;
+                                }
+                            }
+                        </style>
+
+                        <div class="image-section">
+                            <h5 class="image-title">Cover Image</h5>
+                            <div class="cover-image-wrapper" data-aos="zoom-in">
+                                <img src="${coverPreview}" class="cover-preview hover-zoom" alt="Cover Image">
+                            </div>
+                            
+                            <h5 class="image-title">Thumbnails</h5>
+                            <div class="thumbnails-grid" data-aos="fade-up">
+                                ${thumbnailsHTML}
                             </div>
                         </div>
                     </div>
                 `;
-        }
+        };
 
         function closeModal() {
             const modal = document.getElementById('confirmation-modal');
