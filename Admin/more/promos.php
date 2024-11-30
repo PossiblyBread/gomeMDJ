@@ -11,6 +11,7 @@ $result = $conn->query($sql);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +23,7 @@ $result = $conn->query($sql);
             font-weight: bold;
             margin-bottom: 10px;
         }
+
         /* carousel style */
         .carousel-container {
             position: relative;
@@ -31,6 +33,7 @@ $result = $conn->query($sql);
             display: flex;
             justify-content: center;
         }
+
         .carousel {
             display: grid;
             justify-content: flex-start;
@@ -40,6 +43,7 @@ $result = $conn->query($sql);
             width: 80%;
             margin: auto;
         }
+
         /* promos items */
         .promo-box {
             background-color: transparent;
@@ -56,6 +60,7 @@ $result = $conn->query($sql);
             align-items: center;
             border: 1px solid #ccc;
         }
+
         .promo-box img {
             object-fit: cover;
             width: 100%;
@@ -64,6 +69,7 @@ $result = $conn->query($sql);
             background-color: transparent;
             cursor: pointer;
         }
+
         .carousel-controls {
             position: absolute;
             top: 50%;
@@ -73,6 +79,7 @@ $result = $conn->query($sql);
             justify-content: space-between;
             z-index: 1000;
         }
+
         .carousel-controls button {
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
@@ -81,6 +88,7 @@ $result = $conn->query($sql);
             cursor: pointer;
             border-radius: 50%;
         }
+
         .overlay {
             display: none;
             position: fixed;
@@ -91,6 +99,7 @@ $result = $conn->query($sql);
             background-color: rgba(0, 0, 0, 0.7);
             z-index: 10100;
         }
+
         /* promo modal */
         .promoModal {
             display: none;
@@ -106,17 +115,20 @@ $result = $conn->query($sql);
             border-radius: 8px;
             color: black;
         }
+
         .promoModal h2 {
             margin: 0 0 15px;
             color: #333;
             text-align: center;
         }
+
         .promoModal label {
             display: block;
             margin: 10px 0 5px;
             font-weight: bold;
             color: #333;
         }
+
         .promoModal input[type="text"],
         .promoModal input[type="file"] {
             width: calc(100% - 10px);
@@ -125,6 +137,7 @@ $result = $conn->query($sql);
             border-radius: 4px;
             margin-bottom: 15px;
         }
+
         .promoModal .button {
             background-color: #4CAF50;
             color: white;
@@ -135,6 +148,7 @@ $result = $conn->query($sql);
             width: calc(40% - 5px);
             margin-left: 5px;
         }
+
         .promoModal .close-modal {
             background-color: #333;
             color: white;
@@ -147,14 +161,15 @@ $result = $conn->query($sql);
         }
     </style>
 </head>
+
 <body>
 
     <div class="promos-header">Promos</div>
-    
+
     <div class="carousel-container">
         <div class="carousel">
             <?php if ($result->num_rows > 0): ?>
-                <?php while($row = $result->fetch_assoc()): ?>
+                <?php while ($row = $result->fetch_assoc()): ?>
                     <div class="promo-box">
                         <img src="<?php echo htmlspecialchars($row['p_image']); ?>" alt="<?php echo htmlspecialchars($row['p_name']); ?>" class="promo-img" data-id="<?php echo $row['id']; ?>" data-name="<?php echo htmlspecialchars($row['p_name']); ?>" data-monthly="<?php echo htmlspecialchars($row['p_monthly']); ?>" data-year="<?php echo htmlspecialchars($row['p_year']); ?>" data-base-price="<?php echo htmlspecialchars($row['base_price']); ?>" data-total-discount="<?php echo htmlspecialchars($row['total_discount']); ?>">
                     </div>
@@ -184,7 +199,7 @@ $result = $conn->query($sql);
             <label for="p_monthly">Monthly:</label>
             <input type="text" id="p_monthly" name="p_monthly" pattern="^\d+(\.\d{1,2})?$" title="Only numbers with 2 decimal numbers are allowed." required>
 
-            <label for="p_year">Year:</label>
+            <label for="p_year">Months:</label>
             <input type="text" id="p_year" name="p_year" pattern="^\d+$" title="Please enter a valid whole number for the year." required>
 
             <label for="total_discount">Total Discount:</label>
@@ -206,7 +221,7 @@ $result = $conn->query($sql);
         const promoNameInput = document.getElementById('p_name');
         const promoMonthlyInput = document.getElementById('p_monthly');
         const promoYearInput = document.getElementById('p_year');
-        const promoBasePriceInput = document.getElementById('base_price'); 
+        const promoBasePriceInput = document.getElementById('base_price');
         const promoTotalDiscountInput = document.getElementById('total_discount');
 
         promoImages.forEach(img => {
@@ -215,9 +230,9 @@ $result = $conn->query($sql);
                 promoNameInput.value = img.getAttribute('data-name');
                 promoMonthlyInput.value = img.getAttribute('data-monthly');
                 promoYearInput.value = img.getAttribute('data-year');
-                promoBasePriceInput.value = img.getAttribute('data-base-price'); 
+                promoBasePriceInput.value = img.getAttribute('data-base-price');
                 promoTotalDiscountInput.value = img.getAttribute('data-total-discount');
-                
+
                 // Show the modal and overlay
                 editPromoModal.style.display = 'block';
                 overlay.style.display = 'block'; // Show the overlay
@@ -255,4 +270,5 @@ $result = $conn->query($sql);
     </script>
 
 </body>
+
 </html>

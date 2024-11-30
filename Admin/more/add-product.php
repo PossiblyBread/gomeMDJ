@@ -62,12 +62,12 @@
                 <div id="specifications" class="ap-tab-content">
                     <div class="specifications-grid">
                         <div>
-                            <label class="ap-label tooltip" for="p_wheels">Wheel Count<span class="required-asterisk">*</span></label>
+                            <label class="ap-label tooltip" for="p_wheels">Category<span class="required-asterisk">*</span></label>
                             <select class="ap-select" name="p_wheels" id="p_wheels" required>
-                                <option value="" disabled selected>Select wheel count</option>
-                                <option value="2 wheels">2 Wheels</option>
-                                <option value="3 wheels">3 Wheels</option>
-                                <option value="4 wheels">4 Wheels</option>
+                                <option value="" disabled selected>Select Category</option>
+                                <option value="Bikes">Bikes</option>
+                                <option value="Trikes">Trikes</option>
+                                <option value="Quad Bikes">Quad Bikes</option>
                             </select>
                         </div>
 
@@ -359,7 +359,7 @@
                                 <span class="value highlight">PHP ${price}</span>
                             </div>
                             <div class="summary-item" data-aos="fade-up">
-                                <span class="label">Wheel Count</span>
+                                <span class="label">Category</span>
                                 <span class="value">${wheels}</span>
                             </div>
                             <div class="summary-item" data-aos="fade-up">

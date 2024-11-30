@@ -162,8 +162,8 @@ if (isset($_GET['id'])) {
         <label for="p_availability">Availability:</label>
         <select class="ap-select" name="p_availability" id="p_availability" required>
             <option value="" disabled selected>Unit Availabiltity</option>
-            <option value="Available" <?php echo ($product['p_availability'] == 'Available') ? 'selected' : ''; ?>>Available</option>
-            <option value="Unavailable" <?php echo ($product['p_availability'] == 'Unavailable') ? 'selected' : ''; ?>>Unavailable</option>
+            <option value="In Stock" <?php echo ($product['p_availability'] == 'In Stock') ? 'selected' : ''; ?>>In Stock</option>
+            <option value="Low Stock" <?php echo ($product['p_availability'] == 'Low Stock') ? 'selected' : ''; ?>>Low Stock</option>
             <option value="Out of Stock" <?php echo ($product['p_availability'] == 'Out of Stock') ? 'selected' : ''; ?>>Out of Stock</option>
             <option value="Coming Soon!" <?php echo ($product['p_availability'] == 'Coming Soon!') ? 'selected' : ''; ?>>Coming Soon!</option>
         </select>

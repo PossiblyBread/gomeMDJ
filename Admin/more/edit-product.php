@@ -120,12 +120,12 @@ if (isset($_GET['id'])) {
                 <div id="specifications" class="ap-tab-content">
                     <div class="specifications-grid">
                         <div>
-                            <label class="ap-label tooltip" for="p_wheels">Wheel Count<span class="required-asterisk">*</span></label>
+                            <label class="ap-label tooltip" for="p_wheels">Category<span class="required-asterisk">*</span></label>
                             <select class="ap-select" name="p_wheels" id="p_wheels" required>
-                                <option value="" disabled>Select wheel count</option>
-                                <option value="2 wheels" <?php echo ($product['p_wheels'] == '2 wheels') ? 'selected' : ''; ?>>2 Wheels</option>
-                                <option value="3 wheels" <?php echo ($product['p_wheels'] == '3 wheels') ? 'selected' : ''; ?>>3 Wheels</option>
-                                <option value="4 wheels" <?php echo ($product['p_wheels'] == '4 wheels') ? 'selected' : ''; ?>>4 Wheels</option>
+                                <option value="" disabled>Select Category</option>
+                                <option value="Bikes" <?php echo ($product['p_wheels'] == 'Bikes') ? 'selected' : ''; ?>>Bikes</option>
+                                <option value="Trikes" <?php echo ($product['p_wheels'] == 'Trikes') ? 'selected' : ''; ?>>Trikes</option>
+                                <option value="Quad Bikes" <?php echo ($product['p_wheels'] == 'Quad Bikes') ? 'selected' : ''; ?>>Quad Bikes</option>
                             </select>
                         </div>
 
@@ -177,8 +177,8 @@ if (isset($_GET['id'])) {
                     <label class="ap-label tooltip" for="u_availability">Availability<span class="required-asterisk">*</span></label>
                     <select class="ap-select" name="u_availability" id="u_availability" required>
                         <option value="" disabled>Select availability</option>
-                        <option value="Available" <?php echo ($product['u_availability'] == 'Available') ? 'selected' : ''; ?>>Available</option>
-                        <option value="Unavailable" <?php echo ($product['u_availability'] == 'Unavailable') ? 'selected' : ''; ?>>Unavailable</option>
+                        <option value="In Stock" <?php echo ($product['u_availability'] == 'In Stock') ? 'selected' : ''; ?>>In Stock</option>
+                        <option value="Low Stock" <?php echo ($product['u_availability'] == 'Low Stock') ? 'selected' : ''; ?>>Low Stock</option>
                         <option value="Out of Stock" <?php echo ($product['u_availability'] == 'Out of Stock') ? 'selected' : ''; ?>>Out of Stock</option>
                         <option value="Coming Soon!" <?php echo ($product['u_availability'] == 'Coming Soon!') ? 'selected' : ''; ?>>Coming Soon!</option>
                     </select>
@@ -374,7 +374,7 @@ if (isset($_GET['id'])) {
                                 <span class="value highlight">PHP ${price}</span>
                             </div>
                             <div class="summary-item" data-aos="fade-up">
-                                <span class="label">Wheel Count</span>
+                                <span class="label">Category</span>
                                 <span class="value">${wheels}</span>
                             </div>
                             <div class="summary-item" data-aos="fade-up">
@@ -391,11 +391,11 @@ if (isset($_GET['id'])) {
                             </div>
                             <div class="summary-item" data-aos="fade-up">
                                 <span class="label">Range</span>
-                                <span class="value">${range} km</span>
+                                <span class="value">${range}km</span>
                             </div>
                             <div class="summary-item" data-aos="fade-up">
                                 <span class="label">Max Load</span>
-                                <span class="value">${maxLoad} kg</span>
+                                <span class="value">${maxLoad}kg</span>
                             </div>
                             <div class="summary-item" data-aos="fade-up">
                                 <span class="label">Charging Time</span>
