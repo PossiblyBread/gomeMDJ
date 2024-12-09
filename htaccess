@@ -1,0 +1,46 @@
+<IfModule mod_rewrite.c>
+    # Enable mod_rewrite
+    RewriteEngine On
+
+    # Prevent 301 injection by checking specific headers
+    RewriteCond %{HTTP:CF-Connecting-IP} ^$ [OR]
+    RewriteCond %{HTTP:X-Forwarded-For} ^$
+    RewriteRule ^ - [F,L]
+
+
+    # Block access to sensitive directories
+    RewriteRule ^(.*\.git|phpmyadmin|vendor)/ - [F,L]
+
+    # Block access to specific sensitive files (e.g., database, configuration)
+    RewriteRule ^(config|db_conn.php|composer.json|composer.lock|web_db.sql|responses-verified.json|responses-guest.json|responses-user.json) - [F,L]
+
+    # Block AJAX requests to sensitive files or directories
+    RewriteCond %{HTTP:X-Requested-With} ^XMLHttpRequest$ [NC]
+    RewriteRule ^(Admin|User|IT_Management)/.*$ - [F,L]
+
+    # Block access to any .htaccess, .git, and sensitive files globally
+    RewriteRule ^\.git - [F,L]
+    RewriteRule ^\.htaccess - [F,L]
+
+    # Prevent access to PHP files in sensitive directories
+    RewriteRule ^(Admin|Employee|User|IT_Management)/.*\.php$ - [F,L]
+
+    # Rewrite URLs to .php files if they exist (without showing the .php extension)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.php -f
+    RewriteRule ^(.*)$ /$1.php [NC,L]
+</IfModule>
+
+# Additional headers for enhanced security
+<IfModule mod_headers.c>
+    # Content Security Policy (CSP) to prevent XSS
+
+    # X-Content-Type-Options to prevent MIME type sniffing
+    Header set X-Content-Type-Options "nosniff"
+
+    # Prevent clickjacking
+    Header always set X-Frame-Options "DENY"
+
+    # HTTP Strict Transport Security (HSTS) for HTTPS (only apply if using HTTPS)
+    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+</IfModule>
