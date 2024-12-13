@@ -3,7 +3,7 @@ session_start();
 include "../db_conn.php";
 
 if (!isset($_SESSION['id'])) {
-    http_response_code(403);
+    http_response_code(403); 
     exit("Access denied");
 }
 
@@ -157,7 +157,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert_data'])) {
         $stmt->execute();
         $result = $stmt->get_result();
         $results = $result->fetch_all(MYSQLI_ASSOC);
-
+        
         // Redirect after successful submission to prevent resubmission on refresh
         header("Location: " . $_SERVER['PHP_SELF']);
         exit();
@@ -186,7 +186,7 @@ $conn->close();
         <div class="form-container" id="payment-form">
             <div>
                 <h2>Search Payment Information</h2>
-                <?php if (!empty($message)) echo "<p>$message</p>"; ?>
+                <div class="search-result"><?php if (!empty($message)) echo "<p>$message</p>"; ?></div>
                 <form method="post" action="">
                     <label for="search_term">Search Order Number:</label>
                     <input type="text" id="search_term" name="search_term" placeholder="Enter Receipt Number">
@@ -253,7 +253,7 @@ $conn->close();
             <h2>View Payment Records</h2>
             <div>
                 <h2>Search For User Payment History</h2>
-                <?php if (!empty($message)) echo "<p>$message</p>"; ?>
+                <div class="search-result"><?php if (!empty($message)) echo "<p>$message</p>"; ?></div>
                 <form method="post" action="">
                     <label for="search_term">Search by Serial Number:</label>
                     <input type="text" id="search_term" name="search_term" placeholder="Enter Serial Number">
@@ -307,7 +307,7 @@ $conn->close();
                     </tbody>
                 </table>
             <?php else: ?>
-                <p>Search for an Account using Serial Number.</p>
+                <p class="empty-field">Search for an Account using Serial Number.</p>
             <?php endif; ?>
         </div>
 
@@ -438,4 +438,15 @@ $conn->close();
         color: red;
         margin-left: 5px;
     }
+/* Styles for "User not found" message */
+.search-result {
+    color: #ff0000;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.empty-field{
+    text-align: center;
+}
 </style>

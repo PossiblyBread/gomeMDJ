@@ -54,20 +54,20 @@
         // Keyword-based severity levels
         const severityRules = {
             "Technical": {
-                1: ["crash", "error", "failure", "outage", "down", "server crash", "data loss", "system failure"],  // Critical
-                2: ["timeout", "disconnected", "slowness", "issue", "lag", "connectivity issue", "unable to load"],  // High
+                1: [ "error", "failure", "outage", "down", "data loss"],  // Critical
+                2: ["timeout", "disconnected", "slowness", "issue", "lag", , "unable to load"],  // High
                 3: ["delayed response", "lag", "minor bug", "intermittent issue", "feature malfunction"],  // Medium
                 4: ["feature request", "suggestion", "UI issue", "minor bug", "cosmetic issue"]  // Low
             },
             "Mechanical": {
-                1: ["machine down", "broken", "overheating", "failure", "explosion", "fire hazard", "safety issue"],  // Critical
+                1: ["machine down", "broken", "overheating", "failure", "safety issue"],  // Critical
                 2: ["repair needed", "malfunctioning", "part broken", "intermittent failure", "major malfunction"],  // High
-                3: ["needs maintenance", "routine check", "minor repair", "slightly damaged", "low pressure"],  // Medium
-                4: ["cosmetic", "minor damage", "small dent", "scratches", "flat"]  // Low
+                3: ["needs maintenance", "routine check", "minor repair", "slightly damaged"],  // Medium
+                4: ["minor damage"]  // Low
             },
             "Billing": {
                 1: ["overcharge", "payment failure", "billing error", "transaction error", "fraud", "chargeback"],  // Critical
-                2: ["incorrect charge", "refund request", "payment dispute", "missing payment", "wrong billing address"],  // High
+                2: ["incorrect charge", "refund request", "payment dispute", "missing payment"],  // High
                 3: ["unpaid invoice", "delayed invoice", "invoice query"],  // Medium
                 4: ["billing question", "clarification", "invoice breakdown", "payment method query"]  // Low
             },

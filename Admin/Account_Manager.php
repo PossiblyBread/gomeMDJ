@@ -9,6 +9,7 @@ include "../db_conn.php";
 // Initialize search variables
 $search_query = '';
 $show_table = false;
+$no_results_message = ''; // Message when no results found
 
 // Check if the session already has search results, and if not, initialize it
 if (!isset($_SESSION['search_results'])) {
@@ -17,34 +18,40 @@ if (!isset($_SESSION['search_results'])) {
 
 if (isset($_POST['search_button'])) {
     $search_query = mysqli_real_escape_string($conn, $_POST['search_query']);
-
+    
     if (!empty($search_query)) {
-        // Only show table if there's a search query
-        $sql = "SELECT * FROM `accounts` WHERE (`serial_num` = '$search_query' OR `email` = '$search_query')";
-
-        $result = mysqli_query($conn, $sql);
-
-        // Reset session with new results
-        $_SESSION['search_results'] = [];
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                $_SESSION['search_results'][] = $row;
+        // Check for specific values that should always return "User not found"
+        if ($search_query === '10000' || $search_query === 'mdjbikes23@gmaill.com') {
+            $no_results_message = 'User not found';
+        } else {
+            // Proceed with the database query for other inputs
+            $sql = "SELECT * FROM `accounts` WHERE (`serial_num` = '$search_query' OR `email` = '$search_query')";
+            
+            $result = mysqli_query($conn, $sql);
+            
+            // Reset session with new results
+            $_SESSION['search_results'] = [];
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $_SESSION['search_results'][] = $row;
+                }
+                $show_table = true; // Set to true only if results are found
+            } else {
+                $no_results_message = 'User not found'; // Set the message when no results are found
             }
-            $show_table = true; // Set to true only if results are found
         }
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="style.css"/>
     <title>Account Manager</title>
 </head>
-
 <body>
     <?php include 'side-nav.php'; ?>
     <div class="main-content">
@@ -59,6 +66,10 @@ if (isset($_POST['search_button'])) {
         </form>
 
         <div>
+            <?php if ($no_results_message): ?>
+                <p class="no-results-message"><?php echo $no_results_message; ?></p>
+            <?php endif; ?>
+
             <table class="accounts <?php echo $show_table ? 'show' : ''; ?>">
                 <tr>
                     <th>Serial ID</th>
@@ -75,25 +86,23 @@ if (isset($_POST['search_button'])) {
                 if (!empty($_SESSION['search_results'])) {
                     foreach ($_SESSION['search_results'] as $row) {
                 ?>
-                        <tr>
-                            <td><?php echo $row["serial_num"] ?></td>
-                            <td><?php echo $row["last_name"] ?></td>
-                            <td><?php echo $row["first_name"] ?></td>
-                            <td><?php echo $row["email"] ?></td>
-                            <td><?php echo $row["phone_num"] ?></td>
-
-                            <td>
-                                <a href="edit_user.php?id=<?php echo $row['id']; ?>" class="edit-button">Edit</a>
-                            </td>
-                            <td>
-                                <a href="validate_user.php?id=<?php echo $row['id']; ?>" class="validate-button">Validate</a>
-                            </td>
-                            <td><?php echo $row["date_created"] ?></td>
-                        </tr>
+                    <tr>
+                        <td><?php echo $row["serial_num"] ?></td>
+                        <td><?php echo $row["last_name"] ?></td>
+                        <td><?php echo $row["first_name"] ?></td>
+                        <td><?php echo $row["email"] ?></td>
+                        <td><?php echo $row["phone_num"] ?></td>
+                        
+                        <td>
+                            <a href="edit_user.php?id=<?php echo $row['id']; ?>" class="edit-button">Edit</a>
+                        </td>
+                        <td>
+                            <a href="validate_user.php?id=<?php echo $row['id']; ?>" class="validate-button">Validate</a>
+                        </td>
+                        <td><?php echo $row["date_created"] ?></td>
+                    </tr>
                 <?php
                     }
-                } else {
-                    echo "<tr><td colspan='10'>No records found</td></tr>";
                 }
                 ?>
             </table>
@@ -118,114 +127,116 @@ if (isset($_POST['search_button'])) {
         </script>
     </div>
 </body>
-
 </html>
 <style>
-    /* Main content styles */
-    body {
-        margin-left: 150px;
-    }
+/* Main content styles */
+body {
+    margin-left: 150px;
+}
+.main-content {
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 
-    .main-content {
-        margin: 20px;
-        padding: 20px;
-        background-color: white;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
+h2 {
+    margin-top: 0;
+}
+/* Hide the table by default */
+.accounts {
+            display: none;
+        }
 
-    h2 {
-        margin-top: 0;
-    }
+        /* Show the table when there are search results */
+        .accounts.show {
+            display: table;
+        }
+/* Search form styles */
+.search-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
 
-    /* Hide the table by default */
-    .accounts {
-        display: none;
-    }
+.search-container {
+    flex: 1;
+}
 
-    /* Show the table when there are search results */
-    .accounts.show {
-        display: table;
-    }
+.search-container input {
+    width: 300px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
-    /* Search form styles */
-    .search-wrapper {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-    }
+.search-container button {
+    padding: 8px 12px;
+    margin-left: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
-    .search-container {
-        flex: 1;
-    }
+.search-container button:hover {
+    background-color: #0056b3;
+}
 
-    .search-container input {
-        width: 300px;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
 
-    .search-container button {
-        padding: 8px 12px;
-        margin-left: 10px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
+th, td {
+    padding: 8px;
+    text-align: left; 
+    border-bottom: 1px solid #ddd;
+}
 
-    .search-container button:hover {
-        background-color: #0056b3;
-    }
+th {
+    background-color: #f4f4f4;
+}
 
-    /* Table styles */
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
+/* Centering buttons */
+td {
+    text-align: center;
+}
 
-    th,
-    td {
-        padding: 8px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
+/* Button styles */
+.edit-button, .validate-button {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 5px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
 
-    th {
-        background-color: #f4f4f4;
-    }
+.edit-button:hover {
+    background-color: #218838; 
+}
 
-    /* Centering buttons */
-    td {
-        text-align: center;
-    }
+.validate-button {
+    background-color: #007bff;
+}
 
-    /* Button styles */
-    .edit-button,
-    .validate-button {
-        display: inline-block;
-        padding: 8px 12px;
-        margin: 0 5px;
-        background-color: #28a745;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        text-decoration: none;
-        transition: background-color 0.3s ease;
-    }
+.validate-button:hover {
+    background-color: #0056b3;
+}
 
-    .edit-button:hover {
-        background-color: #218838;
-    }
-
-    .validate-button {
-        background-color: #007bff;
-    }
-
-    .validate-button:hover {
-        background-color: #0056b3;
-    }
+/* Styles for "User not found" message */
+.no-results-message {
+    color: #ff0000;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
 </style>

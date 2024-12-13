@@ -6,7 +6,6 @@ if (!isset($_SESSION['id'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +14,7 @@ if (!isset($_SESSION['id'])) {
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 0; 
             display: flex;
             flex-direction: column;
         }
@@ -24,7 +23,7 @@ if (!isset($_SESSION['id'])) {
         .top-navbar {
             display: flex;
             align-items: center;
-            background-color: #d1dae1;
+            background-color: #d1dae1; 
             height: 60px;
             padding: 0 20px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
@@ -53,7 +52,7 @@ if (!isset($_SESSION['id'])) {
 
         .top-navbar a {
             text-decoration: none;
-            color: #01344C;
+            color: #01344C; 
             padding: 8px 10px;
             display: flex;
             align-items: center;
@@ -61,42 +60,41 @@ if (!isset($_SESSION['id'])) {
             transition: background-color 0.3s, color 0.3s;
             white-space: nowrap;
         }
-
         /* Top navigation styles */
         .top-navbar a {
             text-decoration: none;
-            color: #01344C;
+            color: #01344C; 
             padding: 8px 10px;
             display: flex;
             align-items: center;
             font-size: 14px;
             position: relative;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.3s, color 0.3s; 
             white-space: nowrap;
         }
 
         /* Hover effect with underline animation */
         .top-navbar a:hover {
-            background-color: #BDDADB;
-            color: #01344C;
+            background-color: #BDDADB; 
+            color: #01344C; 
             border-radius: 5px;
         }
 
         /* The underline (line animation) */
         .top-navbar a::after {
-            content: "";
+            content: ""; 
             position: absolute;
-            bottom: 0;
+            bottom: 0; 
             left: 0;
-            width: 0%;
-            height: 2px;
+            width: 0%; 
+            height: 2px; 
             background-color: #01344C;
             transition: width 0.3s ease;
         }
 
         /* On hover, animate the line */
         .top-navbar a:hover::after {
-            width: 100%;
+            width: 100%; 
         }
 
         .top-navbar img {
@@ -135,8 +133,7 @@ if (!isset($_SESSION['id'])) {
             justify-content: space-between;
         }
 
-        #confirm-logout-btn,
-        .cancel-logout-btn {
+        #confirm-logout-btn, .cancel-logout-btn {
             background-color: #7a7a7a;
             color: white;
             border: none;
@@ -145,8 +142,7 @@ if (!isset($_SESSION['id'])) {
             cursor: pointer;
         }
 
-        #confirm-logout-btn:hover,
-        .cancel-logout-btn:hover {
+        #confirm-logout-btn:hover, .cancel-logout-btn:hover {
             background-color: #555;
         }
 
@@ -159,15 +155,13 @@ if (!isset($_SESSION['id'])) {
         }
 
         .content {
-            margin-top: 70px;
+            margin-top: 70px; 
             padding: 20px;
-            flex: 1;
+            flex: 1; 
         }
-
         /* log out style end */
     </style>
 </head>
-
 <body>
     <nav class="top-navbar">
         <!-- Logo section with link to Home.php -->
@@ -229,5 +223,4 @@ if (!isset($_SESSION['id'])) {
         }
     </script>
 </body>
-
 </html>

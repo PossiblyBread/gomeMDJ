@@ -132,7 +132,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_account'])) {
     }
 }
 
-
 // Function to validate the moderator password
 function validateModeratorPassword($password) {
     return $password === 'admin1234'; // Replace with your actual moderator password
@@ -375,6 +374,6 @@ function validateModeratorPassword($password) {
             window.location.href = "Account_Manager.php"; // Redirect to Account_Manager.php
         }
     }
-    </script>
+</script>
 </body>
 </html>
