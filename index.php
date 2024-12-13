@@ -31,6 +31,7 @@ if (isset($_GET['msg'])) {
 <body>
     <?php include 'header.php'; ?>
     <?php include 'side-bar.php'; ?>
+
     <div id="overlay"></div>
     <br><br><br>
     <section class="main-section">
