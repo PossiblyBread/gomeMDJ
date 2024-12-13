@@ -199,16 +199,22 @@ $notifications = fetchNotifications($conn);
         }
     </script>
 </body>
+
 </html>
 <style>
     body {
         background-color: #d1dae1;
     }
+
     strong {
-        font-weight: bold; /* Ensure it stands out */
-        font-size: 18px;   /* Slightly increase the font size */
-        color: #000000;       /* Set text color to white */
+        font-weight: bold;
+        /* Ensure it stands out */
+        font-size: 18px;
+        /* Slightly increase the font size */
+        color: #000000;
+        /* Set text color to white */
     }
+
     /* style for top nav */
     .top-nav {
         display: flex;
@@ -307,9 +313,11 @@ $notifications = fetchNotifications($conn);
         font-weight: bold;
         text-shadow: 2px 2px 4px black;
     }
+
     /* Modal Styles */
     .SuccessModal {
-        display: none; /* Hidden by default */
+        display: none;
+        /* Hidden by default */
         position: fixed;
         z-index: 999999;
         left: 0;
@@ -317,13 +325,15 @@ $notifications = fetchNotifications($conn);
         width: 100%;
         height: 100%;
         overflow: auto;
-        background-color: rgb(0,0,0);
-        background-color: rgba(0,0,0,0.4);
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
     }
 
     .SuccessModal .modal-content {
-        background-color: #add8e6; /* Light blue color */
-        margin: 300px auto 15% auto; /* Added 200px top margin */
+        background-color: #add8e6;
+        /* Light blue color */
+        margin: 300px auto 15% auto;
+        /* Added 200px top margin */
         max-width: 500px;
         padding: 15px;
         border: 2px solid #1b212f;

@@ -17,13 +17,13 @@ if (!isset($_SESSION['search_results'])) {
 
 if (isset($_POST['search_button'])) {
     $search_query = mysqli_real_escape_string($conn, $_POST['search_query']);
-    
+
     if (!empty($search_query)) {
         // Only show table if there's a search query
         $sql = "SELECT * FROM `accounts` WHERE (`serial_num` = '$search_query' OR `email` = '$search_query')";
-        
+
         $result = mysqli_query($conn, $sql);
-        
+
         // Reset session with new results
         $_SESSION['search_results'] = [];
         if (mysqli_num_rows($result) > 0) {
@@ -37,12 +37,14 @@ if (isset($_POST['search_button'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <title>Account Manager</title>
 </head>
+
 <body>
     <?php include 'side-nav.php'; ?>
     <div class="main-content">
@@ -73,21 +75,21 @@ if (isset($_POST['search_button'])) {
                 if (!empty($_SESSION['search_results'])) {
                     foreach ($_SESSION['search_results'] as $row) {
                 ?>
-                    <tr>
-                        <td><?php echo $row["serial_num"] ?></td>
-                        <td><?php echo $row["last_name"] ?></td>
-                        <td><?php echo $row["first_name"] ?></td>
-                        <td><?php echo $row["email"] ?></td>
-                        <td><?php echo $row["phone_num"] ?></td>
-                        
-                        <td>
-                            <a href="edit_user.php?id=<?php echo $row['id']; ?>" class="edit-button">Edit</a>
-                        </td>
-                        <td>
-                            <a href="validate_user.php?id=<?php echo $row['id']; ?>" class="validate-button">Validate</a>
-                        </td>
-                        <td><?php echo $row["date_created"] ?></td>
-                    </tr>
+                        <tr>
+                            <td><?php echo $row["serial_num"] ?></td>
+                            <td><?php echo $row["last_name"] ?></td>
+                            <td><?php echo $row["first_name"] ?></td>
+                            <td><?php echo $row["email"] ?></td>
+                            <td><?php echo $row["phone_num"] ?></td>
+
+                            <td>
+                                <a href="edit_user.php?id=<?php echo $row['id']; ?>" class="edit-button">Edit</a>
+                            </td>
+                            <td>
+                                <a href="validate_user.php?id=<?php echo $row['id']; ?>" class="validate-button">Validate</a>
+                            </td>
+                            <td><?php echo $row["date_created"] ?></td>
+                        </tr>
                 <?php
                     }
                 } else {
@@ -116,108 +118,114 @@ if (isset($_POST['search_button'])) {
         </script>
     </div>
 </body>
+
 </html>
 <style>
-/* Main content styles */
-body {
-    margin-left: 150px;
-}
-.main-content {
-    margin: 20px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+    /* Main content styles */
+    body {
+        margin-left: 150px;
+    }
 
-h2 {
-    margin-top: 0;
-}
-/* Hide the table by default */
-.accounts {
-            display: none;
-        }
+    .main-content {
+        margin: 20px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
 
-        /* Show the table when there are search results */
-        .accounts.show {
-            display: table;
-        }
-/* Search form styles */
-.search-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
+    h2 {
+        margin-top: 0;
+    }
 
-.search-container {
-    flex: 1;
-}
+    /* Hide the table by default */
+    .accounts {
+        display: none;
+    }
 
-.search-container input {
-    width: 300px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
+    /* Show the table when there are search results */
+    .accounts.show {
+        display: table;
+    }
 
-.search-container button {
-    padding: 8px 12px;
-    margin-left: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+    /* Search form styles */
+    .search-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
 
-.search-container button:hover {
-    background-color: #0056b3;
-}
+    .search-container {
+        flex: 1;
+    }
 
-/* Table styles */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
+    .search-container input {
+        width: 300px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
 
-th, td {
-    padding: 8px;
-    text-align: left; 
-    border-bottom: 1px solid #ddd;
-}
+    .search-container button {
+        padding: 8px 12px;
+        margin-left: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
 
-th {
-    background-color: #f4f4f4;
-}
+    .search-container button:hover {
+        background-color: #0056b3;
+    }
 
-/* Centering buttons */
-td {
-    text-align: center;
-}
+    /* Table styles */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
 
-/* Button styles */
-.edit-button, .validate-button {
-    display: inline-block;
-    padding: 8px 12px;
-    margin: 0 5px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
+    th,
+    td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
 
-.edit-button:hover {
-    background-color: #218838; 
-}
+    th {
+        background-color: #f4f4f4;
+    }
 
-.validate-button {
-    background-color: #007bff;
-}
+    /* Centering buttons */
+    td {
+        text-align: center;
+    }
 
-.validate-button:hover {
-    background-color: #0056b3;
-}
+    /* Button styles */
+    .edit-button,
+    .validate-button {
+        display: inline-block;
+        padding: 8px 12px;
+        margin: 0 5px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .edit-button:hover {
+        background-color: #218838;
+    }
+
+    .validate-button {
+        background-color: #007bff;
+    }
+
+    .validate-button:hover {
+        background-color: #0056b3;
+    }
 </style>

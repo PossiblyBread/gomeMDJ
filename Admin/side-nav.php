@@ -6,11 +6,13 @@ if (!isset($_SESSION['id'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logout Modal Example</title>
 </head>
+
 <body>
     <nav class="left-navbar">
         <a href="../User/Home.php">
@@ -68,133 +70,137 @@ if (!isset($_SESSION['id'])) {
         }
     </script>
 </body>
+
 </html>
 <style>
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0; 
-    display: flex;
-}
-/* left nav design */
-.left-navbar {
-    width: 150px;
-    background-color: #d1dae1;
-    height: 100vh;
-    padding: 10px 0;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow-y: auto;
-    z-index: 10000;
-    text-align: center;
-}
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
 
-.left-navbar .logo {
-    width: 70%;  
-    height: auto;
-    margin: -10px auto;
-    padding: 5px 0;  
-    display: block;  
-}
+    /* left nav design */
+    .left-navbar {
+        width: 150px;
+        background-color: #d1dae1;
+        height: 100vh;
+        padding: 10px 0;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow-y: auto;
+        z-index: 10000;
+        text-align: center;
+    }
 
-.left-navbar hr {
-    border: none;
-    height: 1.75px;
-    background-color: #01344C;
-    margin: 0;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 2px;
-}
+    .left-navbar .logo {
+        width: 70%;
+        height: auto;
+        margin: -10px auto;
+        padding: 5px 0;
+        display: block;
+    }
 
-.left-navbar ul {
-    list-style-type: none;
-    padding: 0;
-}
+    .left-navbar hr {
+        border: none;
+        height: 1.75px;
+        background-color: #01344C;
+        margin: 0;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 2px;
+    }
 
-.left-navbar li {
-    margin: 10px 0;
-    border-radius: 5px;
-}
+    .left-navbar ul {
+        list-style-type: none;
+        padding: 0;
+    }
 
-.left-navbar a {
-    text-decoration: none;
-    color: #01344C;
-    padding: 8px 10px;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    transition: background-color 0.3s, color 0.3s, transform 0.2s;  /* Added transform transition */
-    white-space: nowrap;
-}
+    .left-navbar li {
+        margin: 10px 0;
+        border-radius: 5px;
+    }
 
-.left-navbar a:hover {
-    background-color: #BDDADB;
-    color: #01344C;
-    border-radius: 5px;
-}
-.left-navbar img {
-    width: 32px;
-    height: auto;
-    margin-right: 10px;
-    vertical-align: middle;
-    cursor: pointer;
-}
+    .left-navbar a {
+        text-decoration: none;
+        color: #01344C;
+        padding: 8px 10px;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        transition: background-color 0.3s, color 0.3s, transform 0.2s;
+        /* Added transform transition */
+        white-space: nowrap;
+    }
 
-/* log out style */
-.custom-logout-modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-}
+    .left-navbar a:hover {
+        background-color: #BDDADB;
+        color: #01344C;
+        border-radius: 5px;
+    }
 
-.custom-modal-content {
-    background-color: #e0e0e0;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #bbb;
-    width: 300px;
-    border-radius: 8px;
-    color: #333;
-}
+    .left-navbar img {
+        width: 32px;
+        height: auto;
+        margin-right: 10px;
+        vertical-align: middle;
+        cursor: pointer;
+    }
 
-.modal-buttons {
-    display: flex;
-    justify-content: space-between;
-}
+    /* log out style */
+    .custom-logout-modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
 
-#confirm-logout-btn {
-    background-color: #7a7a7a;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-}
+    .custom-modal-content {
+        background-color: #e0e0e0;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #bbb;
+        width: 300px;
+        border-radius: 8px;
+        color: #333;
+    }
 
-#confirm-logout-btn:hover {
-    background-color: #555;
-}
+    .modal-buttons {
+        display: flex;
+        justify-content: space-between;
+    }
 
-.cancel-logout-btn {
-    background-color: #9e9e9e;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-}
+    #confirm-logout-btn {
+        background-color: #7a7a7a;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 
-.cancel-logout-btn:hover {
-    background-color: #777;
-}
+    #confirm-logout-btn:hover {
+        background-color: #555;
+    }
+
+    .cancel-logout-btn {
+        background-color: #9e9e9e;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .cancel-logout-btn:hover {
+        background-color: #777;
+    }
 </style>

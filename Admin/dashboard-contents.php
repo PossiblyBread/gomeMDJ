@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['id'])) {
-    http_response_code(403); 
+    http_response_code(403);
     exit("Access denied");
 }
 ?>
@@ -203,13 +203,15 @@ if (!isset($_SESSION['id'])) {
             transition: all 0.3s ease;
             font-weight: 500;
         }
+
         .action-button#view {
             background-color: #00aaff;
-            
+
         }
+
         .action-button#delete {
             background-color: maroon;
-            
+
         }
 
         @media (max-width: 768px) {

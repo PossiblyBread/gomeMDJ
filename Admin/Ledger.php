@@ -3,7 +3,7 @@ session_start();
 include "../db_conn.php";
 
 if (!isset($_SESSION['id'])) {
-    http_response_code(403); 
+    http_response_code(403);
     exit("Access denied");
 }
 
@@ -157,7 +157,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert_data'])) {
         $stmt->execute();
         $result = $stmt->get_result();
         $results = $result->fetch_all(MYSQLI_ASSOC);
-        
+
         // Redirect after successful submission to prevent resubmission on refresh
         header("Location: " . $_SERVER['PHP_SELF']);
         exit();
