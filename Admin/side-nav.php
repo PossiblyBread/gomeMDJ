@@ -13,9 +13,7 @@ if (!isset($_SESSION['id'])) {
 </head>
 <body>
     <nav class="left-navbar">
-        <a href="../User/Home.php">
-            <img src="../Images/Logo-dark.png" alt="Logo" class="logo">
-        </a>
+        <img src="../Images/Logo-dark.png" alt="Logo" class="logo">
         <hr>
 
         <ul>
