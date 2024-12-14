@@ -165,9 +165,7 @@ if (!isset($_SESSION['id'])) {
 <body>
     <nav class="top-navbar">
         <!-- Logo section with link to Home.php -->
-        <a href="../User/Home.php">
-            <img src="../Images/Logo-dark.png" alt="Logo" class="logo">
-        </a>
+        <img src="../Images/Logo-dark.png" alt="Logo" class="logo">
         <ul>
             <li><a href="../Admin/Dashboard.php"><img src="../Icons_SVG_repository/Dashboard.svg" alt="Dashboard">Dashboard</a></li>
             <li><a href="../Admin/Account_Manager.php"><img src="../Icons_SVG_repository/userAccountData.svg" alt="Users">Users</a></li>
